@@ -21,8 +21,12 @@ import GScatter from './g-scatter'
 import GVisualMap from './g-visualMap'
 import GSeries from './g-series'
 
+GChart.install = function (Vue) {
+	Vue.component(GChart.name, GChart);
+};
 
-export {
+
+export default {
 	GChart,
 	GTitle,
 	GGrid,

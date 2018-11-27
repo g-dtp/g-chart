@@ -8,10 +8,13 @@ import mds from '../docs/chart.md'
 console.log(/mds/, mds)
 
 
-
 const router = new Router({
 	routes: [
-		{}
+		{
+			path:'/',
+			name:'index',
+			component: () => import('../docs/chart.md')
+		}
 	]
 })
 
