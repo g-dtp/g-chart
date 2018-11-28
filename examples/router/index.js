@@ -14,6 +14,10 @@ const router = new Router({
 			path:'/',
 			name:'index',
 			component: () => import('../docs/chart.md')
+		},{
+			path:'/demo',
+			name:'demo',
+			component: () => import('../pages/demo')
 		}
 	]
 })

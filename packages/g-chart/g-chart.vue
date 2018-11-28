@@ -1,6 +1,6 @@
 <template lang='pug'>
 	.g-chart(:style="{backgroundColor: backgroundColor,width:width+'px',height:height+'px'}" @touchstart="onTouchstart" @click="onClick" ref="chart")
-		slot
+		slot(@update="updateOptions")
 </template>
 
 <script>
@@ -26,7 +26,9 @@
 		data() {
 			return {
 				chart: null,
-				options: {}
+				options: {
+					yAxis: {show: false}
+				}
 			}
 		},
 		provide() {
@@ -50,10 +52,13 @@
 			},
 			render() {
 				if (!this.chart) this.chart = Echart.init(this.$refs.chart);
-				//to do make chart options
-				this.chart.setOption(this.options, true);
+				this.chart.setOption(this.options, true)
 			},
 			destroy() {
+			},
+			updateOptions() {
+				this.chart.setOption(this.options, true)
+				this.chart.resize()
 			},
 			resize() {
 				if (this.chart) {
