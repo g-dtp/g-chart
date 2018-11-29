@@ -13,21 +13,6 @@
 				}
 			}
 		},
-		computed:{
-			updateOptions (){
-				Object.keys(this.$props).forEach(key => {
-					this.options[key] = this.$props[key]
-				})
-				return {
-					...this.$props
-				}
-			}
-		},
-		watch:{
-			'updateOptions' (){
-				this.$parent.render()
-			}
-		},
 		created() {
 			if (!this.chartsOptions.series) this.chartsOptions.series = []
 			this.chartsOptions.series.push(this.options)

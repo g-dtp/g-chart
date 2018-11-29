@@ -1,28 +1,25 @@
 <template lang='pug'>
-	.g-chart(:style="{backgroundColor: backgroundColor,width:width+'px',height:height+'px'}" @touchstart="onTouchstart" @click="onClick" ref="chart")
-		slot(@update="updateOptions")
+	.g-chart(@touchstart="onTouchstart" @click="onClick" ref="chart")
+		slot
 </template>
 
 <script>
 	import Echart from 'echarts'
-
+	import Emitter from '../mixins/emitter';
 	export default {
 		name: "g-chart",
+		mixins: [ Emitter ],
 		props: {
-			width: {
-				type: Number,
-				default: 1000
-			},
-			height: {
-				type: Number,
-				default: 400
+			size: {
+				default: function () {
+					return []
+				}
 			},
 			backgroundColor: {
 				type: String,
 				default: 'rgba(0,0,0,0)'
 			}
 		},
-
 		data() {
 			return {
 				chart: null,
@@ -51,7 +48,7 @@
 				this.preventDefault && e.preventDefault()
 			},
 			render() {
-				if (!this.chart) this.chart = Echart.init(this.$refs.chart);
+				if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'after-sales');
 				this.chart.setOption(this.options, true)
 			},
 			destroy() {
@@ -70,6 +67,7 @@
 			await this.$nextTick()
 			this.render()
 			window.addEventListener('resize', this.resize)
+			this.broadcast('g-base', 'update-options', this.updateOptions);
 		},
 		beforeDestroy() {
 			window.removeEventListener('resize', this.resize)
@@ -80,7 +78,8 @@
 
 <style lang="stylus" scoped>
 	.g-chart
-
+		min-width 100px
+		min-height 200px
 		.noselect
 			-webkit-touch-callout: none; /* iOS Safari */
 			-webkit-user-select: none; /* Safari */
