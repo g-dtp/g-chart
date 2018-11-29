@@ -9,7 +9,7 @@
 				options: {}
 			}
 		},
-		inject: ['chartsOptions'],
+		inject: ['chartsOptions', 'scale'],
 		computed: {
 			updateOptions() {
 				return {...this.$props}
