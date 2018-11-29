@@ -6,10 +6,15 @@
 <script>
 	import Echart from 'echarts'
 	import Emitter from '../mixins/emitter';
+
 	export default {
 		name: "g-chart",
-		mixins: [ Emitter ],
+		mixins: [Emitter],
 		props: {
+			scale: {
+				type: Number,
+				default: 1
+			},
 			size: {
 				default: function () {
 					return []
@@ -30,7 +35,8 @@
 		},
 		provide() {
 			return {
-				chartsOptions: this.options
+				chartsOptions: this.options,
+				scale: this.scale
 			}
 		},
 		watch: {
@@ -80,6 +86,7 @@
 	.g-chart
 		min-width 100px
 		min-height 200px
+
 		.noselect
 			-webkit-touch-callout: none; /* iOS Safari */
 			-webkit-user-select: none; /* Safari */
