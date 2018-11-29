@@ -1,7 +1,8 @@
 <script>
+	import GBase from './base/g-base'
 	export default {
 		name: "g-visualMap",
-		inject:['chartsOptions'],
+		extends: GBase,
 		props:{
 			min: {
 				default:0
@@ -27,7 +28,6 @@
 		created(){
 			console.log(this.options)
 			this.chartsOptions.visualMap = {...this.options}
-		},
-		render(){}
+		}
 	}
 </script>

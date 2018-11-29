@@ -1,6 +1,5 @@
 <script>
 	import GBase from './base/g-base'
-
 	export default {
 		extends: GBase,
 		name: "g-line",

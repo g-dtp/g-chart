@@ -20,12 +20,11 @@
 				Object.keys(this.$props).forEach(key => {
 					this.options[key] = this.$props[key]
 				})
-				this.dispatch('g-chart', 'update-options')
+				// this.dispatch('g-chart', 'update-options')
 				this.$parent.render()
 			}
 		},
-		render() {
-		}
+		render() {}
 	}
 </script>
 

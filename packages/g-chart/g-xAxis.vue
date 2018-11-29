@@ -1,5 +1,7 @@
 <script>
+	import GBase from './base/g-base'
 	export default {
+		extends: GBase,
 		name: "g-xAxis",
 		props: {
 			data: {
@@ -29,7 +31,6 @@
 				default: 'category'
 			}
 		},
-		inject:['chartsOptions'],
 		data() {
 			return {
 				options: {
@@ -39,8 +40,6 @@
 		},
 		created() {
 			this.chartsOptions.xAxis = {...this.options}
-		},
-		render() {
 		}
 	}
 </script>

@@ -1,5 +1,7 @@
 <script>
+	import GBase from './base/g-base'
 	export default {
+		extends: GBase,
 		name: "g-yAxis",
 		props: {
 			data: {
@@ -33,11 +35,9 @@
 				}
 			}
 		},
-		inject:['chartsOptions'],
 		created(){
 			this.chartsOptions.yAxis = {...this.options}
-		},
-		render() {}
+		}
 	}
 </script>
 

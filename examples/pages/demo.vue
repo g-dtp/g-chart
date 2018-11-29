@@ -1,7 +1,9 @@
 <template lang='pug'>
 	.demo
 		button(@click="onChange") change
-		g-chart
+		g-chart.test
+			g-grid()
+			g-title()
 			g-xAxis(:data="xAxisData")
 			g-line(:data="list" :smooth="smooth")
 </template>
@@ -31,5 +33,7 @@
 </script>
 
 <style lang='stylus' scoped>
-
+	.demo
+		.test
+			border 1px dashed #ddd
 </style>

@@ -1,5 +1,7 @@
 <script>
+	import GBase from './base/g-base'
 	export default {
+		extends: GBase,
 		name: "g-legend",
 		props:['data'],
 		data(){
@@ -9,10 +11,8 @@
 				}
 			}
 		},
-		inject:['chartsOptions'],
 		created(){
 			this.chartsOptions.legend = {...this.options}
 		},
-		render(){}
 	}
 </script>

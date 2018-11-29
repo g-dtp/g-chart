@@ -1,5 +1,7 @@
 <script>
+	import GBase from './base/g-base'
 	export default {
+		extends: GBase,
 		name: "g-title",
 		props: {
 			text: {
@@ -10,19 +12,12 @@
 		data(){
 			return {
 				options: {
-					...this.$props,
-					textStyle: {
-						color: '#52B8DF',
-						fontSize: 12
-					}
+					...this.$props
 				}
 			}
 		},
-		inject:['chartsOptions'],
 		created(){
 			this.chartsOptions.title = {...this.options}
-		},
-		render() {
 		}
 	}
 </script>

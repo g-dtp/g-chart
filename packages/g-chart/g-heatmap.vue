@@ -1,5 +1,7 @@
 <script>
+	import GBase from './base/g-base'
 	export default {
+		extends: GBase,
 		name: "g-heatmap",
 		props: {
 			data: {
@@ -27,12 +29,9 @@
 				}
 			}
 		},
-		inject:['chartsOptions'],
 		created() {
 			if (!this.chartsOptions.series) this.chartsOptions.series = []
 			this.chartsOptions.series.push(this.options)
-		},
-		render() {
 		}
 	}
 </script>

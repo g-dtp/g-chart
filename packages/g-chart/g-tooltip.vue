@@ -1,5 +1,7 @@
 <script>
+	import GBase from './base/g-base'
 	export default {
+		extends: GBase,
 		name: "g-tooltip",
 		props: {
 			trigger: {
@@ -18,11 +20,8 @@
 				options: {}
 			}
 		},
-		inject:['chartsOptions'],
 		created(){
 			this.chartsOptions.tooltip = {...this.options}
-		},
-		render() {
-		},
+		}
 	}
 </script>

@@ -1,21 +1,23 @@
 <script>
+	import GBase from './base/g-base'
 	export default {
+		extends: GBase,
 		name: "g-grid",
 		props: {
 			containLabel: {
 				default: true
 			},
 			left: {
-				default: 0
+				default: '5%'
 			},
 			right: {
-				default: 0
+				default: '5%'
 			},
 			bottom: {
-				default: 0
+				default: '5%'
 			},
 			top: {
-				default: 0
+				default: '5%'
 			}
 		},
 		data() {
@@ -24,14 +26,9 @@
 					...this.$props,
 				}
 			}
-		}
-		,
-		inject: ['chartsOptions'],
+		},
 		created() {
 			this.chartsOptions.grid = {...this.options}
-		}
-		,
-		render() {
 		}
 	}
 </script>
