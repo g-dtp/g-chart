@@ -5,6 +5,7 @@
 			g-grid()
 			g-title()
 			g-xAxis(:data="xAxisData")
+			g-yAxis
 			g-line(:data="list" :smooth="smooth")
 </template>
 
@@ -21,7 +22,7 @@
 		created(){
 			for(let i =0; i < 12;i++){
 				this.xAxisData.push(i)
-				this.list.push(Math.random(80)+5)
+				this.list.push(Math.random(800))
 			}
 		},
 		methods: {

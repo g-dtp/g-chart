@@ -1,7 +1,9 @@
-# Button 按钮
+# g-chart
 ----
 ### 基础用法
-使用```type```、```plain```和```round```属性来定义 Button 的样式。
+
+基于百度Echarts 封装的VUE 图表组件，根据Echarts的配置，将配置抽象成更直观的vue组件
+
 
 <div class="demo-block">
 <g-chart>
@@ -10,7 +12,9 @@
     <g-grid :left="20" :top="60" :bottom="20" :right="20"></g-grid>
     <g-xAxis :data="dataAxis"></g-xAxis>
     <g-yAxis></g-yAxis>
-    <g-line :data='data'></g-line>
+    <g-legend :data="['购买人数','最新成交价']"></g-legend>
+    <g-bar :data="data" name="购买人数" :bar-max-width="30"></g-bar>
+    <g-line :data="data" name="最新成交价" :smooth="true"></g-line>
 </g-chart>
 <script>
 export default {
@@ -25,17 +29,18 @@ export default {
 </script>
 </div>
 
+
 ::: demo
 ```html
 <g-chart>
-    <g-title text="2018销量"><g-title>
+    <g-title text="2018销量"></g-title>
     <g-tooltip></g-tooltip>
-    <g-grid :left="20" :top="60" :bottom="20" :right="20"></g-grid>
+    <g-grid :left="10" :top="60" :bottom="20" :right="10"></g-grid>
     <g-xAxis :data="dataAxis"></g-xAxis>
     <g-yAxis></g-yAxis>
     <g-legend :data="['购买人数','最新成交价']"/>
-    <g-bar :data="data" name="购买人数"/>
-    <g-line :data="data" name="最新成交价"/>
+    <g-bar :data="data" name="购买人数" :bar-max-width="30"/>
+    <g-line :data="data" name="最新成交价" :smooth="true"/>
 </g-chart>
 <script>
 export default {

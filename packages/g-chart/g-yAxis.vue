@@ -11,7 +11,10 @@
 			},
 			axisLabel: {
 				default: function () {
-					return {}
+					return {
+						interval:0,
+						fontSize: 12
+					}
 				}
 			},
 			axisTick: {
