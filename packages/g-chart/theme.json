@@ -304,7 +304,7 @@
 			"show": true,
 			"lineStyle": {
 				"type": "dashed",
-				"color": "rgba(99,154,220,0.20)"
+				"color": ["rgba(99,154,220,0.2)", "rgba(99,154,220,0.2)"]
 			}
 		},
 		"splitArea": {

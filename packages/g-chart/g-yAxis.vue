@@ -17,6 +17,9 @@
 					}
 				}
 			},
+			min:{
+				default: 0
+			},
 			axisTick: {
 				default: function () {
 					return {}
