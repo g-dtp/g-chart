@@ -1,6 +1,5 @@
 import echarts from 'echarts'
 import theme from './theme'
-
 echarts.registerTheme('after-sales', theme)
 import GChart from './g-chart'
 

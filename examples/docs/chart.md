@@ -1,13 +1,10 @@
-# g-chart
-----
+# G-Chart
 ### 基础用法
-
 基于百度Echarts 封装的VUE 图表组件，根据Echarts的配置，将配置抽象成更直观的vue组件
-
 
 <div class="demo-block">
 <g-chart>
-    <g-title text="2018销量DD"></g-title>
+    <g-title text="基本用法"></g-title>
     <g-tooltip></g-tooltip>
     <g-grid :left="20" :top="60" :bottom="20" :right="20"></g-grid>
     <g-xAxis :data="dataAxis"></g-xAxis>
@@ -33,7 +30,7 @@ export default {
 ::: demo
 ```html
 <g-chart>
-    <g-title text="2018销量"></g-title>
+    <g-title text="基本用法"></g-title>
     <g-tooltip></g-tooltip>
     <g-grid :left="10" :top="60" :bottom="20" :right="10"></g-grid>
     <g-xAxis :data="dataAxis"></g-xAxis>

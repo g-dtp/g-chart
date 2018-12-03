@@ -8,10 +8,13 @@
 		"#96dee8"
 	],
 	"backgroundColor": "rgba(252,252,252,0)",
-	"textStyle": {},
+	"textStyle": {
+		"fontSize": 14
+	},
 	"title": {
 		"textStyle": {
-			"color": "#666666"
+			"color": "#666666",
+			"fontSize": 14
 		},
 		"subtextStyle": {
 			"color": "#999999"
