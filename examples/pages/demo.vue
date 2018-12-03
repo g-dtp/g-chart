@@ -2,7 +2,7 @@
 	.demo
 		button(@click="onChange") change
 		g-chart.test
-			g-grid()
+			g-grid(:left="20" :right="20")
 			g-title()
 			g-xAxis(:data="xAxisData")
 			g-yAxis

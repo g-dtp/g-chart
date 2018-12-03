@@ -26,7 +26,6 @@ export default {
 </script>
 </div>
 
-
 ::: demo
 ```html
 <g-chart>

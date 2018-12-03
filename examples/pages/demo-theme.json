@@ -9,15 +9,12 @@
 	],
 	"backgroundColor": "rgba(252,252,252,0)",
 	"textStyle": {
-		"fontSize": 14,
-		"color": "#0f5d90",
-		"fontFamily": "Microsoft YaHei"
+		"fontSize": 14
 	},
 	"title": {
 		"textStyle": {
-			"color": "#0f5d90",
-			"fontSize": 14,
-			"fontWeight": 500
+			"color": "#666666",
+			"fontSize": 14
 		},
 		"subtextStyle": {
 			"color": "#999999"
@@ -248,19 +245,19 @@
 		"axisLine": {
 			"show": true,
 			"lineStyle": {
-				"color": "rgba(99,154,220,0.20)"
+				"color": "#cccccc"
 			}
 		},
 		"axisTick": {
 			"show": false,
 			"lineStyle": {
-				"color": "#0f5d90"
+				"color": "#333"
 			}
 		},
 		"axisLabel": {
 			"show": true,
 			"textStyle": {
-				"color": "rgba(82,184,223,0.50)"
+				"color": "#999999"
 			}
 		},
 		"splitLine": {
@@ -285,7 +282,7 @@
 		"axisLine": {
 			"show": true,
 			"lineStyle": {
-				"color": "rgba(99,154,220,0.20)"
+				"color": "#cccccc"
 			}
 		},
 		"axisTick": {
@@ -297,14 +294,15 @@
 		"axisLabel": {
 			"show": true,
 			"textStyle": {
-				"color": "rgba(82,184,223,0.50)"
+				"color": "#999999"
 			}
 		},
 		"splitLine": {
-			"show": true,
+			"show": false,
 			"lineStyle": {
-				"type": "dashed",
-				"color": "rgba(99,154,220,0.20)"
+				"color": [
+					"#eeeeee"
+				]
 			}
 		},
 		"splitArea": {
