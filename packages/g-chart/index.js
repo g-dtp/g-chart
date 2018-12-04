@@ -16,6 +16,7 @@ import GBar from './g-bar'
 import GPie from './g-pie'
 
 import GLine from './g-line'
+import GArea from './g-area'
 import GHeatmap from './g-heatmap'
 
 import GScatter from './g-scatter'
@@ -35,6 +36,7 @@ export default {
 	GBar,
 	GPie,
 	GLine,
+	GArea,
 	GScatter,
 	GHeatmap,
 	GTooltip,

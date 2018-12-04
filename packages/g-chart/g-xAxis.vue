@@ -29,6 +29,11 @@
 			},
 			type:{
 				default: 'category'
+			},
+			boundaryGap:{
+				default: function () {
+					return [10,10]
+				}
 			}
 		},
 		data() {
