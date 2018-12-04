@@ -16,8 +16,7 @@
 				default: function () {
 					return {
 						borderWidth:5,
-						borderType: 'dashed',
-						borderColor: 'rgba(0,0,0,1)'
+						borderColor: '#000E2D'
 					}
 				}
 			}
