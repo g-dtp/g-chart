@@ -1,4 +1,5 @@
 import GChart from './g-chart'
+import ChartHelper from './g-chart/chart-helper'
 
 const components = Object.values(GChart)
 
@@ -12,5 +13,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-	install
+	install,
+	ChartHelper
 }

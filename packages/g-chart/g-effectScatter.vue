@@ -3,27 +3,39 @@
 
 	export default {
 		extends: GBase,
-		name: "g-area",
+		name: "g-effectScatter",
 		props: {
+			coordinateSystem: {
+				default: 'cartesian2d'
+			},
 			data: {
 				default: function () {
 					return []
 				}
 			},
-			name: {},
-			smooth: {},
-			showSymbol: {},
-			areaStyle:{
+			symbol: {
 				default:function () {
-					return {}
+					return 'diamond'
+				}
+			},
+			symbolSize:{
+				default: 3
+			},
+			rippleEffect: {
+				default:function () {
+					return {
+						period: 4,
+						scale: 10,
+						brushType: 'stroke',
+					}
 				}
 			}
 		},
 		data() {
 			return {
 				options: {
-					type: 'line',
-					...this.$props
+					type: 'effectScatter',
+					...this.$props,
 				}
 			}
 		},

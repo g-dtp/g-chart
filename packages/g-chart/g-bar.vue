@@ -3,7 +3,7 @@
 	export default {
 		extends: GBase,
 		name: "g-bar",
-		props: ['data', 'name', 'barMaxWidth', 'barWidth'],
+		props: ['data', 'name', 'barMaxWidth', 'barWidth', 'itemStyle'],
 		data(){
 			return {
 				options:{

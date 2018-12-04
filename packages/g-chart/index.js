@@ -20,6 +20,7 @@ import GArea from './g-area'
 import GHeatmap from './g-heatmap'
 
 import GScatter from './g-scatter'
+import GEffectScatter from './g-effectScatter'
 
 import GVisualMap from './g-visualMap'
 import GSeries from './g-series'
@@ -38,6 +39,7 @@ export default {
 	GLine,
 	GArea,
 	GScatter,
+	GEffectScatter,
 	GHeatmap,
 	GTooltip,
 	GVisualMap
