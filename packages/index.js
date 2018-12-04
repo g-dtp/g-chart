@@ -1,5 +1,7 @@
 import GChart from './g-chart'
+
 import ChartHelper from './g-chart/chart-helper'
+import GChartPercent from './h-chart/g-chart-percent'
 
 const components = Object.values(GChart)
 
@@ -13,6 +15,10 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default {
-	install,
-	ChartHelper
+	install
+}
+
+export {
+	ChartHelper,
+	GChartPercent
 }
