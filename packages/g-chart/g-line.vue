@@ -3,7 +3,7 @@
 	export default {
 		extends: GBase,
 		name: "g-line",
-		props: ['data', 'name', 'smooth'],
+		props: ['data', 'name', 'smooth', 'showSymbol'],
 		data() {
 			return {
 				options: {

@@ -3,7 +3,7 @@
 	export default {
 		extends: GBase,
 		name: "g-bar",
-		props: ['data', 'name', 'barMaxWidth'],
+		props: ['data', 'name', 'barMaxWidth', 'barWidth'],
 		data(){
 			return {
 				options:{
@@ -18,7 +18,3 @@
 		},
 	}
 </script>
-
-<style lang="stylus" scoped>
-
-</style>

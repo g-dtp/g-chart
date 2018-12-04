@@ -1,10 +1,10 @@
 {
 	"color": [
-		"#3fb1e3",
-		"#6be6c1",
-		"#626c91",
-		"#a0a7e6",
-		"#c4ebad",
+		"#04418A",
+		"#247783",
+		"#EDA532 ",
+		"#4653BA",
+		"#4CB391",
 		"#96dee8"
 	],
 	"backgroundColor": "rgba(252,252,252,0)",
@@ -14,8 +14,10 @@
 		"fontFamily": "Microsoft YaHei"
 	},
 	"title": {
+		"top": 5,
+		"left": 10,
 		"textStyle": {
-			"color": "#0f5d90",
+			"color": "#52B8DF",
 			"fontSize": 14,
 			"fontWeight": 500
 		},
@@ -35,7 +37,7 @@
 			}
 		},
 		"symbolSize": "8",
-		"symbol": "emptyCircle",
+		"symbol": "circle",
 		"smooth": false
 	},
 	"radar": {
@@ -54,6 +56,7 @@
 		"smooth": false
 	},
 	"bar": {
+		"barGap": 0,
 		"itemStyle": {
 			"normal": {
 				"barBorderWidth": 0,
@@ -403,8 +406,13 @@
 	},
 	"legend": {
 		"textStyle": {
-			"color": "#999999"
-		}
+			"color": "#52B8DF",
+			"fontSize": 12
+		},
+		"top": 5,
+		"itemGap": 10,
+		"itemWidth": 8,
+		"itemHeight": 8
 	},
 	"tooltip": {
 		"axisPointer": {
