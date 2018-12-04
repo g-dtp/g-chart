@@ -35,6 +35,11 @@
 			g-line(:data="list" :smooth="smooth" :name="'BUG数量'")
 			g-line(:data="list1" :smooth="smooth" :name="'逃逸BUG数量'")
 			g-effect-scatter(:data="[null, 100]")
+		g-chart.chart-item(:key="5")
+			g-grid(:left="20" :right="20" :top="40")
+			g-legend(:data="pieLegend")
+			g-title(text="例子4")
+			g-pie(:data="pie")
 </template>
 
 <script>
@@ -56,7 +61,9 @@
 				smooth: false,
 				legend: ['BUG数量', '逃逸BUG数量', '未解决BUG', '测试1', '测试2', '测试3'],
 				itemStyle: {},
-				areaStyle: {}
+				areaStyle: {},
+				pieLegend:[],
+				pie:[]
 			}
 		},
 		created() {
@@ -72,6 +79,14 @@
 			}
 			this.itemStyle.color = this.makeColors('#9CCAF0', 'rgba(156,202,240,0.30)')
 			this.areaStyle.color = this.makeColors('rgba(15,93,144,0.90)', 'rgba(15,93,144,0.30)')
+
+			for(let i = 0; i<6; i++){
+				this.pieLegend.push(`例子${i+1}`)
+				this.pie.push({
+					name: `例子${i+1}`,
+					value: Math.random() * 50 + 10,
+				})
+			}
 		},
 		methods: {
 			onChange() {

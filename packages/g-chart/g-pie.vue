@@ -10,7 +10,16 @@
 				}
 			},
 			radius:{
-				default: '50%'
+				default: ['40%', '60%']
+			},
+			itemStyle: {
+				default: function () {
+					return {
+						borderWidth:5,
+						borderType: 'dashed',
+						borderColor: 'rgba(0,0,0,1)'
+					}
+				}
 			}
 		},
 		data(){
