@@ -5,7 +5,8 @@
 
 <script>
 	import Echart from 'echarts'
-	import Emitter from '../mixins/emitter';
+	import Emitter from '../mixins/emitter'
+	import Resize from '../utils/resize'
 
 	export default {
 		name: "g-chart",

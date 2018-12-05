@@ -1,10 +1,10 @@
 import GChart from './g-chart'
 
-import ChartHelper from './g-chart/chart-helper'
+import ChartHelper from './utils/chart-helper'
 import GChartPercent from './h-chart/g-chart-percent'
+import Resize from './utils/resize'
 
 const components = Object.values(GChart)
-
 const install = function (Vue) {
 	if (install.installed) return
 	components.map(component => Vue.component(component.name, component))
@@ -20,5 +20,6 @@ export default {
 
 export {
 	ChartHelper,
-	GChartPercent
+	GChartPercent,
+	Resize
 }

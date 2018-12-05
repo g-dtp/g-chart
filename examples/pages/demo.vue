@@ -48,7 +48,6 @@
 
 	import { GChartPercent } from '../../packages/index'
 
-	console.log(GChartPercent)
 	export default {
 		name: "demo",
 		components: {GChartPercent},
