@@ -110,7 +110,6 @@
 <style lang='stylus' scoped>
 	.demo
 		margin 0
-
 		.chart-item
 			background #000E2D
 			height 340px
