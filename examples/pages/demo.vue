@@ -1,7 +1,7 @@
 <template lang='pug'>
 	.demo
 		g-chart.chart-item(:key="0")
-			g-grid(:left="20" :right="20" :top="40")
+			g-grid(:left="20" :right="20" :top="100")
 			g-legend(:data="legend")
 			g-title(text="例子1")
 			g-xAxis(:data="xAxisData")

@@ -6,16 +6,12 @@
 <script>
 	import Echart from 'echarts'
 	import Emitter from '../mixins/emitter'
-	import Resize from '../utils/resize'
+
 
 	export default {
 		name: "g-chart",
 		mixins: [Emitter],
 		props: {
-			scale: {
-				type: Number,
-				default: Resize.scale
-			},
 			size: {
 				default: function () {
 					return []
@@ -36,8 +32,7 @@
 		},
 		provide() {
 			return {
-				chartsOptions: this.options,
-				scale: this.scale
+				chartsOptions: this.options
 			}
 		},
 		watch: {

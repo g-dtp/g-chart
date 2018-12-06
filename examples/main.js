@@ -14,8 +14,10 @@ Vue.use(GChart)
 console.log(/ChartHelper/, ChartHelper)
 Vue.config.productionTip = false
 /* eslint-disable no-new */
+let app
 Resize.addEvent(function () {
-	new Vue({
+	if(app) return
+	app = new Vue({
 		el: '#app',
 		router,
 		components: {App},
