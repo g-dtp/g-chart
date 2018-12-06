@@ -19,7 +19,7 @@ export default {
 }
 
 export {
-	ChartHelper,
 	GChartPercent,
-	Resize
+	Resize,
+	ChartHelper
 }
