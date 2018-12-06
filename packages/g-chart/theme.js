@@ -1,4 +1,4 @@
-{
+const theme = {
 	"color": [
 		"#04418A",
 		"#247783",
@@ -307,7 +307,10 @@
 			"show": true,
 			"lineStyle": {
 				"type": "dashed",
-				"color": ["rgba(99,154,220,0.2)", "rgba(99,154,220,0.2)"]
+				"color": [
+					"rgba(99,154,220,0.2)",
+					"rgba(99,154,220,0.2)"
+				]
 			}
 		},
 		"splitArea": {
@@ -500,3 +503,5 @@
 		}
 	}
 }
+
+export default theme

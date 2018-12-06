@@ -14,7 +14,7 @@
 		props: {
 			scale: {
 				type: Number,
-				default: 1
+				default: Resize.scale
 			},
 			size: {
 				default: function () {
@@ -55,7 +55,7 @@
 				this.preventDefault && e.preventDefault()
 			},
 			render() {
-				if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'after-sales');
+				if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'default');
 				this.chart.setOption(this.options, true)
 			},
 			destroy() {
@@ -71,6 +71,8 @@
 			}
 		},
 		async mounted() {
+			let registerTheme = Echart.registerTheme()
+			console.log(Echart)
 			await this.$nextTick()
 			this.render()
 			window.addEventListener('resize', this.resize)

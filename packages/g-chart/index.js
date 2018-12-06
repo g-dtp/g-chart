@@ -1,6 +1,6 @@
 import echarts from 'echarts'
-import theme from './theme'
-echarts.registerTheme('after-sales', theme)
+import theme from './theme.js'
+echarts.registerTheme('default', theme)
 import GChart from './g-chart'
 
 import GTitle from './g-title'
