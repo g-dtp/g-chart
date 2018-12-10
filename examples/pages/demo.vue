@@ -29,7 +29,7 @@
 		g-chart.chart-item(:key="3")
 			g-grid(:left="20" :right="20" :top="60")
 			g-legend(:data="legend")
-			g-title(text="例子4")
+			g-title(text="例子4" )
 			g-xAxis(:data="xAxisData")
 			g-yAxis
 			g-line(:data="list" :smooth="smooth" :name="'BUG数量'")
@@ -38,7 +38,7 @@
 		g-chart.chart-item(:key="5")
 			g-grid(:left="20" :right="20" :top="80")
 			g-legend(:data="pieLegend")
-			g-title(text="例子4")
+			g-title(text="长一点的例\n子5" hAlign="center" vAlign="middle")
 			g-pie(:data="pie")
 		g-chart-percent.chart-item
 		g-chart-arrow.chart-item(:data="[0.5]")

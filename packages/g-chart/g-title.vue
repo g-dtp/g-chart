@@ -23,6 +23,19 @@
 			top: {
 				type: Number,
 				default: 20
+			},
+			hAlign: {
+				default: ''
+			},
+			vAlign: {
+				default: ''
+			},
+			textStyle: {
+				default: function () {
+					return {
+						align: 'center',
+					}
+				}
 			}
 		},
 		data(){
@@ -33,6 +46,14 @@
 			}
 		},
 		created(){
+			if(this.hAlign){
+				this.options.left = this.hAlign
+			}
+			if(this.vAlign){
+				this.options.top = this.vAlign
+			}
+			console.log(this.options.text)
+			console.log(this.options)
 			this.chartsOptions.title = {...this.options}
 		}
 	}
