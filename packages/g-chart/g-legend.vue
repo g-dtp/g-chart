@@ -26,7 +26,7 @@
 				default: 20
 			},
 			hAlign: {
-				default: ''
+				default: 'center'
 			},
 			vAlign: {
 				default: ''

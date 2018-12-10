@@ -1,6 +1,8 @@
 import GChart from './g-chart'
 
 import GChartPercent from './h-chart/g-chart-percent'
+import GChartArrow from './h-chart/g-chart-arrow/g-chart-arrow'
+
 import Resize from './utils/resize'
 import ChartHelper from './utils/chart-helper'
 
@@ -20,6 +22,7 @@ export default {
 
 export {
 	GChartPercent,
+	GChartArrow,
 	Resize,
 	ChartHelper
 }

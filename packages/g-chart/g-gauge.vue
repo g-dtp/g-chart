@@ -46,7 +46,10 @@
 			axisLine:{
 				default:function () {
 					return {
-						show:0
+						show:false,
+						lineStyle: {
+							width: 0
+						}
 					}
 				}
 			},
@@ -67,7 +70,7 @@
 			},
 			data:{
 				default:function () {
-					return [0]
+					return [0.45]
 				}
 			}
 		},

@@ -1,7 +1,7 @@
 <template lang='pug'>
 	.demo
 		g-chart.chart-item(:key="0")
-			g-grid(:left="20" :right="20" :top="100")
+			g-grid(:left="20" :right="20" :top="60")
 			g-legend(:data="legend")
 			g-title(text="例子1")
 			g-xAxis(:data="xAxisData")
@@ -12,14 +12,14 @@
 			g-line(:data="list1" :smooth="smooth" :name="'逃逸BUG数量'" )
 			g-line(:data="list2" :smooth="smooth" :name="'未解决BUG'" )
 		g-chart.chart-item(:key="1")
-			g-grid(:left="20" :right="20" :top="40")
+			g-grid(:left="20" :right="20" :top="60")
 			g-legend(:data="legend")
 			g-title(text="例子2")
 			g-xAxis(:data="xAxisData" :boundaryGap="false")
 			g-yAxis
 			g-area(:data="area" :smooth="true" :name="'测试3'" :areaStyle="areaStyle")
 		g-chart.chart-item(:key="2")
-			g-grid(:left="20" :right="20" :top="40")
+			g-grid(:left="20" :right="20" :top="60")
 			g-legend(:data="legend")
 			g-title(text="例子3")
 			g-xAxis(:data="xAxisData")
@@ -27,7 +27,7 @@
 			g-bar(:data="bar0" :name="'测试1'" :barMaxWidth="30" :barWidth="'20%'" :itemStyle="itemStyle")
 			g-bar(:data="bar1" :name="'测试2'" :barMaxWidth="30" :barWidth="'20%'")
 		g-chart.chart-item(:key="3")
-			g-grid(:left="20" :right="20" :top="40")
+			g-grid(:left="20" :right="20" :top="60")
 			g-legend(:data="legend")
 			g-title(text="例子4")
 			g-xAxis(:data="xAxisData")
@@ -36,21 +36,21 @@
 			g-line(:data="list1" :smooth="smooth" :name="'逃逸BUG数量'")
 			g-effectScatter(:data="[null, 100]")
 		g-chart.chart-item(:key="5")
-			g-grid(:left="20" :right="20" :top="40")
+			g-grid(:left="20" :right="20" :top="80")
 			g-legend(:data="pieLegend")
 			g-title(text="例子4")
 			g-pie(:data="pie")
-		g-chart-percent.chart-item()
+		g-chart-percent.chart-item
+		g-chart-arrow.chart-item(:data="[0.5]")
 </template>
 
 <script>
 	import echarts from 'echarts'
 
-	import { GChartPercent } from '../../packages/index'
-
+	import { GChartPercent, GChartArrow } from '../../packages/index'
 	export default {
 		name: "demo",
-		components: {GChartPercent},
+		components: {GChartArrow, GChartPercent},
 		data() {
 			return {
 				xAxisData: [],
