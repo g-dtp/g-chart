@@ -17,6 +17,11 @@
 				default:function () {
 					return {}
 				}
+			},
+			lineStyle:{
+				default:function () {
+					return {}
+				}
 			}
 		},
 		data() {

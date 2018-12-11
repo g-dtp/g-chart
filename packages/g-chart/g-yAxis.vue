@@ -12,8 +12,7 @@
 			axisLabel: {
 				default: function () {
 					return {
-						interval:0,
-						fontSize: 12
+						interval:0
 					}
 				}
 			},
@@ -34,7 +33,6 @@
 				default: function () {
 					return {
 						interval: function (index, value) {
-							console.log(/xxx/,index)
 							return index !== 0
 						}
 					}
