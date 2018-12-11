@@ -33,7 +33,6 @@
 			}
 		},
 		created(){
-			console.log(this.$props)
 			this.chartsOptions.legend = {...this.options}
 		},
 	}

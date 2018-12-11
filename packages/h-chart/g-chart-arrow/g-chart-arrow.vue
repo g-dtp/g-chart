@@ -1,6 +1,5 @@
 <template lang='pug'>
 	g-chart()
-		<!--g-gauge(:data="[percent]" radius="100%")-->
 		g-graphic(:elements="group" :key="1")
 </template>
 
@@ -85,17 +84,6 @@
 							}
 						],
 					},
-				],
-				data: [
-					{
-						name: '',
-						value: this.percent,
-					}, {
-						value: 1 - this.percent,
-						itemStyle: {
-							color: 'rgba(15, 33, 83, 1)'
-						}
-					}
 				]
 			}
 		}

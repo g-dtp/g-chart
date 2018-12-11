@@ -1,6 +1,6 @@
 import GChart from './g-chart'
 
-import GChartPercent from './h-chart/g-chart-percent'
+import GChartPercent from './h-chart/g-chart-percent/g-chart-percent'
 import GChartArrow from './h-chart/g-chart-arrow/g-chart-arrow'
 
 import Resize from './utils/resize'

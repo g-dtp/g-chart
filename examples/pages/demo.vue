@@ -40,7 +40,7 @@
 			g-title( left="center" top='middle' text="长一点的例\n子5")
 			g-pie(:data="pie" :center="['25%', '50%']")
 		g-chart-percent.chart-item
-		g-chart-arrow.chart-item(:data="[0.5]")
+		g-chart-arrow.chart-item
 </template>
 
 <script>
