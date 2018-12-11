@@ -7,6 +7,25 @@
 			text: {
 				type: String,
 				default: '图表标题'
+			},
+			left: {
+				default: 'auto'
+			},
+			right: {
+				default: 'auto'
+			},
+			bottom: {
+				default: 'auto'
+			},
+			top: {
+				default: 'auto'
+			},
+			textStyle: {
+				default: function () {
+					return {
+						align: 'center',
+					}
+				}
 			}
 		},
 		data(){

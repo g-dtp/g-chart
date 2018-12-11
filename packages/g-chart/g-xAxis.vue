@@ -1,5 +1,6 @@
 <script>
 	import GBase from './base/g-base'
+
 	export default {
 		extends: GBase,
 		name: "g-xAxis",
@@ -12,7 +13,7 @@
 			axisLabel: {
 				default: function () {
 					return {
-						interval:0,
+						interval: 0,
 						fontSize: 12
 					}
 				}
@@ -27,8 +28,16 @@
 					return {}
 				}
 			},
-			type:{
+			type: {
 				default: 'category'
+			},
+			boundaryGap: {
+				default: function () {
+					return [10, 10]
+				}
+			},
+			showMarkLine:{
+				default: -1
 			}
 		},
 		data() {
@@ -39,7 +48,11 @@
 			}
 		},
 		created() {
+			if(this.showMarkLine) this.markLine()
 			this.chartsOptions.xAxis = {...this.options}
+		},
+		methods: {
+			markLine() {}
 		}
 	}
 </script>

@@ -11,8 +11,13 @@
 			},
 			axisLabel: {
 				default: function () {
-					return {}
+					return {
+						interval:0
+					}
 				}
+			},
+			min:{
+				default: 0
 			},
 			axisTick: {
 				default: function () {
@@ -24,8 +29,17 @@
 					return {}
 				}
 			},
+			splitLine: {
+				default: function () {
+					return {
+						interval: function (index, value) {
+							return index !== 0
+						}
+					}
+				}
+			},
 			type:{
-				default: 'category'
+				default: 'value'
 			}
 		},
 		data(){

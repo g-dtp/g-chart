@@ -7,15 +7,19 @@ import router from './router'
 
 import demoBlock from './components/demo-block.vue'
 import GChart from '../packages/index'
+import {Resize, ChartHelper} from '../packages/index'
 
 Vue.component('demo-block', demoBlock)
 Vue.use(GChart)
-
 Vue.config.productionTip = false
 /* eslint-disable no-new */
-new Vue({
-	el: '#app',
-	router,
-	components: {App},
-	template: '<App/>'
+let app
+Resize.addEvent(()=>{
+	if(app) return
+	new Vue({
+		el: '#app',
+		router,
+		components: { App },
+		template: '<App/>'
+	})
 })

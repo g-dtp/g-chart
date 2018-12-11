@@ -1,29 +1,35 @@
 <script>
 	import GBase from './base/g-base'
+
 	export default {
 		extends: GBase,
 		name: "g-grid",
 		props: {
 			containLabel: {
+				type: Boolean,
 				default: true
 			},
 			left: {
-				default: '5%'
+				type: Number,
+				default: 20
 			},
 			right: {
-				default: '5%'
+				type: Number,
+				default: 20
 			},
 			bottom: {
-				default: '5%'
+				type: Number,
+				default: 20
 			},
 			top: {
-				default: '5%'
+				type: Number,
+				default: 40
 			}
 		},
 		data() {
 			return {
 				options: {
-					...this.$props,
+					...this.$props
 				}
 			}
 		},

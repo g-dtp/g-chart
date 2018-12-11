@@ -1,32 +1,106 @@
 <template lang='pug'>
 	.demo
-		button(@click="onChange") change
-		g-chart.test
-			g-grid()
-			g-title()
+		g-chart.chart-item(:key="0")
+			g-grid(:left="20" :right="20" :top="60")
+			g-legend(:data="legend" left="center")
+			g-title(text="例子1")
 			g-xAxis(:data="xAxisData")
-			g-line(:data="list" :smooth="smooth")
+			g-yAxis
+			g-bar(:data="bar0" :name="'测试1'" :barMaxWidth="30" :barWidth="'20%'")
+			g-bar(:data="bar1" :name="'测试2'" :barMaxWidth="30" :barWidth="'20%'")
+			g-line(:data="list" :smooth="smooth" :name="'BUG数量'")
+			g-line(:data="list1" :smooth="smooth" :name="'逃逸BUG数量'" )
+			g-line(:data="list2" :smooth="smooth" :name="'未解决BUG'" )
+		g-chart.chart-item(:key="1")
+			g-grid(:left="20" :right="20" :top="60")
+			g-legend(:data="legend")
+			g-title(text="例子2")
+			g-xAxis(:data="xAxisData" :boundaryGap="false")
+			g-yAxis
+			g-area(:data="area" :smooth="true" :name="'测试3'" :areaStyle="areaStyle")
+		g-chart.chart-item(:key="2")
+			g-grid(:left="20" :right="0" :top="60")
+			g-legend(:data="legend")
+			g-title(text="例子3")
+			g-xAxis(:data="xAxisData")
+			g-yAxis
+			g-bar(:data="bar0" :name="'测试1'" :barMaxWidth="30" :barWidth="'20%'" :itemStyle="itemStyle")
+			g-bar(:data="bar1" :name="'测试2'" :barMaxWidth="30" :barWidth="'20%'")
+		g-chart.chart-item(:key="3")
+			g-grid(:left="20" :right="0" :top="60")
+			g-legend(:data="legend")
+			g-title(text="例子4" )
+			g-xAxis(:data="xAxisData")
+			g-yAxis
+			g-line(:data="list" :smooth="smooth" :name="'BUG数量'")
+			g-line(:data="list1" :smooth="smooth" :name="'逃逸BUG数量'")
+			g-effectScatter(:data="[null, 100]")
+		g-chart.chart-item(:key="5")
+			g-legend(:data="pieLegend" orient="vertical" right="20")
+			g-title( left="center" top='middle' text="长一点的例\n子5")
+			g-pie(:data="pie" :center="['25%', '50%']")
+		g-chart-percent.chart-item
+		g-chart-arrow.chart-item
 </template>
 
 <script>
+	import echarts from 'echarts'
+	console.log(echarts)
+	import { GChartPercent, GChartArrow } from '../../packages/index'
 	export default {
 		name: "demo",
-		data(){
+		components: {GChartArrow, GChartPercent},
+		data() {
 			return {
 				xAxisData: [],
 				list: [],
-				smooth: true
+				list1: [],
+				list2: [],
+				bar0: [],
+				bar1: [],
+				area: [],
+				smooth: false,
+				legend: ['BUG数量', '逃逸BUG数量', '未解决BUG', '测试1', '测试2', '测试3'],
+				itemStyle: {},
+				areaStyle: {},
+				pieLegend: [],
+				pie: []
 			}
 		},
-		created(){
-			for(let i =0; i < 12;i++){
-				this.xAxisData.push(i)
-				this.list.push(Math.random(80)+5)
+		created() {
+			for (let i = 0; i < 12; i++) {
+				this.xAxisData.push((i + 1) + '月')
+				this.list.push(Math.random() * 50 + 300)
+				this.list1.push(Math.random() * 100 + 400)
+				this.list2.push(Math.random() * 80 + 600)
+				this.list2.push(Math.random() * 100 + 600)
+				this.bar0.push(Math.random() * 250 + 20)
+				this.bar1.push(Math.random() * 220 + 20)
+				this.area.push(Math.random() * 50 + 100)
+			}
+			this.itemStyle.color = this.makeColors('#9CCAF0', 'rgba(156,202,240,0.30)')
+			this.areaStyle.color = this.makeColors('rgba(15,93,144,0.90)', 'rgba(15,93,144,0.30)')
+
+			for (let i = 0; i < 6; i++) {
+				this.pieLegend.push(`例子${i + 1}`)
+				this.pie.push({
+					name: `例子${i + 1}`,
+					value: Math.random() * 50 + 10,
+				})
 			}
 		},
 		methods: {
-			onChange(){
+			onChange() {
 				this.smooth = !this.smooth
+			},
+			makeColors(color1, color2) {
+				return new echarts.graphic.LinearGradient(
+					0, 0, 0, 1,
+					[
+						{offset: 0, color: color1},
+						{offset: 1, color: color2}
+					]
+				)
 			}
 		}
 	}
@@ -34,6 +108,8 @@
 
 <style lang='stylus' scoped>
 	.demo
-		.test
-			border 1px dashed #ddd
+		margin 0
+		.chart-item
+			background #000E2D
+			height 340px
 </style>

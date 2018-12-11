@@ -3,7 +3,28 @@
 	export default {
 		extends: GBase,
 		name: "g-legend",
-		props:['data'],
+		props:{
+			data:{
+				default:function () {
+					return []
+				}
+			},
+			left: {
+				default: 'auto'
+			},
+			right: {
+				default: 'auto'
+			},
+			bottom: {
+				default: 'auto'
+			},
+			top: {
+				default: 'auto'
+			},
+			orient: {
+				default: 'horizontal'
+			}
+		},
 		data(){
 			return {
 				options:{

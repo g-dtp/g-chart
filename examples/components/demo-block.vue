@@ -26,6 +26,8 @@
 </script>
 
 <style lang='stylus' scoped>
+	.docs-demo-wrapper
+		padding 10px
 	.demo-container
 		transition: max-height .3s ease;
 		overflow: hidden;
@@ -55,7 +57,7 @@
 	.docs-demo__code,
 	.highlight-wrapper,
 	.docs-demo__meta
-		padding: 0 20px;
+		padding: 10px;
 		overflow-y: auto;
 
 	.docs-demo__code

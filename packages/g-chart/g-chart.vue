@@ -5,16 +5,13 @@
 
 <script>
 	import Echart from 'echarts'
-	import Emitter from '../mixins/emitter';
+	import Emitter from '../mixins/emitter'
+
 
 	export default {
 		name: "g-chart",
 		mixins: [Emitter],
 		props: {
-			scale: {
-				type: Number,
-				default: 1
-			},
 			size: {
 				default: function () {
 					return []
@@ -35,8 +32,7 @@
 		},
 		provide() {
 			return {
-				chartsOptions: this.options,
-				scale: this.scale
+				chartsOptions: this.options
 			}
 		},
 		watch: {
@@ -54,7 +50,7 @@
 				this.preventDefault && e.preventDefault()
 			},
 			render() {
-				if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'after-sales');
+				if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'default');
 				this.chart.setOption(this.options, true)
 			},
 			destroy() {
