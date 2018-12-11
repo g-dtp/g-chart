@@ -10,6 +10,11 @@
 					return []
 				}
 			},
+			center:{
+				default:function () {
+					return ['50%', '50%']
+				}
+			},
 			startAngle: {
 				default: 90
 			},

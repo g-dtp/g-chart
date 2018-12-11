@@ -36,10 +36,9 @@
 			g-line(:data="list1" :smooth="smooth" :name="'逃逸BUG数量'")
 			g-effectScatter(:data="[null, 100]")
 		g-chart.chart-item(:key="5")
-			g-grid(:left="20" :right="20" :top="80")
 			g-legend(:data="pieLegend" orient="vertical" right="20")
 			g-title( left="center" top='middle' text="长一点的例\n子5")
-			g-pie(:data="pie")
+			g-pie(:data="pie" :center="['25%', '50%']")
 		g-chart-percent.chart-item
 		g-chart-arrow.chart-item(:data="[0.5]")
 </template>
