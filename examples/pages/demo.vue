@@ -2,7 +2,7 @@
 	.demo
 		g-chart.chart-item(:key="0")
 			g-grid(:left="20" :right="20" :top="60")
-			g-legend(:data="legend")
+			g-legend(:data="legend" left="center")
 			g-title(text="例子1")
 			g-xAxis(:data="xAxisData")
 			g-yAxis
@@ -37,8 +37,8 @@
 			g-effectScatter(:data="[null, 100]")
 		g-chart.chart-item(:key="5")
 			g-grid(:left="20" :right="20" :top="80")
-			g-legend(:data="pieLegend")
-			g-title(text="长一点的例\n子5" hAlign="center" vAlign="middle")
+			g-legend(:data="pieLegend" orient="vertical" right="20")
+			g-title( left="center" top='middle' text="长一点的例\n子5")
 			g-pie(:data="pie")
 		g-chart-percent.chart-item
 		g-chart-arrow.chart-item(:data="[0.5]")
@@ -46,7 +46,7 @@
 
 <script>
 	import echarts from 'echarts'
-
+	console.log(echarts)
 	import { GChartPercent, GChartArrow } from '../../packages/index'
 	export default {
 		name: "demo",

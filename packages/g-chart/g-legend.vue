@@ -10,26 +10,19 @@
 				}
 			},
 			left: {
-				type: Number,
-				default: 20
+				default: 'auto'
 			},
 			right: {
-				type: Number,
-				default: 20
+				default: 'auto'
 			},
 			bottom: {
-				type: Number,
-				default: 20
+				default: 'auto'
 			},
 			top: {
-				type: Number,
-				default: 20
+				default: 'auto'
 			},
-			hAlign: {
-				default: 'center'
-			},
-			vAlign: {
-				default: ''
+			orient: {
+				default: 'horizontal'
 			}
 		},
 		data(){
@@ -40,12 +33,7 @@
 			}
 		},
 		created(){
-			if(this.hAlign){
-				this.options.left = this.hAlign
-			}
-			if(this.vAlign){
-				this.options.left = this.vAlign
-			}
+			console.log(this.$props)
 			this.chartsOptions.legend = {...this.options}
 		},
 	}

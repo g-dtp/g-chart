@@ -30,8 +30,9 @@
 		},
 		watch: {
 			'updateOptions'() {
-				Object.keys(this.$props).forEach(key => {
-					if(this.options[key]) this.options[key] = this.$props[key]
+				this.scaleProps.forEach(key => {
+					if(typeof(this.options[key]) == 'Number')
+						this.options[key] = this.options[key] * this.resize.scale
 				})
 				// this.dispatch('g-chart', 'update-options')
 				this.$parent.render()
@@ -39,7 +40,8 @@
 		},
 		created() {
 			this.scaleProps.forEach(key => {
-				this.options[key] = this.options[key] * this.resize.scale
+				if(typeof(this.options[key]) == 'Number')
+					this.options[key] = this.options[key] * this.resize.scale
 			})
 		},
 		render() {}
