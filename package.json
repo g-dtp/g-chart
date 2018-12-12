@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "echarts": "^4.2.0-rc.2",
+    "echarts-liquidfill": "^2.0.3",
     "g-chart": "^1.0.2beta-7",
     "vue": "^2.5.2"
   },

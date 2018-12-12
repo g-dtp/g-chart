@@ -41,15 +41,16 @@
 			g-pie(:data="pie" :center="['25%', '50%']")
 		g-chart-percent.chart-item
 		g-chart-arrow.chart-item
+		g-chart-liquidfill.chart-item
 </template>
 
 <script>
 	import echarts from 'echarts'
 	console.log(echarts)
-	import { GChartPercent, GChartArrow } from '../../packages/index'
+	import { GChartPercent, GChartArrow, GChartLiquidfill } from '../../packages/index'
 	export default {
 		name: "demo",
-		components: {GChartArrow, GChartPercent},
+		components: {GChartArrow, GChartPercent, GChartLiquidfill},
 		data() {
 			return {
 				xAxisData: [],
