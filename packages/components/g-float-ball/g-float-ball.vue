@@ -1,7 +1,7 @@
 <template lang='pug'>
 	.g-float-ball(@mousedown.stop="onStart" :class="{active:active}")
 		.g-float-ball__content
-		g-floot-ball-item(v-for="(item,index) in data" :key="index")
+			g-floot-ball-item(v-for="(item,index) in data" :key="index" :index="index" :item="item" :gap="gap" @click.stop="onItem" v-if='open')
 </template>
 
 <script>
@@ -21,16 +21,27 @@
 		},
 		data() {
 			return {
-				active: false
+				active: false,
+				open:false,
+				move:false
+			}
+		},
+		beforeCreate() {
+			this._deg = [-Math.PI / 2, Math.PI / 2]
+		},
+		computed: {
+			gap() {
+				return Math.PI/(this.data.length-1)
 			}
 		},
 		mounted() {
+
 		},
 		methods: {
 			onStart(e) {
 				this.active = true
+				this.move = false
 				let el  = this.$el
-				console.log(this)
 				let maxW = document.body.clientWidth
 				let maxH = document.body.clientHeight
 				let disx = e.pageX - el.offsetLeft;
@@ -38,6 +49,7 @@
 
 				document.onmousemove = function (e) {
 					this.active = true
+					this.move = true
 					e.stopPropagation()
 					e.preventDefault()
 					let dx = e.pageX - disx
@@ -57,11 +69,18 @@
 				}.bind(this)
 				document.onmouseup = function () {
 					this.active = false
+					if(!this.move) {
+						this.open = !this.open
+					}
 					document.onmousemove = document.onmouseup = null;
 				}.bind(this)
 			},
 			onMove() {
 
+			},
+			onItem (e) {
+				e.stopPropagation()
+				e.preventDefault()
 			}
 		}
 	}
@@ -79,17 +98,17 @@
 		background rgba(0,0,0,0.8)
 		box-shadow 0 0 5px rgba(0,0,0,.5)
 		box-sizing border-box
-		padding 10px
+		padding 8px
 		opacity .3
-		&.active{
+		&.active
 			opacity .6
-		}
 		.g-float-ball__content
 			box-sizing border-box
 			border 2px solid #ffffff
 			width 100%
 			height 100%
 			border-radius 50%
+			position relative
 
 
 </style>
