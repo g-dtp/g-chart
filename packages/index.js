@@ -7,6 +7,8 @@ import GChartLiquidfill from './h-chart/g-chart-liquidfill'
 import Resize from './utils/resize'
 import ChartHelper from './utils/chart-helper'
 
+import GFloatBall from './components/g-float-ball'
+
 const components = Object.values(GChart)
 const install = function (Vue) {
 	if (install.installed) return
@@ -26,5 +28,6 @@ export {
 	GChartArrow,
 	GChartLiquidfill,
 	Resize,
-	ChartHelper
+	ChartHelper,
+	GFloatBall
 }

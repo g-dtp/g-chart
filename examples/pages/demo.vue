@@ -42,15 +42,16 @@
 		g-chart-percent.chart-item
 		g-chart-arrow.chart-item
 		g-chart-liquidfill.chart-item
+		g-float-ball(:data="menu")
 </template>
 
 <script>
 	import echarts from 'echarts'
 	console.log(echarts)
-	import { GChartPercent, GChartArrow, GChartLiquidfill } from '../../packages/index'
+	import { GChartPercent, GChartArrow, GChartLiquidfill, GFloatBall} from '../../packages/index'
 	export default {
 		name: "demo",
-		components: {GChartArrow, GChartPercent, GChartLiquidfill},
+		components: {GChartArrow, GChartPercent, GChartLiquidfill, GFloatBall},
 		data() {
 			return {
 				xAxisData: [],
@@ -65,7 +66,12 @@
 				itemStyle: {},
 				areaStyle: {},
 				pieLegend: [],
-				pie: []
+				pie: [],
+				menu:[{
+					icon: '',
+					label: '返回',
+					cmd:'M'
+				}]
 			}
 		},
 		created() {

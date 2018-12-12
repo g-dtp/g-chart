@@ -75,8 +75,11 @@
     "npm": ">= 3.0.0"
   },
   "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
+	  "> 1%",
+	  "IE > 8",
+	  "last 2 versions",
+	  "Firefox ESR",
+	  "Opera 12.1",
+	  "Safari > 7"
   ]
 }
