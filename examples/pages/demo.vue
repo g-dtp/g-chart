@@ -73,16 +73,23 @@
 					icon: '',
 					label: '返回',
 					cmd: 'M'
-				},
-					{
+					},{
 						icon: '',
 						label: '返回',
 						cmd: 'M'
-					}, {
+					},{
 						icon: '',
 						label: '返回',
 						cmd: 'M'
-					}]
+					},{
+					icon: '',
+					label: '返回',
+					cmd: 'M'
+				},{
+					icon: '',
+					label: '返回',
+					cmd: 'M'
+				}]
 			}
 		},
 		created() {

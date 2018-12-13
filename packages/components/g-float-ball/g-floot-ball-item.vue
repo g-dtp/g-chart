@@ -1,6 +1,7 @@
 <template lang='pug'>
-	.g-floot-ball-item(:style="{transform: `translate(${endPoint[0]}px, ${endPoint[1]}px)`}" @mousedown.stop="onDown" @mouseup.stop="onUp")
-		i.iconfont(:class="[item.icon]")
+	transition(@after-enter="onAfterEnter" :duration="150" @before-leave="onBeforeLeave")
+		.g-floot-ball-item(:style="style" @mousedown.stop="onDown" @mouseup.stop="onUp" @click.stop="onItem")
+			i.iconfont(:class="[item.icon]")
 
 </template>
 
@@ -32,6 +33,11 @@
 				default: -Math.PI / 2
 			}
 		},
+		data(){
+			return {
+				style: {}
+			}
+		},
 		computed: {
 			endPoint() {
 				let deg = this.startDeg + this.gap * this.index
@@ -39,13 +45,26 @@
 			}
 		},
 		methods: {
-			onDown () {
-
+			onDown () {},
+			onUp () {},
+			onItem () {},
+			onAfterEnter () {
+				this.style = {
+					transform: `translate(${this.endPoint[0]}px, ${this.endPoint[1]}px)`,
+					opacity: 1
+				}
+			},
+			onBeforeLeave (el) {
+				el.style = `transition all .15s ease-in;transform:translate(0px, 0px);opacity:0;`
 			}
 		}
 	}
 </script>
-
+<style lang="stylus">
+	.v-leave-to
+		transform translate(0px, 0px)
+		opacity: 0
+</style>
 <style lang="stylus" scoped>
 	.g-floot-ball-item
 		position absolute
@@ -54,6 +73,6 @@
 		border-radius 50%
 		background rgba(0, 0, 0, 1)
 		transform-origin 50% 50%
-
-
+		transition all .15s ease-out
+		opacity 0
 </style>

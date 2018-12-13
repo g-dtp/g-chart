@@ -1,5 +1,5 @@
 <template lang='pug'>
-	.g-float-ball(@mousedown.stop="onStart" :class="{active:active}" @click="onOpen")
+	.g-float-ball(@mousedown.stop="onStart" :class="{active:active || open}" @click="onOpen")
 		.g-float-ball__content
 			g-floot-ball-item(v-for="(item,index) in data" :key="index" :index="index" :item="item" :gap="gap" @click.stop="onItem" v-if='open')
 </template>
@@ -52,6 +52,7 @@
 				let disy = e.pageY - el.offsetTop;
 
 				document.onmousemove = function (e) {
+					if(this.open) return
 					this.active = true
 					this.move = true
 					e.stopPropagation()
@@ -107,6 +108,4 @@
 			height 100%
 			border-radius 50%
 			position relative
-
-
 </style>
