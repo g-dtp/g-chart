@@ -1,5 +1,5 @@
 <template lang='pug'>
-	.g-float-ball(@mousedown.stop="onStart" :class="{active:active}")
+	.g-float-ball(@mousedown.stop="onStart" :class="{active:active}" @click="onOpen")
 		.g-float-ball__content
 			g-floot-ball-item(v-for="(item,index) in data" :key="index" :index="index" :item="item" :gap="gap" @click.stop="onItem" v-if='open')
 </template>
@@ -38,6 +38,10 @@
 
 		},
 		methods: {
+			onOpen () {
+				if(this.move) return
+				this.open = !this.open
+			},
 			onStart(e) {
 				this.active = true
 				this.move = false
@@ -69,14 +73,8 @@
 				}.bind(this)
 				document.onmouseup = function () {
 					this.active = false
-					if(!this.move) {
-						this.open = !this.open
-					}
 					document.onmousemove = document.onmouseup = null;
 				}.bind(this)
-			},
-			onMove() {
-
 			},
 			onItem (e) {
 				e.stopPropagation()
