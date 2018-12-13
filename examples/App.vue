@@ -13,10 +13,10 @@
 <style lang="stylus">
 	@import "../node_modules/highlight.js/styles/color-brewer.css"
 	html
-		height 100%
+		height 100 vh
 		font-family "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif
 	body
-		height 100%
+		height 100 vh
 		margin 0
 	#app
 		-webkit-font-smoothing antialiased

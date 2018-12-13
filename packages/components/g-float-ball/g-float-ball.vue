@@ -1,7 +1,7 @@
 <template lang='pug'>
 	.g-float-ball(@mousedown.stop="onStart" :class="{active:active || open}" @click="onOpen")
 		.g-float-ball__content
-			g-floot-ball-item(v-for="(item,index) in data" :key="index" :index="index" :item="item" :gap="gap" @click.stop="onItem" v-if='open')
+			g-floot-ball-item(v-for="(item,index) in data" :key="index" :index="index" :item="item" :gap="gap" @click.native.stop="onItem(item, $event)" v-if='open')
 </template>
 
 <script>
@@ -77,9 +77,10 @@
 					document.onmousemove = document.onmouseup = null;
 				}.bind(this)
 			},
-			onItem (e) {
+			onItem (item, e) {
 				e.stopPropagation()
 				e.preventDefault()
+				this.$emit('command', item)
 			}
 		}
 	}

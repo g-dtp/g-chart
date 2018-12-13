@@ -1,16 +1,6 @@
 <template lang='pug'>
 	.demo
-		g-chart.chart-item(:key="0")
-			g-grid(:left="20" :right="20" :top="60")
-			g-legend(:data="legend" left="center")
-			g-title(text="例子1")
-			g-xAxis(:data="xAxisData")
-			g-yAxis
-			g-bar(:data="bar0" :name="'测试1'" :barMaxWidth="30" :barWidth="'20%'")
-			g-bar(:data="bar1" :name="'测试2'" :barMaxWidth="30" :barWidth="'20%'")
-			g-line(:data="list" :smooth="smooth" :name="'BUG数量'")
-			g-line(:data="list1" :smooth="smooth" :name="'逃逸BUG数量'" )
-			g-line(:data="list2" :smooth="smooth" :name="'未解决BUG'" )
+
 		g-chart.chart-item(:key="1")
 			g-grid(:left="20" :right="20" :top="60")
 			g-legend(:data="legend")
@@ -42,18 +32,30 @@
 		g-chart-percent.chart-item
 		g-chart-arrow.chart-item
 		g-chart-liquidfill.chart-item
-		g-float-ball(:data="menu")
+		g-float-ball(:data="menu" @command="onCommand")
+		g-popup(v-model="showPopup1")
+			g-chart.chart-item(:key="0")
+				g-grid(:left="20" :right="20" :top="60")
+				g-legend(:data="legend" left="center")
+				g-title(text="例子1")
+				g-xAxis(:data="xAxisData")
+				g-yAxis
+				g-bar(:data="bar0" :name="'测试1'" :barMaxWidth="30" :barWidth="'20%'")
+				g-bar(:data="bar1" :name="'测试2'" :barMaxWidth="30" :barWidth="'20%'")
+				g-line(:data="list" :smooth="smooth" :name="'BUG数量'")
+				g-line(:data="list1" :smooth="smooth" :name="'逃逸BUG数量'" )
+				g-line(:data="list2" :smooth="smooth" :name="'未解决BUG'" )
 </template>
 
 <script>
 	import echarts from 'echarts'
 
 	console.log(echarts)
-	import {GChartPercent, GChartArrow, GChartLiquidfill, GFloatBall} from '../../packages/index'
+	import {GChartPercent, GChartArrow, GChartLiquidfill, GFloatBall, GPopup} from '../../packages/index'
 
 	export default {
 		name: "demo",
-		components: {GChartArrow, GChartPercent, GChartLiquidfill, GFloatBall},
+		components: {GChartArrow, GChartPercent, GChartLiquidfill, GFloatBall, GPopup},
 		data() {
 			return {
 				xAxisData: [],
@@ -69,10 +71,11 @@
 				areaStyle: {},
 				pieLegend: [],
 				pie: [],
-				menu: [{
+				menu: [
+					{
 					icon: '',
 					label: '返回',
-					cmd: 'M'
+					cmd: 'A'
 					},{
 						icon: '',
 						label: '返回',
@@ -85,11 +88,13 @@
 					icon: '',
 					label: '返回',
 					cmd: 'M'
-				},{
-					icon: '',
-					label: '返回',
-					cmd: 'M'
-				}]
+					},{
+						icon: '',
+						label: '返回',
+						cmd: 'M'
+					}
+				],
+				showPopup1: false
 			}
 		},
 		created() {
@@ -115,8 +120,11 @@
 			}
 		},
 		methods: {
-			onChange() {
-				this.smooth = !this.smooth
+			onCommand(item) {
+				console.log(item)
+				if(item.cmd === 'A'){
+					this.showPopup1 = true
+				}
 			},
 			makeColors(color1, color2) {
 				return new echarts.graphic.LinearGradient(

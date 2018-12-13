@@ -1,6 +1,6 @@
 {
   "name": "g-chart",
-  "version": "1.0.2beta-17",
+  "version": "1.0.2beta-18",
   "description": "base on vue and echarts",
   "keywords": [
     "g-chart",
@@ -22,7 +22,6 @@
   "dependencies": {
     "echarts": "^4.2.0-rc.2",
     "echarts-liquidfill": "^2.0.3",
-    "g-chart": "^1.0.2beta-7",
     "vue": "^2.5.2"
   },
   "devDependencies": {
