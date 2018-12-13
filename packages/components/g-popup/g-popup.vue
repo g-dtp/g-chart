@@ -64,6 +64,7 @@
 			hide(){
 				this.isActive = false;
 				this.$emit('close', this.isActive);
+				this.$emit('change', this.isActive);
 			},
 			handleClose(maskClosable = true) {
 				if (maskClosable) {
@@ -75,6 +76,28 @@
 </script>
 
 <style lang="stylus" scoped>
+	.top-enter,
+	.top-leave-to {
+		transform: translate(0, -100%);
+	}
+
+	.bottom-enter,
+	.bottom-leave-to {
+		transform: translate(0, 100%);
+	}
+
+	.fade-enter-active {
+		transition: opacity 0.3s ease;
+	}
+
+	.fade-leave-active {
+		transition: opacity 0.3s;
+	}
+
+	.fade-enter,
+	.fade-leave-to {
+		opacity: 0;
+	}
 	.g-popup
 		width: 100%;
 		display: flex;

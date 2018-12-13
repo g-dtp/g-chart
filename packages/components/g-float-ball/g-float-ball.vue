@@ -28,6 +28,7 @@
 		},
 		beforeCreate() {
 			this._deg = [-Math.PI / 2, Math.PI / 2]
+			this._timer = null
 		},
 		computed: {
 			gap() {
@@ -41,6 +42,12 @@
 			onOpen () {
 				if(this.move) return
 				this.open = !this.open
+				if(this.open){
+					if(this._timer) clearTimeout(this._timer)
+					this._timer = setTimeout(()=> {
+						this.open = false
+					}, 3000)
+				}
 			},
 			onStart(e) {
 				this.active = true
