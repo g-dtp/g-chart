@@ -41,15 +41,19 @@
 			g-pie(:data="pie" :center="['25%', '50%']")
 		g-chart-percent.chart-item
 		g-chart-arrow.chart-item
+		g-chart-liquidfill.chart-item
+		g-float-ball(:data="menu")
 </template>
 
 <script>
 	import echarts from 'echarts'
+
 	console.log(echarts)
-	import { GChartPercent, GChartArrow } from '../../packages/index'
+	import {GChartPercent, GChartArrow, GChartLiquidfill, GFloatBall} from '../../packages/index'
+
 	export default {
 		name: "demo",
-		components: {GChartArrow, GChartPercent},
+		components: {GChartArrow, GChartPercent, GChartLiquidfill, GFloatBall},
 		data() {
 			return {
 				xAxisData: [],
@@ -64,7 +68,28 @@
 				itemStyle: {},
 				areaStyle: {},
 				pieLegend: [],
-				pie: []
+				pie: [],
+				menu: [{
+					icon: '',
+					label: '返回',
+					cmd: 'M'
+					},{
+						icon: '',
+						label: '返回',
+						cmd: 'M'
+					},{
+						icon: '',
+						label: '返回',
+						cmd: 'M'
+					},{
+					icon: '',
+					label: '返回',
+					cmd: 'M'
+				},{
+					icon: '',
+					label: '返回',
+					cmd: 'M'
+				}]
 			}
 		},
 		created() {
@@ -109,6 +134,7 @@
 <style lang='stylus' scoped>
 	.demo
 		margin 0
+
 		.chart-item
 			background #000E2D
 			height 340px

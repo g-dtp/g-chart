@@ -1,10 +1,13 @@
 import GChart from './g-chart'
 
-import GChartPercent from './h-chart/g-chart-percent/g-chart-percent'
-import GChartArrow from './h-chart/g-chart-arrow/g-chart-arrow'
+import GChartPercent from './h-chart/g-chart-percent'
+import GChartArrow from './h-chart/g-chart-arrow'
+import GChartLiquidfill from './h-chart/g-chart-liquidfill'
 
 import Resize from './utils/resize'
 import ChartHelper from './utils/chart-helper'
+
+import GFloatBall from './components/g-float-ball'
 
 const components = Object.values(GChart)
 const install = function (Vue) {
@@ -23,6 +26,8 @@ export default {
 export {
 	GChartPercent,
 	GChartArrow,
+	GChartLiquidfill,
 	Resize,
-	ChartHelper
+	ChartHelper,
+	GFloatBall
 }
