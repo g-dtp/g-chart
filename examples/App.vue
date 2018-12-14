@@ -22,6 +22,7 @@
 		-webkit-font-smoothing antialiased
 		-moz-osx-font-smoothing grayscale
 		width 1140px
+		overflow-x hidden
 		margin 0 auto
 		height 100%
 		color #1f2f3d

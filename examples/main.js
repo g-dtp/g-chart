@@ -13,13 +13,14 @@ Vue.component('demo-block', demoBlock)
 Vue.use(GChart)
 Vue.config.productionTip = false
 /* eslint-disable no-new */
-let app
-Resize.addEvent(()=>{
-	if(app) return
-	new Vue({
-		el: '#app',
-		router,
-		components: { App },
-		template: '<App/>'
-	})
+// let app
+// Resize.addEvent(()=>{
+// 	if(app) return
+//
+// })
+new Vue({
+	el: '#app',
+	router,
+	components: { App },
+	template: '<App/>'
 })

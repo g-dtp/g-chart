@@ -9,6 +9,8 @@ import ChartHelper from './utils/chart-helper'
 
 import GFloatBall from './components/g-float-ball'
 import GPopup from './components/g-popup'
+import GPopover from './components/g-popover'
+import GSelect from './components/g-select'
 
 const components = Object.values(GChart)
 const install = function (Vue) {
@@ -31,5 +33,7 @@ export {
 	Resize,
 	ChartHelper,
 	GFloatBall,
-	GPopup
+	GPopup,
+	GPopover,
+	GSelect
 }

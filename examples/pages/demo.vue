@@ -1,6 +1,5 @@
 <template lang='pug'>
 	.demo
-
 		g-chart.chart-item(:key="1")
 			g-grid(:left="20" :right="20" :top="60")
 			g-legend(:data="legend")
@@ -45,17 +44,22 @@
 				g-line(:data="list" :smooth="smooth" :name="'BUG数量'")
 				g-line(:data="list1" :smooth="smooth" :name="'逃逸BUG数量'" )
 				g-line(:data="list2" :smooth="smooth" :name="'未解决BUG'" )
+		div.chart-item
+			span test
+			g-popover()
+				button(slot='reference') some
+			g-select(:data="menu")
 </template>
 
 <script>
 	import echarts from 'echarts'
 
 	console.log(echarts)
-	import {GChartPercent, GChartArrow, GChartLiquidfill, GFloatBall, GPopup} from '../../packages/index'
+	import {GChartPercent, GChartArrow, GChartLiquidfill, GFloatBall, GPopup, GPopover, GSelect} from '../../packages/index'
 
 	export default {
 		name: "demo",
-		components: {GChartArrow, GChartPercent, GChartLiquidfill, GFloatBall, GPopup},
+		components: {GSelect, GChartArrow, GChartPercent, GChartLiquidfill, GFloatBall, GPopup, GPopover},
 		data() {
 			return {
 				xAxisData: [],
