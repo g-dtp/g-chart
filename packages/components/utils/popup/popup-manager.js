@@ -48,7 +48,8 @@ class PopupManager {
 				show: true
 			},
 			propsData: {
-				uid: uid
+				uid: uid,
+				...parent.$props
 			}
 		})
 		console.log(vm)

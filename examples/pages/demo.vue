@@ -1,5 +1,8 @@
 <template lang='pug'>
 	.demo
+		div.chart-item
+			g-popover(content="我是来自DEMO的Popover")
+				button(slot='reference') some
 		g-chart.chart-item(:key="1")
 			g-grid(:left="20" :right="20" :top="60")
 			g-legend(:data="legend")
@@ -44,11 +47,7 @@
 				g-line(:data="list" :smooth="smooth" :name="'BUG数量'")
 				g-line(:data="list1" :smooth="smooth" :name="'逃逸BUG数量'" )
 				g-line(:data="list2" :smooth="smooth" :name="'未解决BUG'" )
-		div.chart-item
-			span test
-			g-popover()
-				button(slot='reference') some
-			g-select(:data="menu")
+
 </template>
 
 <script>

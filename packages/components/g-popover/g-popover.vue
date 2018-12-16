@@ -1,6 +1,7 @@
 <template lang='pug'>
 	span.g-popover(@click="onPopup" v-clickoutside="handleClose")
 		slot(name="reference")
+		slot(name="wrapper")
 </template>
 
 <script>

@@ -19,11 +19,20 @@
 		inject: ['popover'],
 		computed: {
 			styleObj() {
-				let boundRect = this.popover.$el.getBoundingClientRect()
+				let rect = this.popover.$el.getBoundingClientRect()
+				console.log(rect)
+				let h = rect.x < 100 ? 'left' : 'right'
+				let v = rect.y < 100 ? 'bottom' : 'top'
 				return {
-					top: (boundRect.top - boundRect.height) + 'px',
-					left: boundRect.left + 'px'
+					top: rect.bottom + 'px',
+					left: rect.left + 'px',
+					bottom: 'auto'
 				}
+			}
+		},
+		methods: {
+			top (rect){
+				
 			}
 		}
 	}
@@ -45,13 +54,14 @@
 
 	.g-wrapper
 		position fixed
-		background-color: rgba(0, 0, 0, .8)
-		color #ffffff
+		background-color: rgba(255, 255, 255, 1)
+		color #333333
 		box-shadow 0 0 10px rgba(0, 0, 0, .8)
 		font-size 14px
 		line-height 14px
 		max-width 300px
 		max-height 100vh
 		border-radius 5px
-		padding 5px 10px
+		padding 10px
+		margin-top 5px
 </style>

@@ -4,12 +4,10 @@
 		props:{
 			uid: String,
 			position:String,
+			Gap:Number
 		},
 		data(){
 			show: false
-		},
-		destroyed() {
-			this.$emit('destroyed')
 		}
 	}
 </script>
