@@ -55,6 +55,6 @@
 		min-width 100px
 		max-height 100vh
 		border-radius 3px
-		padding 10px
 		margin-top 5px
+		overflow-y auto
 </style>
