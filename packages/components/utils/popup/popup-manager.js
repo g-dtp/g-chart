@@ -2,7 +2,6 @@ import Vue from 'vue'
 
 let instance
 
-
 class PopupManager {
 	constructor() {
 		this.pool = {}
@@ -28,7 +27,10 @@ class PopupManager {
 		let vm = this.pool[uid]
 		if (vm) {
 			if (vm.show) return
+			vm.show = true
+			return
 		}
+
 		try {
 			if (!wrapper.extends || wrapper.extends.name !== 'base-wrapper') throw "弹出容器必须继承base-wrapper"
 		} catch (error) {
@@ -42,8 +44,7 @@ class PopupManager {
 			}
 		})
 		vm = new VueComponent({
-			el: container,
-			parent: parent,
+			parent,
 			data: {
 				show: true
 			},
@@ -51,8 +52,7 @@ class PopupManager {
 				uid: uid,
 				...parent.$props
 			}
-		})
-		console.log(vm)
+		}).$mount()
 		//标记
 		this.pool[uid] = vm
 		// 插入
@@ -67,8 +67,10 @@ class PopupManager {
 	close(uid) {
 		let vm = this.pool[uid]
 		if (!vm) return
-		//这里交给VUE 自己去销毁, 只需缓存池清理
-		vm.show = false
+		if(vm.$el.parentElement){
+			vm.$el.parentElement.removeChild(vm.$el)
+		}
+		vm.$destroy()
 		this.pool[uid] = null
 		delete this.pool[uid];
 	}

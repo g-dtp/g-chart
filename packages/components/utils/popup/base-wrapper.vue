@@ -8,6 +8,12 @@
 		},
 		data(){
 			show: false
+		},
+		beforeDestroy(){
+			console.log('beforeDestroy')
+		},
+		destroyed() {
+			console.log('destroyed')
 		}
 	}
 </script>

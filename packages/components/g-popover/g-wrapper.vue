@@ -20,7 +20,6 @@
 		computed: {
 			styleObj() {
 				let rect = this.popover.$el.getBoundingClientRect()
-				console.log(rect)
 				let h = rect.x < 100 ? 'left' : 'right'
 				let v = rect.y < 100 ? 'bottom' : 'top'
 				return {

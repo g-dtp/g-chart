@@ -3,7 +3,11 @@
 		div.chart-item
 			g-popover(content="我是来自DEMO的Popover")
 				button(slot='reference') some
-		g-chart.chart-item(:key="1")
+			.g-select-row
+				g-select()
+					div xxxx
+			span(@click="oneClick") click
+		g-chart.chart-item(:key="1" v-if="showPopup1")
 			g-grid(:left="20" :right="20" :top="60")
 			g-legend(:data="legend")
 			g-title(text="例子2")
@@ -35,18 +39,18 @@
 		g-chart-arrow.chart-item
 		g-chart-liquidfill.chart-item
 		g-float-ball(:data="menu" @command="onCommand")
-		g-popup(v-model="showPopup1")
-			g-chart.chart-item(:key="0")
-				g-grid(:left="20" :right="20" :top="60")
-				g-legend(:data="legend" left="center")
-				g-title(text="例子1")
-				g-xAxis(:data="xAxisData")
-				g-yAxis
-				g-bar(:data="bar0" :name="'测试1'" :barMaxWidth="30" :barWidth="'20%'")
-				g-bar(:data="bar1" :name="'测试2'" :barMaxWidth="30" :barWidth="'20%'")
-				g-line(:data="list" :smooth="smooth" :name="'BUG数量'")
-				g-line(:data="list1" :smooth="smooth" :name="'逃逸BUG数量'" )
-				g-line(:data="list2" :smooth="smooth" :name="'未解决BUG'" )
+		<!--g-popup(v-model="showPopup1")-->
+			<!--g-chart.chart-item(:key="0")-->
+				<!--g-grid(:left="20" :right="20" :top="60")-->
+				<!--g-legend(:data="legend" left="center")-->
+				<!--g-title(text="例子1")-->
+				<!--g-xAxis(:data="xAxisData")-->
+				<!--g-yAxis-->
+				<!--g-bar(:data="bar0" :name="'测试1'" :barMaxWidth="30" :barWidth="'20%'")-->
+				<!--g-bar(:data="bar1" :name="'测试2'" :barMaxWidth="30" :barWidth="'20%'")-->
+				<!--g-line(:data="list" :smooth="smooth" :name="'BUG数量'")-->
+				<!--g-line(:data="list1" :smooth="smooth" :name="'逃逸BUG数量'" )-->
+				<!--g-line(:data="list2" :smooth="smooth" :name="'未解决BUG'" )-->
 
 </template>
 
@@ -123,6 +127,9 @@
 			}
 		},
 		methods: {
+			oneClick() {
+				this.showPopup1 = !this.showPopup1
+			},
 			onCommand(item) {
 				console.log(item)
 				if(item.cmd === 'A'){

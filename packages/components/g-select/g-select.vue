@@ -1,22 +1,19 @@
 <template lang='pug'>
-	.g-select( @click.stop="onToggle" v-clickoutside="handleClose")
+	.g-select(@click.stop="onToggle" v-clickoutside="handleClose")
 		.g-select__label
 			span.g-select__text {{label}}
 			i.g-select__icon-triangle
-		g-select-dropdown(v-if="visible")
-			g-option(v-for="(item,index) in data" :key="index" :option="item")
 </template>
 
 <script>
 	import Clickoutside from '../utils/clickoutside.js'
 	import GSelectDropdown from './g-select-dropdown'
-	import GOption from './g-option'
-
+	import PopupManager from '../utils/popup/popup-manager'
+	import {uid} from '../utils/utils'
 	export default {
 		directives: {Clickoutside},
-		components: {GSelectDropdown, GOption},
-		name: "g-select",
 
+		name: "g-select",
 		props: {
 			data: {
 				default: function () {
@@ -25,6 +22,9 @@
 			},
 			label: {
 				default: '请选择'
+			},
+			show: {
+				default: false
 			}
 		},
 		provide() {
@@ -32,17 +32,45 @@
 				'select': this
 			};
 		},
+		beforeCreate(){
+			this._select_uid = uid()
+		},
 		data() {
 			return {
-				visible: false
+				open: this.show
 			}
 		},
+		mounted(){
+			window.addEventListener("mousedown", this.closeByEvent);
+		},
+		beforeDestroy(){
+			window.removeEventListener("mousedown", this.closeByEvent);
+		},
 		methods: {
-			onToggle() {
-				this.visible = !this.visible;
+			closeByEvent () {
+				this.handleClose()
 			},
-			handleClose() {
-				this.visible = false;
+			onToggle () {
+				this.open = !this.open
+				if(this.open ) {
+					this.onPopup()
+				}else{
+					this.handleClose()
+				}
+			},
+			onPopup () {
+				PopupManager.getInstance().popup({
+					type:'g-select',
+					uid: this._select_uid,
+					parent: this,
+					wrapper:GSelectDropdown,
+				})
+			},
+			handleClose () {
+				if(this.open) {
+					PopupManager.getInstance().close(this._select_uid)
+					this.open = false
+				}
 			},
 		}
 	}
