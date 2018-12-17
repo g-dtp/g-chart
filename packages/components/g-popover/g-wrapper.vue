@@ -32,7 +32,7 @@
 		},
 		methods: {
 			top (rect){
-				
+
 			}
 		}
 	}
@@ -61,7 +61,7 @@
 		line-height 14px
 		max-width 300px
 		max-height 100vh
-		border-radius 5px
+		border-radius 3px
 		padding 10px
 		margin-top 5px
 </style>

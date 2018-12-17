@@ -1,5 +1,5 @@
 <template lang='pug'>
-	span.g-popover(@click="onPopup" v-clickoutside="handleClose")
+	span.g-popover(@click="onOpen" v-clickoutside="handleClose")
 		slot(name="reference")
 		slot(name="wrapper")
 </template>
@@ -39,6 +39,11 @@
 		beforeCreate(){
 			this._popover_uid = uid()
 		},
+		data(){
+			return {
+				open: this.show
+			}
+		},
 		computed:{
 			styleObj(){
 				return {
@@ -49,9 +54,24 @@
 				return this.position
 			}
 		},
+		mounted(){
+			window.addEventListener("mousedown touchstart", this.closeByEvent);
+		},
+		beforeDestroy(){
+			window.removeEventListener("mousedown touchstart", this.closeByEvent);
+		},
 		methods: {
+			onOpen(){
+				this.open = !this.open
+				if(this.open){
+					this.onPopup()
+				}else{
+					this.handleClose()
+				}
+			},
 			onPopup () {
 				PopupManager.getInstance().popup({
+					type:'g-popover',
 					uid: this._popover_uid,
 					parent: this,
 					wrapper:GWrapper,
@@ -59,7 +79,13 @@
 				})
 			},
 			handleClose () {
-				PopupManager.getInstance().close(this._popover_uid)
+				if(this.open) {
+					this.open = false
+					PopupManager.getInstance().close(this._popover_uid)
+				}
+			},
+			closeByEvent(){
+				this.handleClose()
 			}
 		}
 	}
