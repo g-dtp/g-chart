@@ -1,7 +1,7 @@
 <template lang='pug'>
-	.g-select(@click.stop="onToggle" v-clickoutside="handleClose")
+	.g-select(@click.stop="onToggle")
 		.g-select__label
-			span.g-select__text {{label}}
+			span.g-select__text {{value.label?value.label:placeholder}}
 			i.g-select__icon-triangle
 </template>
 
@@ -10,17 +10,26 @@
 	import GSelectDropdown from './g-select-dropdown'
 	import PopupManager from '../utils/popup/popup-manager'
 	import {uid} from '../utils/utils'
+
 	export default {
 		directives: {Clickoutside},
-
 		name: "g-select",
+		model: {
+			prop: 'value',
+			event: 'change'
+		},
 		props: {
 			data: {
 				default: function () {
 					return []
 				}
 			},
-			label: {
+			value: {
+				default: function () {
+					return {}
+				}
+			},
+			placeholder: {
 				default: '请选择'
 			},
 			show: {
@@ -32,7 +41,7 @@
 				'select': this
 			};
 		},
-		beforeCreate(){
+		beforeCreate() {
 			this._select_uid = uid()
 		},
 		data() {
@@ -40,34 +49,38 @@
 				open: this.show
 			}
 		},
-		mounted(){
+		mounted() {
 			window.addEventListener("mousedown", this.closeByEvent);
 		},
-		beforeDestroy(){
+		beforeDestroy() {
 			window.removeEventListener("mousedown", this.closeByEvent);
 		},
 		methods: {
-			closeByEvent () {
+			onChange(item) {
+				this.$emit('change', item)
 				this.handleClose()
 			},
-			onToggle () {
+			closeByEvent() {
+				this.handleClose()
+			},
+			onToggle() {
 				this.open = !this.open
-				if(this.open ) {
+				if (this.open) {
 					this.onPopup()
-				}else{
+				} else {
 					this.handleClose()
 				}
 			},
-			onPopup () {
+			onPopup() {
 				PopupManager.getInstance().popup({
-					type:'g-select',
+					type: 'g-select',
 					uid: this._select_uid,
 					parent: this,
-					wrapper:GSelectDropdown,
+					wrapper: GSelectDropdown,
 				})
 			},
-			handleClose () {
-				if(this.open) {
+			handleClose() {
+				if (this.open) {
 					PopupManager.getInstance().close(this._select_uid)
 					this.open = false
 				}
@@ -85,13 +98,16 @@
 		cursor pointer
 		padding 0 10px
 		font-size 0
+
 		&__label
 			height 35px
 			line-height 35px
+
 		&__text
 			color #52B8DF
 			font-size 14px
 			margin-right 10px
+
 		&__icon-triangle
 			display inline-block
 			width: 0;

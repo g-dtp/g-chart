@@ -4,8 +4,7 @@
 			g-popover(content="我是来自DEMO的Popover")
 				button(slot='reference') some
 			.g-select-row
-				g-select()
-					div xxxx
+				g-select(@change="onChange")
 			span(@click="oneClick") click
 		g-chart.chart-item(:key="1" v-if="showPopup1")
 			g-grid(:left="20" :right="20" :top="60")
@@ -127,6 +126,9 @@
 			}
 		},
 		methods: {
+			onChange (item) {
+				console.log(/xxxx/, item)
+			},
 			oneClick() {
 				this.showPopup1 = !this.showPopup1
 			},

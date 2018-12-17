@@ -1,7 +1,7 @@
 <template lang='pug'>
-	.g-select-dropdown(:style="styleObj" :class="[position]")
+	.g-select-dropdown(:style="styleObj" :class="[position]" @click.stop="stop" @mousedown.stop="stop")
 		.g-select-dropdown__warp.g-select-dropdown__list
-			g-option(v-for="item in 4" :key="item") xxx
+			g-option(v-for="item in data" :key="item.value" @click.stop.native="onItem(item)" :option="item")
 </template>
 
 <script>
@@ -29,6 +29,15 @@
 					left: rect.left + 'px',
 					bottom: 'auto'
 				}
+			}
+		},
+		methods: {
+			onItem (item) {
+				this.select.onChange(item)
+			},
+			stop (e) {
+				e.stopPropagation()
+				e.preventDefault()
 			}
 		}
 	}

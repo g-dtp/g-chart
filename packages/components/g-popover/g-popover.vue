@@ -55,10 +55,10 @@
 			}
 		},
 		mounted(){
-			window.addEventListener("mousedown touchstart", this.closeByEvent);
+			//window.addEventListener("mousedown touchstart", this.closeByEvent);
 		},
 		beforeDestroy(){
-			window.removeEventListener("mousedown touchstart", this.closeByEvent);
+			//window.removeEventListener("mousedown touchstart", this.closeByEvent);
 		},
 		methods: {
 			onOpen(){

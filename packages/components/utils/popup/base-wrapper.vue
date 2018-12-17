@@ -4,7 +4,8 @@
 		props:{
 			uid: String,
 			position:String,
-			Gap:Number
+			Gap:Number,
+			data:[String, Array, Object, Number]
 		},
 		data(){
 			show: false
