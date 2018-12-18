@@ -1,5 +1,6 @@
 <template lang='pug'>
 	.demo
+		line-area.chart-item
 		div.chart-item
 			g-popover(content="我是来自DEMO的Popover")
 				button(slot='reference') some
@@ -38,30 +39,19 @@
 		g-chart-arrow.chart-item
 		g-chart-liquidfill.chart-item
 		g-float-ball(:data="menu" @command="onCommand")
-		<!--g-popup(v-model="showPopup1")-->
-			<!--g-chart.chart-item(:key="0")-->
-				<!--g-grid(:left="20" :right="20" :top="60")-->
-				<!--g-legend(:data="legend" left="center")-->
-				<!--g-title(text="例子1")-->
-				<!--g-xAxis(:data="xAxisData")-->
-				<!--g-yAxis-->
-				<!--g-bar(:data="bar0" :name="'测试1'" :barMaxWidth="30" :barWidth="'20%'")-->
-				<!--g-bar(:data="bar1" :name="'测试2'" :barMaxWidth="30" :barWidth="'20%'")-->
-				<!--g-line(:data="list" :smooth="smooth" :name="'BUG数量'")-->
-				<!--g-line(:data="list1" :smooth="smooth" :name="'逃逸BUG数量'" )-->
-				<!--g-line(:data="list2" :smooth="smooth" :name="'未解决BUG'" )-->
 
 </template>
 
 <script>
 	import echarts from 'echarts'
 
-	console.log(echarts)
-	import {GChartPercent, GChartArrow, GChartLiquidfill, GFloatBall, GPopup, GPopover, GSelect} from '../../packages/index'
+	import {GChartPercent, GChartArrow, GChartLiquidfill, GFloatBall, GPopup, GPopover, GSelect} from 'packages/index'
+
+	import LineArea from './demo/line-area'
 
 	export default {
 		name: "demo",
-		components: {GSelect, GChartArrow, GChartPercent, GChartLiquidfill, GFloatBall, GPopup, GPopover},
+		components: {GSelect, GChartArrow, GChartPercent, GChartLiquidfill, GFloatBall, GPopup, GPopover,LineArea},
 		data() {
 			return {
 				xAxisData: [],

@@ -10,11 +10,11 @@
 			span(@click="oneClick") click
 			g-dialog()
 				span xxxx
-			g-table(:data="list" :columns="columns")
+			g-table(:data="some" :columns="columns")
 </template>
 
 <script>
-	import {GPopup, GPopover, GSelect, GDialog, GTable} from '../../packages/index'
+	import {GPopup, GPopover, GSelect, GDialog, GTable} from 'packages/index'
 
 	export default {
 		name: "ui-component",
@@ -32,7 +32,7 @@
 					{name: '名字', key: 'name'},
 					{name: '年龄', key: 'age'}
 				],
-				list: [
+				some: [
 					{name: 'Able', age: 23},
 					{name: 'Baker', age: 23},
 					{name: 'Charlie', age: 23},
