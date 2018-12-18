@@ -34,9 +34,7 @@ class PopupManager {
 		} catch (error) {
 			console.error(error)
 		}
-		let VueComponent = Vue.extend({
-			...wrapper
-		})
+		let VueComponent = Vue.extend(wrapper)
 		vm = new VueComponent({
 			parent,
 			data: {
