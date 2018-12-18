@@ -12,6 +12,7 @@ import GPopup from './components/g-popup'
 import GPopover from './components/g-popover'
 import GSelect from './components/g-select'
 import GDialog from './components/g-dialog'
+import GTable from './components/g-table'
 
 const components = Object.values(GChart)
 const install = function (Vue) {
@@ -37,5 +38,6 @@ export {
 	GPopup,
 	GPopover,
 	GSelect,
-	GDialog
+	GDialog,
+	GTable
 }
