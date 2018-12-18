@@ -40,10 +40,7 @@ class PopupManager {
 			data: {
 				show: true
 			},
-			propsData: {
-				uid: uid,
-				...parent.$props
-			}
+			propsData: {uid: uid}
 		}).$mount()
 		//标记
 		this.pool[uid] = vm
