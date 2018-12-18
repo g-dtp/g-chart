@@ -18,6 +18,10 @@ const router = new Router({
 			path:'/demo',
 			name:'demo',
 			component: () => import('../pages/demo')
+		},{
+			path:'/component',
+			name:'component',
+			component: () => import('../pages/component')
 		}
 	]
 })

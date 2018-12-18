@@ -1,6 +1,6 @@
 {
   "name": "g-chart",
-  "version": "1.0.2beta-17",
+  "version": "1.0.2beta-19",
   "description": "base on vue and echarts",
   "keywords": [
     "g-chart",
@@ -22,7 +22,7 @@
   "dependencies": {
     "echarts": "^4.2.0-rc.2",
     "echarts-liquidfill": "^2.0.3",
-    "g-chart": "^1.0.2beta-7",
+    "popper.js": "^1.14.6",
     "vue": "^2.5.2"
   },
   "devDependencies": {
@@ -75,11 +75,11 @@
     "npm": ">= 3.0.0"
   },
   "browserslist": [
-	  "> 1%",
-	  "IE > 8",
-	  "last 2 versions",
-	  "Firefox ESR",
-	  "Opera 12.1",
-	  "Safari > 7"
+    "> 1%",
+    "IE > 8",
+    "last 2 versions",
+    "Firefox ESR",
+    "Opera 12.1",
+    "Safari > 7"
   ]
 }

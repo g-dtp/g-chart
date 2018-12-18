@@ -13,15 +13,16 @@
 <style lang="stylus">
 	@import "../node_modules/highlight.js/styles/color-brewer.css"
 	html
-		height 100%
+		height 100 vh
 		font-family "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif
 	body
-		height 100%
+		height 100 vh
 		margin 0
 	#app
 		-webkit-font-smoothing antialiased
 		-moz-osx-font-smoothing grayscale
 		width 1140px
+		overflow-x hidden
 		margin 0 auto
 		height 100%
 		color #1f2f3d
