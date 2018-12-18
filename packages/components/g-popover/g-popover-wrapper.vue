@@ -1,14 +1,15 @@
 <template lang='pug'>
-	transition(name="fade" appear)
-		.g-wrapper(v-if='show' :class="[uid, position]" :style="styleObj")
-			span {{content}}
+	transition(name="fade")
+		.g-popover-wrapper(:class="[uid, position]" :style="styleObj")
+			slot
+				span span {{content}}
 </template>
 
 <script>
 	import BaseWrapper from '../utils/popup/base-wrapper'
 
 	export default {
-		name: "g-wrapper",
+		name: "g-popover-wrapper",
 		extends: BaseWrapper,
 		props: {
 			content: {
@@ -30,7 +31,7 @@
 			}
 		},
 		methods: {
-			top (rect){
+			top(rect) {
 
 			}
 		}
@@ -50,8 +51,7 @@
 	.fade-leave-to {
 		opacity: 0;
 	}
-
-	.g-wrapper
+	.g-popover-wrapper
 		position fixed
 		background-color: rgba(255, 255, 255, 1)
 		color #333333

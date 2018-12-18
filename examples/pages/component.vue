@@ -6,14 +6,16 @@
 			.g-select-row
 				g-select(@change="onChange" v-model="city" :data="list")
 			span(@click="oneClick") click
+			g-dialog()
+				span xxxx
 </template>
 
 <script>
-	import {GPopup, GPopover, GSelect} from '../../packages/index'
+	import {GPopup, GPopover, GSelect, GDialog} from '../../packages/index'
 
 	export default {
 		name: "ui-component",
-		components: {GPopup, GPopover, GSelect},
+		components: {GPopup, GPopover, GSelect, GDialog},
 		data(){
 			return {
 				city: '',

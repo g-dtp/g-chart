@@ -1,29 +1,22 @@
 <template lang='pug'>
-	span.g-popover(@click="onOpen" v-clickoutside="handleClose")
+	span.g-popover(@click="onToggle" v-clickoutside="handleClose")
 		slot(name="reference")
-		slot(name="wrapper")
+		g-popover-wrapper(v-if="open" :content="content")
+			slot(name="popper")
+
 </template>
 
 <script>
 	import Clickoutside from '../utils/clickoutside'
-	import PopupManager from '../utils/popup/popup-manager'
-	import GWrapper from './g-wrapper'
-	import {uid} from '../utils/utils'
+	import GPopoverWrapper from './g-popover-wrapper'
 	export default {
 		name: "g-popover",
-		model: {
-			prop: 'show',
-			event: 'change'
-		},
+		components: {GPopoverWrapper},
 		directives: {Clickoutside},
 		props:{
 			show: {
 				type: Boolean,
 				default: false
-			},
-			trigger:{
-				type:String,
-				default: 'hover'
 			},
 			content: String,
 			position:{
@@ -34,10 +27,7 @@
 		provide() {
 			return {
 				'popover': this
-			}
-		},
-		beforeCreate(){
-			this._popover_uid = uid()
+			};
 		},
 		data(){
 			return {
@@ -45,53 +35,21 @@
 			}
 		},
 		computed:{
-			styleObj(){
-				return {
 
-				}
-			},
-			transition (){
-				return this.position
-			}
-		},
-		mounted(){
-			//window.addEventListener("mousedown touchstart", this.closeByEvent);
-		},
-		beforeDestroy(){
-			//window.removeEventListener("mousedown touchstart", this.closeByEvent);
 		},
 		methods: {
-			onOpen(){
+			onToggle(){
 				this.open = !this.open
-				if(this.open){
-					this.onPopup()
-				}else{
-					this.handleClose()
-				}
-			},
-			onPopup () {
-				PopupManager.getInstance().popup({
-					type:'g-popover',
-					uid: this._popover_uid,
-					parent: this,
-					wrapper:GWrapper,
-					components:{}
-				})
 			},
 			handleClose () {
-				if(this.open) {
-					this.open = false
-					PopupManager.getInstance().close(this._popover_uid)
-				}
-			},
-			closeByEvent(){
-				this.handleClose()
+
 			}
 		}
 	}
 </script>
 
 <style lang="stylus" scoped>
+
 	.g-popover
 		display inline-block
 </style>

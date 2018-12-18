@@ -1,20 +1,39 @@
 <script>
+	import PopupManager from './popup-manager.js'
+	import {uid} from '../utils'
 	export default {
 		name: "base-wrapper",
 		props:{
 			uid: String,
 			position:String,
-			Gap:Number,
+			gap:Number,
 			data:[String, Array, Object, Number]
 		},
 		data(){
-			show: false
+			return {
+				show: false
+			}
+		},
+		beforeCreate(){
+			this._uid = uid()
+		},
+		mounted(){
+			this.createWrapper()
 		},
 		beforeDestroy(){
-			console.log('beforeDestroy')
+			this.$emit('beforeDestroy')
 		},
 		destroyed() {
-			console.log('destroyed')
+			this.$emit('destroyed')
+		},
+		methods: {
+			createWrapper(){
+				PopupManager.getInstance().register({
+					popper:this,
+					uid: this._uid
+				})
+				document.body.appendChild(this.$el)
+			}
 		}
 	}
 </script>

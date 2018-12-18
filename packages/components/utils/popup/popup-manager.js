@@ -60,6 +60,19 @@ class PopupManager {
 
 	}
 
+	/*
+	* 注册自行挂载得popper
+	* */
+	register(options) {
+		const {
+			popper,
+			uid
+		} = options
+		let vm = this.pool[uid]
+		if (!vm) return
+		this.pool[uid] = popper
+	}
+
 	popup(options) {
 		this.init(options)
 	}

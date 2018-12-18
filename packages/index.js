@@ -11,6 +11,7 @@ import GFloatBall from './components/g-float-ball'
 import GPopup from './components/g-popup'
 import GPopover from './components/g-popover'
 import GSelect from './components/g-select'
+import GDialog from './components/g-dialog'
 
 const components = Object.values(GChart)
 const install = function (Vue) {
@@ -35,5 +36,6 @@ export {
 	GFloatBall,
 	GPopup,
 	GPopover,
-	GSelect
+	GSelect,
+	GDialog
 }

@@ -1,7 +1,8 @@
 <template lang='pug'>
-	.g-select-dropdown(:style="styleObj" :class="[position]" @click.stop="stop" @mousedown.stop="stop")
-		.g-select-dropdown__warp.g-select-dropdown__list
-			g-option(v-for="item in data" :key="item.value" @click.stop.native="onItem(item)" :option="item")
+	transition(name="fade")
+		.g-select-dropdown(:style="styleObj" :class="[position]" @click.stop="stop" @mousedown.stop="stop")
+			.g-select-dropdown__warp.g-select-dropdown__list
+			slot
 </template>
 
 <script>
@@ -32,9 +33,6 @@
 			}
 		},
 		methods: {
-			onItem (item) {
-				this.select.onChange(item)
-			},
 			stop (e) {
 				e.stopPropagation()
 				e.preventDefault()
@@ -44,6 +42,18 @@
 </script>
 
 <style lang="stylus" scoped>
+	.fade-enter-active {
+		transition: opacity 0.3s ease;
+	}
+
+	.fade-leave-active {
+		transition: opacity 0.3s;
+	}
+
+	.fade-enter,
+	.fade-leave-to {
+		opacity: 0;
+	}
 	.g-select-dropdown
 		position fixed
 		background-color: #003173

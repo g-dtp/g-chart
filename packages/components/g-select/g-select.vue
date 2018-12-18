@@ -3,16 +3,18 @@
 		.g-select__label
 			span.g-select__text {{value.label?value.label:placeholder}}
 			i.g-select__icon-triangle
+		g-select-dropdown(v-if='open')
+			g-option(v-for="item in data" :key="item.value" @click.stop.native="onItem(item)" :option="item")
 </template>
 
 <script>
 	import Clickoutside from '../utils/clickoutside.js'
+	import GOption from './g-option'
 	import GSelectDropdown from './g-select-dropdown'
-	import PopupManager from '../utils/popup/popup-manager'
-	import {uid} from '../utils/utils'
 
 	export default {
 		directives: {Clickoutside},
+		components: {GSelectDropdown, GOption},
 		name: "g-select",
 		model: {
 			prop: 'value',
@@ -41,9 +43,6 @@
 				'select': this
 			};
 		},
-		beforeCreate() {
-			this._select_uid = uid()
-		},
 		data() {
 			return {
 				open: this.show
@@ -56,34 +55,18 @@
 			window.removeEventListener("mousedown", this.closeByEvent);
 		},
 		methods: {
-			onChange(item) {
+			onItem(item) {
 				this.$emit('change', item)
 				this.handleClose()
 			},
 			closeByEvent() {
-				this.handleClose()
+				//this.handleClose()
 			},
 			onToggle() {
 				this.open = !this.open
-				if (this.open) {
-					this.onPopup()
-				} else {
-					this.handleClose()
-				}
-			},
-			onPopup() {
-				PopupManager.getInstance().popup({
-					type: 'g-select',
-					uid: this._select_uid,
-					parent: this,
-					wrapper: GSelectDropdown,
-				})
 			},
 			handleClose() {
-				if (this.open) {
-					PopupManager.getInstance().close(this._select_uid)
-					this.open = false
-				}
+				this.open = false
 			},
 		}
 	}
