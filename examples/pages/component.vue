@@ -37,5 +37,7 @@
 </script>
 
 <style lang="stylus" scoped>
-
+	.chart-item
+		height 100px
+		overflow hidden
 </style>

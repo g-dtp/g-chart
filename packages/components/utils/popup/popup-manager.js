@@ -1,7 +1,8 @@
 import Vue from 'vue'
 
-let instance
+let zIndex = 2000
 
+let instance
 class PopupManager {
 	constructor() {
 		this.pool = {}
@@ -75,6 +76,10 @@ class PopupManager {
 
 	popup(options) {
 		this.init(options)
+	}
+
+	getZIndex() {
+		return zIndex++
 	}
 
 	close(uid) {

@@ -1,6 +1,6 @@
 <template lang='pug'>
 	transition(name="fade")
-		.g-popover-wrapper(:class="[uid, position]" :style="styleObj")
+		.g-popover-wrapper(:class="[_uid, position]" :style="styleObj")
 			slot
 				span span {{content}}
 </template>

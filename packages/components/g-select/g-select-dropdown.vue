@@ -1,6 +1,6 @@
 <template lang='pug'>
 	transition(name="fade")
-		.g-select-dropdown(:style="styleObj" :class="[position]" @click.stop="stop" @mousedown.stop="stop")
+		.g-select-dropdown(:style="styleObj" :class="[_uid, position]" @click.stop="stop" @mousedown.stop="stop")
 			.g-select-dropdown__warp.g-select-dropdown__list
 			slot
 </template>

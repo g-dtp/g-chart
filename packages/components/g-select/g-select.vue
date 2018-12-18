@@ -1,5 +1,5 @@
 <template lang='pug'>
-	.g-select(@click.stop="onToggle")
+	.g-select(@click.stop="onToggle" @mousedown.stop="stop")
 		.g-select__label
 			span.g-select__text {{value.label?value.label:placeholder}}
 			i.g-select__icon-triangle
@@ -8,12 +8,10 @@
 </template>
 
 <script>
-	import Clickoutside from '../utils/clickoutside.js'
 	import GOption from './g-option'
 	import GSelectDropdown from './g-select-dropdown'
 
 	export default {
-		directives: {Clickoutside},
 		components: {GSelectDropdown, GOption},
 		name: "g-select",
 		model: {
@@ -60,7 +58,7 @@
 				this.handleClose()
 			},
 			closeByEvent() {
-				//this.handleClose()
+				this.handleClose()
 			},
 			onToggle() {
 				this.open = !this.open
@@ -68,6 +66,9 @@
 			handleClose() {
 				this.open = false
 			},
+			stop(){
+
+			}
 		}
 	}
 </script>
