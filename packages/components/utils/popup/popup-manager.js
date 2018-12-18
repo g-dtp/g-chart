@@ -16,9 +16,6 @@ class PopupManager {
 	}
 
 	init(options) {
-		let container = document.createElement('div');
-		let target = document.querySelector('body');
-
 		const {
 			uid,
 			parent,
@@ -38,11 +35,7 @@ class PopupManager {
 			console.error(error)
 		}
 		let VueComponent = Vue.extend({
-			...wrapper,
-			components: {
-				...wrapper.components,
-				...components
-			}
+			...wrapper
 		})
 		vm = new VueComponent({
 			parent,
