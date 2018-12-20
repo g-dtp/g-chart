@@ -22,7 +22,7 @@
 				options: {}
 			}
 		},
-		inject: ['chartsOptions'],
+		inject: ['$chart', 'chartsOptions'],
 		computed: {
 			updateOptions() {
 				return {...this.$props}
@@ -34,8 +34,7 @@
 					if(typeof(this.options[key]) == 'Number')
 						this.options[key] = this.options[key] * this.resize.scale
 				})
-				// this.dispatch('g-chart', 'update-options')
-				this.$parent.render()
+				this.$chart.render()
 			}
 		},
 		created() {

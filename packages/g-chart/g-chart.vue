@@ -32,14 +32,13 @@
 		},
 		provide() {
 			return {
-				chartsOptions: this.options
+				chartsOptions: this.options,
+				$chart: this
 			}
 		},
 		watch: {
-			async 'options'() {
-				await this.$nexttick()
+			'options'() {
 				this.render()
-				this.resize()
 			}
 		},
 		methods: {
@@ -49,10 +48,11 @@
 			onClick(e) {
 				this.preventDefault && e.preventDefault()
 			},
-			render() {
+			async render() {
+				await this.$nextTick()
 				if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'default');
 				this.chart.setOption(this.options, true)
-				this.chart.resize()
+				this.resize()
 			},
 			destroy() {
 			},
@@ -67,10 +67,8 @@
 			}
 		},
 		async mounted() {
-			await this.$nextTick()
 			this.render()
 			window.addEventListener('resize', this.resize)
-			this.broadcast('g-base', 'update-options', this.updateOptions);
 		},
 		beforeDestroy() {
 			window.removeEventListener('resize', this.resize)
@@ -83,6 +81,7 @@
 	.g-chart
 		min-width 100px
 		min-height 200px
+
 		.noselect
 			-webkit-touch-callout: none; /* iOS Safari */
 			-webkit-user-select: none; /* Safari */
