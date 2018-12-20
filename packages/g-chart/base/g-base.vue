@@ -13,7 +13,7 @@
 			},
 			scaleProps: {
 				default:function () {
-					return ['left', 'right', 'top', 'bottom']
+					return ['left', 'right', 'top', 'bottom', 'width']
 				}
 			}
 		},

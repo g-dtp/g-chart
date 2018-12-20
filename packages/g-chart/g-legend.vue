@@ -23,6 +23,12 @@
 			},
 			orient: {
 				default: 'horizontal'
+			},
+			width: {
+				default: 'auto'
+			},
+			height: {
+				default: 'auto'
 			}
 		},
 		data(){

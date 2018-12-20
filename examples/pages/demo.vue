@@ -1,6 +1,8 @@
 <template lang='pug'>
 	.demo
-		line-area.chart-item
+		.box-1
+			line-area.chart-item-1
+			line-area.chart-item-2
 		div.chart-item
 			g-popover(content="我是来自DEMO的Popover")
 				button(slot='reference') some
@@ -148,4 +150,14 @@
 		.chart-item
 			background #000E2D
 			height 340px
+		.box-1
+			height 800px
+			display flex
+			flex-direction column
+			>>>.line-area
+			.chart-item-1
+				height 300px
+				flex none
+			.chart-item-2
+				flex auto
 </style>

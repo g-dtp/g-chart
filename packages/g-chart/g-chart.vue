@@ -52,6 +52,7 @@
 			render() {
 				if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'default');
 				this.chart.setOption(this.options, true)
+				this.chart.resize()
 			},
 			destroy() {
 			},
@@ -82,7 +83,6 @@
 	.g-chart
 		min-width 100px
 		min-height 200px
-
 		.noselect
 			-webkit-touch-callout: none; /* iOS Safari */
 			-webkit-user-select: none; /* Safari */
