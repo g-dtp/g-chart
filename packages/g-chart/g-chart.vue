@@ -7,7 +7,13 @@
 	import Echart from 'echarts'
 	import Emitter from '../mixins/emitter'
 
-
+	const options = {
+		text: '',
+		color: '#003173',
+		textColor: '#52B8DF',
+		maskColor: 'rgba(0,0,0,.5)',
+		zlevel: 0
+	}
 	export default {
 		name: "g-chart",
 		mixins: [Emitter],
@@ -25,6 +31,7 @@
 		data() {
 			return {
 				chart: null,
+				timer: null,
 				options: {
 					yAxis: {show: false}
 				}
@@ -49,8 +56,6 @@
 				this.preventDefault && e.preventDefault()
 			},
 			async render() {
-				await this.$nextTick()
-				if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'default');
 				this.chart.setOption(this.options, true)
 				this.resize()
 			},
@@ -61,17 +66,23 @@
 				this.chart.resize()
 			},
 			resize() {
-				if (this.chart) {
-					this.chart.resize()
-				}
+				if (this.timer) clearTimeout(this.timer)
+				this.timer = setTimeout(() => {
+					if (this.chart) this.chart.resize()
+					// this.chart.hideLoading()
+				}, 100)
 			}
 		},
 		async mounted() {
-			this.render()
+			if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'default');
+			// this.chart.showLoading('default',options)
 			window.addEventListener('resize', this.resize)
+			this.render()
 		},
 		beforeDestroy() {
 			window.removeEventListener('resize', this.resize)
+			this.chart.clear()
+			this.chart.dispose()
 			this.destroy()
 		}
 	}
