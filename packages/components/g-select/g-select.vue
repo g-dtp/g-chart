@@ -64,7 +64,6 @@
 		methods: {
 			onItem(item) {
 				this.$emit('change', item)
-				this.value = item
 				this.handleClose()
 			},
 			closeByEvent() {

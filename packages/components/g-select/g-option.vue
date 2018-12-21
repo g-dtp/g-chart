@@ -31,4 +31,6 @@
 		padding 0 10px
 		&:hover
 			background-color rgba(0, 22, 56, .8)
+		&.current
+			background-color rgba(0, 22, 56, .8)
 </style>
