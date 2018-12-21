@@ -1,10 +1,10 @@
 <template lang='pug'>
 	.g-select(@click.stop="onToggle" @mousedown.stop="stop")
 		.g-select__label
-			span.g-select__text {{value.label?value.label:placeholder}}
+			span.g-select__text {{value[labelKey]?value[labelKey]:placeholder}}
 			i.g-select__icon-triangle
 		g-select-dropdown(v-if='open')
-			g-option(v-for="item in data" :key="item.value" @click.stop.native="onItem(item)" :option="item")
+			g-option(v-for="item in data" :key="item[valueKey]" @click.stop.native="onItem(item)" :option="item")
 </template>
 
 <script>
@@ -19,6 +19,12 @@
 			event: 'change'
 		},
 		props: {
+			labelKey: {
+				default:'label'
+			},
+			valueKey: {
+				default:'value'
+			},
 			data: {
 				default: function () {
 					return []
