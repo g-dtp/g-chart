@@ -3,7 +3,7 @@
 		.g-select__label
 			span.g-select__text {{value[labelKey]?value[labelKey]:placeholder}}
 			i.g-select__icon-triangle
-		g-select-dropdown(v-if='open')
+		g-select-dropdown(v-if='open' :class="[selectClass]")
 			g-option(v-for="item in data" :key="item[valueKey]" @click.stop.native="onItem(item)" :option="item" :label="labelKey")
 </template>
 
@@ -19,6 +19,9 @@
 			event: 'change'
 		},
 		props: {
+			selectClass: {
+				default:''
+			},
 			labelKey: {
 				default:'label'
 			},
