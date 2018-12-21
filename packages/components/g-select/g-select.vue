@@ -4,7 +4,7 @@
 			span.g-select__text {{value[labelKey]?value[labelKey]:placeholder}}
 			i.g-select__icon-triangle
 		g-select-dropdown(v-if='open')
-			g-option(v-for="item in data" :key="item[valueKey]" @click.stop.native="onItem(item)" :option="item")
+			g-option(v-for="item in data" :key="item[valueKey]" @click.stop.native="onItem(item)" :option="item" :label="labelKey")
 </template>
 
 <script>
