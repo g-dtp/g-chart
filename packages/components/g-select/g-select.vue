@@ -4,7 +4,7 @@
 			span.g-select__text {{value[labelKey]?value[labelKey]:placeholder}}
 			i.g-select__icon-triangle
 		g-select-dropdown(v-if='open' :class="[selectClass]")
-			g-option(v-for="item in data" :key="item[valueKey]" @click.stop.native="onItem(item)" :option="item" :label="labelKey")
+			g-option(v-for="item in data" :key="item[valueKey]" @click.stop.native="onItem(item)" :option="item" :label="labelKey" :class="{current:item == value}")
 </template>
 
 <script>
@@ -64,6 +64,7 @@
 		methods: {
 			onItem(item) {
 				this.$emit('change', item)
+				this.value = item
 				this.handleClose()
 			},
 			closeByEvent() {
