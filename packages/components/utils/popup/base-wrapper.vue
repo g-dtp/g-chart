@@ -26,13 +26,14 @@
 		},
 		destroyed() {
 			this.$emit('destroyed')
+			PopupManager.getInstance().close(this._uid)
 		},
 		methods: {
 			createWrapper() {
-				// PopupManager.getInstance().register({
-				// 	popper: this,
-				// 	uid: this._uid
-				// })
+				PopupManager.getInstance().register({
+					popper: this,
+					uid: this._uid
+				})
 				document.body.appendChild(this.$el)
 			}
 		}
