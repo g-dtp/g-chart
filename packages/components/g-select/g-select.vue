@@ -76,9 +76,9 @@
 			},
 			goBack(){
 				this.handleClose()
+				this.$emit('go-back')
 			},
 			closeByEvent() {
-				this.$emit('go-back')
 				this.handleClose()
 			},
 			onToggle() {
