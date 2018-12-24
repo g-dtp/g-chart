@@ -72,8 +72,8 @@
 				this.handleClose()
 			},
 			goBack(){
-				this.$emit('go-back')
 				this.handleClose()
+				this.$emit('go-back')
 			},
 			closeByEvent() {
 				this.handleClose()
@@ -85,7 +85,6 @@
 				this.open = false
 			},
 			stop(){
-
 			}
 		}
 	}
