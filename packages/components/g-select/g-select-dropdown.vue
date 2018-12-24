@@ -1,5 +1,5 @@
 <template lang='pug'>
-	transition(name="fade")
+	transition(name="fade" @after-leave="doClose")
 		.g-select-dropdown(:style="styleObj" :class="[_uid, position]" @click.stop="stop" @mousedown.stop="stop")
 			.g-select-dropdown__warp.g-select-dropdown__list
 				slot
@@ -36,6 +36,9 @@
 			stop (e) {
 				e.stopPropagation()
 				e.preventDefault()
+			},
+			doClose(){
+				this.$emit('dropdown-leave')
 			}
 		}
 	}

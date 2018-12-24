@@ -6,7 +6,8 @@
 			g-popover(content="我是来自DEMO的Popover2")
 				div(slot='reference') some2
 			.g-select-row
-				g-select(@change="onChange" v-model="city" :data="list" :showBack="true")
+				g-select(@change="onChange" v-model="city" :data="list" :key="1")
+				g-select(@change="onChange" v-model="city" :data="list" :showBack="true" :key="2" @go-back="state =1" v-if="state==0")
 			span(@click="oneClick") click
 			g-dialog()
 				span xxxx
@@ -21,6 +22,7 @@
 		components: {GPopup, GPopover, GSelect, GDialog, GTable},
 		data() {
 			return {
+				state:0,
 				city: '',
 				list: [
 					{label: '杭州', value: '111101'},

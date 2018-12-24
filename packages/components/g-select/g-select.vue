@@ -3,7 +3,7 @@
 		.g-select__label
 			span.g-select__text {{value[labelKey]?value[labelKey]:placeholder}}
 			i.g-select__icon-triangle
-		g-select-dropdown(v-if='open' :class="[selectClass]")
+		g-select-dropdown(v-if='open' :class="[selectClass]" @dropdown-leave="onLeave")
 			.g-option(v-if='showBack' @click="goBack")
 				span 返回
 			g-option(v-for="item in data" :key="item[valueKey]" @click.stop.native="onItem(item)" :option="item" :label="labelKey" :class="{current:item == value}")
@@ -67,15 +67,18 @@
 			window.removeEventListener("mousedown", this.closeByEvent);
 		},
 		methods: {
+			onLeave(){
+
+			},
 			onItem(item) {
 				this.$emit('change', item)
 				this.handleClose()
 			},
 			goBack(){
 				this.handleClose()
-				this.$emit('go-back')
 			},
 			closeByEvent() {
+				this.$emit('go-back')
 				this.handleClose()
 			},
 			onToggle() {

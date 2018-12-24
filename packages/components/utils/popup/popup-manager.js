@@ -58,7 +58,7 @@ class PopupManager {
 			uid
 		} = options
 		let vm = this.pool[uid]
-		if (!vm) return
+		if (vm) return
 		this.pool[uid] = popper
 	}
 
@@ -76,7 +76,7 @@ class PopupManager {
 		if(vm.$el.parentElement){
 			vm.$el.parentElement.removeChild(vm.$el)
 		}
-		vm.$destroy()
+		// vm.$destroy()
 		this.pool[uid] = null
 		delete this.pool[uid];
 	}

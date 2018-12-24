@@ -27,6 +27,7 @@
 		destroyed() {
 			this.$emit('destroyed')
 			PopupManager.getInstance().close(this._uid)
+
 		},
 		methods: {
 			createWrapper() {
