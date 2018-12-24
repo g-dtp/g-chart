@@ -4,6 +4,8 @@
 			span.g-select__text {{value[labelKey]?value[labelKey]:placeholder}}
 			i.g-select__icon-triangle
 		g-select-dropdown(v-if='open' :class="[selectClass]")
+			.g-option(v-if='showBack' @click="goBack")
+				span 返回
 			g-option(v-for="item in data" :key="item[valueKey]" @click.stop.native="onItem(item)" :option="item" :label="labelKey" :class="{current:item == value}")
 </template>
 
@@ -21,6 +23,9 @@
 		props: {
 			selectClass: {
 				default:''
+			},
+			showBack: {
+				default:false
 			},
 			labelKey: {
 				default:'label'
@@ -64,6 +69,10 @@
 		methods: {
 			onItem(item) {
 				this.$emit('change', item)
+				this.handleClose()
+			},
+			goBack(){
+				this.$emit('go-back')
 				this.handleClose()
 			},
 			closeByEvent() {

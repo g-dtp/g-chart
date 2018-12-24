@@ -6,7 +6,7 @@
 			g-popover(content="我是来自DEMO的Popover2")
 				div(slot='reference') some2
 			.g-select-row
-				g-select(@change="onChange" v-model="city" :data="list")
+				g-select(@change="onChange" v-model="city" :data="list" :showBack="true")
 			span(@click="oneClick") click
 			g-dialog()
 				span xxxx

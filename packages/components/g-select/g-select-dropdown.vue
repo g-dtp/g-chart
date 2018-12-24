@@ -67,4 +67,14 @@
 		border-radius 3px
 		margin-top 5px
 		overflow-y auto
+		>>>.g-option
+			font-size 14px
+			line-height 30px
+			cursor pointer
+			height 30px
+			padding 0 10px
+			&:hover
+				background-color rgba(0, 22, 56, .8)
+			&.current
+				background-color rgba(0, 22, 56, .8)
 </style>
