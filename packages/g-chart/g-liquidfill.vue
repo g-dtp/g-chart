@@ -4,6 +4,36 @@
 		extends: GBase,
 		name: "g-liquidfill",
 		props: ['data', 'color', 'outline', 'radius', 'center', 'text'],
+		props:{
+			data:{
+				default:function () {
+					return []
+				}
+			},
+			color:{
+				default:function () {
+					return []
+				}
+			},
+			outline: {
+				default:function () {
+					return {
+						show: false,
+					}
+				}
+			},
+			center:{
+				default:function () {
+					return []
+				}
+			},
+			radius: {
+				default:'100%'
+			},
+			text: {
+				default:''
+			}
+		},
 		data() {
 			return {
 				options: {
@@ -12,9 +42,6 @@
 					// 水球颜色
 					color: ['rgba(13, 107, 208, 1)'],
 					// outline  外边
-					outline: {
-						show: false,
-					},
 					label: {
 						normal: {
 							formatter:(prarms)=>{
