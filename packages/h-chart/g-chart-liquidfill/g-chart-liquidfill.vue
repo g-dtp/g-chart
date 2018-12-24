@@ -13,7 +13,10 @@
 		components: {GChart, GLiquidfill},
 		props: {
 			percent:{
-				default: 0.5
+				default: 0.4
+			},
+			text: {
+				default: ''
 			}
 		},
 		data(){
