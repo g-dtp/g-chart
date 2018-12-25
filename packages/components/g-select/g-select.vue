@@ -109,12 +109,13 @@
 			display flex
 			align-items center
 		&__text
+			flex auto
 			display inline-block
 			color #52B8DF
 			font-size 14px
 			margin-right 10px
 			min-width 70px
 		.gs-icon-md-arrow-dropdown
-			font-size 20px
+			flex none
 			color #52B8DF
 </style>
