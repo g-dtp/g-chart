@@ -14,6 +14,9 @@ import GSelect from './components/g-select'
 import GDialog from './components/g-dialog'
 import GTable from './components/g-table'
 
+
+import './components/index'
+
 const components = Object.values(GChart)
 const install = function (Vue) {
 	if (install.installed) return
