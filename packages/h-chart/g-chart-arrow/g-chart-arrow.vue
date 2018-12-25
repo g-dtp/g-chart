@@ -25,7 +25,7 @@
 				default: .3
 			},
 			maxR: {
-				default: 70
+				default: 75
 			},
 			minR: {
 				default: 55
