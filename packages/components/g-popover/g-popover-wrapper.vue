@@ -17,19 +17,11 @@
 				default: 'My Popover'
 			}
 		},
-		inject: ['popover'],
-		computed: {
-			styleObj() {
-				let rect = this.popover.$el.getBoundingClientRect()
-				let h = rect.x < 100 ? 'left' : 'right'
-				let v = rect.y < 100 ? 'bottom' : 'top'
-				return {
-					top: rect.bottom + 'px',
-					left: rect.left + 'px',
-					bottom: 'auto'
-				}
+		data(){
+			return {
 			}
 		},
+		inject: ['popover'],
 		methods: {
 			top(rect) {
 
