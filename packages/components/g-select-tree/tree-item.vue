@@ -1,6 +1,6 @@
 <template lang='pug'>
 	.g-select-tree__tree-item(@click.stop="onItem(option)")
-		.g-select-tree__tree-item__label
+		.g-select-tree__tree-item__label(:class="{'g-select-tree__tree-item__current': current}")
 			slot(name="label")
 				span {{option[label]}}
 		transition(name="g-list")
@@ -41,9 +41,17 @@
 				open:false
 			}
 		},
+		computed:{
+			current(){
+				return this.reference.value === this.option
+			}
+		},
 		methods:{
 			onItem(){
 				this.open = !this.open
+				if(!this.option[this.children]){
+					this.reference.onClickOption(this.option)
+				}
 			}
 		}
 	}

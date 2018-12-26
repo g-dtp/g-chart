@@ -52,8 +52,7 @@
 		},
 		data() {
 			return {
-				open: this.show,
-				openOption: ''
+				open: this.show
 			}
 		},
 		methods:{
@@ -65,8 +64,7 @@
 				this.open = false
 			},
 			onClickOption(option){
-				this.openOption = option
-				console.log(this.openOption)
+				this.$emit('change', option)
 			},
 			stop(){}
 		}
