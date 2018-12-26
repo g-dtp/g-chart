@@ -3,9 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
-import 'packages/components/theme/index.styl'
-
+import './theme.styl'
 import demoBlock from './components/demo-block.vue'
 import GChart from '../packages/index'
 import {Resize, ChartHelper} from '../packages/index'
