@@ -10,6 +10,7 @@
 			gap: Number,
 			data: [String, Array, Object, Number]
 		},
+		inject: ['reference'],
 		data() {
 			return {
 				show: false,
@@ -42,12 +43,12 @@
 			},
 			setPosition(){
 				let {classname ,top, left} = this.makePosition()
-				this.styleObj = {top, left}
+				this.styleObj = {top, left, position:'fixed'}
 				this.classname = classname
 			},
 			makePosition() {
 				let popover = this.$el.getBoundingClientRect()
-				let rect = this.select.$el.getBoundingClientRect()
+				let rect = this.reference.$el.getBoundingClientRect()
 				let view = document.documentElement.getBoundingClientRect()
 				let h = 'left'
 				let v = 'bottom'

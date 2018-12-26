@@ -28,7 +28,7 @@
 		},
 		provide() {
 			return {
-				'popover': this
+				'reference': this
 			};
 		},
 		data(){
@@ -60,9 +60,3 @@
 		}
 	}
 </script>
-
-<style lang="stylus" scoped>
-
-	.g-popover
-		display inline-block
-</style>

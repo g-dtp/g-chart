@@ -76,8 +76,8 @@
 					}else if(dy > maxH - el.clientHeight){
 						dy =  maxH - el.clientHeight
 					}
-					el.style.left = dx/100 + 'rem';
-					el.style.top = dy/100 + 'rem';
+					el.style.left = dx/100 + 'px';
+					el.style.top = dy/100 + 'px';
 				}.bind(this)
 				document.onmouseup = function () {
 					this.active = false

@@ -53,7 +53,7 @@
 		},
 		provide() {
 			return {
-				'select': this
+				'reference': this
 			};
 		},
 		data() {
@@ -94,28 +94,3 @@
 	}
 </script>
 
-<style lang="stylus" scoped>
-	.g-select
-		display inline-block
-		position relative
-		overflow hidden
-		background-color #003173
-		cursor pointer
-		padding 0 10px
-		&__label
-			font-size 0
-			height 35px
-			line-height 35px
-			display flex
-			align-items center
-		&__text
-			flex auto
-			display inline-block
-			color #52B8DF
-			font-size 14px
-			margin-right 10px
-			min-width 70px
-		.gs-icon-md-arrow-dropdown
-			flex none
-			color #52B8DF
-</style>
