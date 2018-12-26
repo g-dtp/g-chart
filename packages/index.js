@@ -11,6 +11,8 @@ import GFloatBall from './components/g-float-ball'
 import GPopup from './components/g-popup'
 import GPopover from './components/g-popover'
 import GSelect from './components/g-select'
+import GSelectTree from './components/g-select-tree'
+
 import GDialog from './components/g-dialog'
 import GTable from './components/g-table'
 
@@ -41,6 +43,7 @@ export {
 	GPopup,
 	GPopover,
 	GSelect,
+	GSelectTree,
 	GDialog,
 	GTable
 }

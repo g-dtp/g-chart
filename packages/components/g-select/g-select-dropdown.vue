@@ -13,9 +13,6 @@
 		name: "select-dropdown",
 		components: {GOption},
 		extends: BaseWrapper,
-		props: {
-			position: String
-		},
 		data() {
 			return {
 			}

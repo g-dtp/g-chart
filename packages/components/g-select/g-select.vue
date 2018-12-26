@@ -68,9 +68,7 @@
 			window.removeEventListener("mousedown", this.closeByEvent);
 		},
 		methods: {
-			onLeave(){
-
-			},
+			onLeave(){},
 			onItem(item) {
 				this.$emit('change', item)
 				this.handleClose()
