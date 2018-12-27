@@ -35,8 +35,17 @@
 				}
 			}
 		},
+		watch:{
+			text:'updateOptions',
+			right:'updateOptions',
+			left:'updateOptions',
+			top:'updateOptions',
+			bottom:'updateOptions',
+			textStyle:'updateOptions',
+		},
 		created(){
 			this.chartsOptions.title = {...this.options}
-		}
+		},
+
 	}
 </script>

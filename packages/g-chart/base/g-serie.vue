@@ -1,39 +1,31 @@
 <script>
-	import Emitter from '../../mixins/emitter'
 	import resize from '../../utils/resize'
-
+	const scaleProps = []
 	export default {
-		name: "g-base",
-		mixins: [Emitter],
-		props: {
-			scaleProps: {
-				default: function () {
-					return ['left', 'right', 'top', 'bottom', 'width', 'radius']
-				}
-			}
-		},
+		name: "base-serie",
 		inject: ['$chart', 'chartsOptions'],
-		created() {
-			this.scaleValues()
+		created(){
+			if(!this.chartsOptions.series) this.chartsOptions.series = []
+			this.chartsOptions.series.push(this.serie)
 		},
 		methods:{
 			scaleValues(){
-				this.scaleProps.forEach(key => {
+				scaleProps.forEach(key => {
 					if (typeof (this.options[key]) == 'Number')
 						this.options[key] = this.options[key] * resize.scale
 				})
 			},
 			updateOptions(){
 				let newOption = {
-					...this.options,
+					...this.serie,
 					...this.$props
 				}
-				this.options = {...newOption}
+				this.serie = {...newOption}
 				this.scaleValues()
-				this.chartsOptions.title = {...this.options}
 				this.$chart.render()
 			}
 		},
+
 		render() {}
 	}
 </script>

@@ -1,19 +1,11 @@
 <template lang='pug'>
 	.demo
-		.box-1
-			line-area.chart-item-1
-			line-area.chart-item-2
-		g-chart.chart-item(:key="1" v-if="showPopup1")
-			g-grid(:left="20" :right="20" :top="60")
-			g-legend(:data="legend")
-			g-title(text="例子2")
-			g-xAxis(:data="xAxisData" :boundaryGap="false")
-			g-yAxis
-			g-area(:data="area" :smooth="true" :name="'测试3'" :areaStyle="areaStyle")
-		g-chart.chart-item(:key="2")
+		button(@click="onUpdate") update
+		button(@click="onToggle") toggle
+		g-chart.chart-item(:key="2" v-if="show")
 			g-grid(:left="20" :right="0" :top="60")
-			g-legend(:data="legend")
-			g-title(text="例子3")
+			g-legend(:data="legend" left="center")
+			g-title(:text="text1" :left="textLeft")
 			g-xAxis(:data="xAxisData")
 			g-yAxis
 			g-bar(:data="bar0" :name="'测试1'" :barMaxWidth="30" :barWidth="'20%'" :itemStyle="itemStyle")
@@ -46,7 +38,7 @@
 
 	export default {
 		name: "demo",
-		components: {GSelect, GChartArrow, GChartPercent, GChartLiquidfill,LineArea},
+		components: {GChartArrow, GChartPercent, GChartLiquidfill,LineArea},
 		data() {
 			return {
 				xAxisData: [],
@@ -62,6 +54,9 @@
 				areaStyle: {},
 				pieLegend: [],
 				pie: [],
+				show:true,
+				text1:'demo',
+				textLeft: 0
 			}
 		},
 		created() {
@@ -87,17 +82,13 @@
 			}
 		},
 		methods: {
-			onChange (item) {
-				console.log(/xxxx/, item)
+			onUpdate(){
+				this.bar1[0] = null
+				this.text1 = 'demoxx'
+				this.textLeft ++
 			},
-			oneClick() {
-				this.showPopup1 = !this.showPopup1
-			},
-			onCommand(item) {
-				console.log(item)
-				if(item.cmd === 'A'){
-					this.showPopup1 = true
-				}
+			onToggle(){
+				this.show= !this.show
 			},
 			makeColors(color1, color2) {
 				return new echarts.graphic.LinearGradient(

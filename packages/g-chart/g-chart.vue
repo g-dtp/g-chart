@@ -7,13 +7,6 @@
 	import Echart from 'echarts'
 	import Emitter from '../mixins/emitter'
 
-	const options = {
-		text: '',
-		color: '#003173',
-		textColor: '#52B8DF',
-		maskColor: 'rgba(0,0,0,.5)',
-		zlevel: 0
-	}
 	export default {
 		name: "g-chart",
 		mixins: [Emitter],
@@ -31,7 +24,6 @@
 		data() {
 			return {
 				chart: null,
-				timer: null,
 				options: {
 					yAxis: {show: false}
 				}
@@ -57,33 +49,26 @@
 			},
 			async render() {
 				this.chart.setOption(this.options, true)
-				this.resize()
-			},
-			destroy() {
+				this.resizeChart()
 			},
 			updateOptions() {
 				this.chart.setOption(this.options, true)
-				this.chart.resize()
+				this.resizeChart()
 			},
-			resize() {
-				if (this.timer) clearTimeout(this.timer)
-				this.timer = setTimeout(() => {
-					if (this.chart) this.chart.resize()
-					// this.chart.hideLoading()
-				}, 100)
+			async resizeChart() {
+				await this.$nextTick()
+				this.chart.resize()
 			}
 		},
 		async mounted() {
 			if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'default');
-			// this.chart.showLoading('default',options)
-			window.addEventListener('resize', this.resize)
+			window.addEventListener('resize', this.resizeChart.bind(this))
 			this.render()
 		},
-		beforeDestroy() {
-			window.removeEventListener('resize', this.resize)
+		destroyed() {
+			window.removeEventListener('resize', this.resizeChart)
 			this.chart.clear()
 			this.chart.dispose()
-			this.destroy()
 		}
 	}
 </script>
