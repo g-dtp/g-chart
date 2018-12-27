@@ -5,6 +5,7 @@
 		name: "base-serie",
 		inject: ['$chart', 'chartsOptions'],
 		created(){
+			this.scaleValues()
 			if(!this.chartsOptions.series) this.chartsOptions.series = []
 			this.chartsOptions.series.push(this.serie)
 		},

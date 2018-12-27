@@ -1,5 +1,6 @@
 <script>
 	import GSerie from './base/g-serie'
+	import {mapWatchs} from './base/utils'
 	export default {
 		mixins:[GSerie],
 		name: "g-bar",
@@ -13,26 +14,7 @@
 			}
 		},
 		watch:{
-			'data'(value){
-				this.serie.data = value
-				this.$chart.resizeChart()
-			},
-			'name'(value){
-				this.serie.name = value
-				this.$chart.resizeChart()
-			},
-			'barMaxWidth'(value){
-				this.serie.barMaxWidth = value
-				this.$chart.resizeChart()
-			},
-			'barWidth'(value){
-				this.serie.barWidth = value
-				this.$chart.resizeChart()
-			},
-			'itemStyle'(value){
-				this.serie.itemStyle = value
-				this.$chart.resizeChart()
-			},
+			...mapWatchs('updateOptions', this.$props)
 		}
 	}
 </script>

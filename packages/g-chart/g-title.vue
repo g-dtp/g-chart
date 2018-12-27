@@ -1,5 +1,6 @@
 <script>
 	import GBase from './base/g-base'
+	import {mapWatchs} from './base/utils'
 	export default {
 		extends: GBase,
 		name: "g-title",
@@ -35,17 +36,10 @@
 				}
 			}
 		},
-		watch:{
-			text:'updateOptions',
-			right:'updateOptions',
-			left:'updateOptions',
-			top:'updateOptions',
-			bottom:'updateOptions',
-			textStyle:'updateOptions',
-		},
 		created(){
 			this.chartsOptions.title = {...this.options}
 		},
+		watch:mapWatchs('updateOptions', this)
 
 	}
 </script>

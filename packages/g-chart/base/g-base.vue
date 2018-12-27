@@ -1,7 +1,6 @@
 <script>
 	import Emitter from '../../mixins/emitter'
 	import resize from '../../utils/resize'
-
 	export default {
 		name: "g-base",
 		mixins: [Emitter],
