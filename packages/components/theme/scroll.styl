@@ -1,5 +1,6 @@
 @import "common/var.styl"
 
+
 html,body,ul,div
 	-ms-scrollbar-darkshadow-color #0a2457
 	-ms-scrollbar-highlight-color  #0a2457
@@ -8,13 +9,13 @@ html,body,ul,div
 	-ms-scrollbar-base-color #000000
 	-ms-scrollbar-track-color #000000
 	&::-webkit-scrollbar
-		width 8px
-		height 8px
-		background-color #b5b1b1
+		width $scrollbar-size
+		height $scrollbar-size
 	&::-webkit-scrollbar-track
-		-webkit-box-shadow inset 0 0 6px rgba(0, 0, 0, 0.3)
-		background-color $background-color
+		background $scrollbar-track-background
 	&::-webkit-scrollbar-thumb
-		border-radius 8px
-		-webkit-box-shadow inset 0 0 6px rgba(0, 0, 0, .3)
-		background-color #112757
+		border-radius $scrollbar-thumb-border-radius
+		background-color $scrollbar-thumb-background-color
+	&::-webkit-scrollbar-corner {
+		background-color: transparent;
+	}
