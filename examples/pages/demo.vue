@@ -3,12 +3,6 @@
 		.box-1
 			line-area.chart-item-1
 			line-area.chart-item-2
-		div.chart-item
-			g-popover(content="我是来自DEMO的Popover")
-				button(slot='reference') some
-			.g-select-row
-				g-select(@change="onChange")
-			span(@click="oneClick") click
 		g-chart.chart-item(:key="1" v-if="showPopup1")
 			g-grid(:left="20" :right="20" :top="60")
 			g-legend(:data="legend")
@@ -40,20 +34,19 @@
 		g-chart-percent.chart-item
 		g-chart-arrow.chart-item
 		g-chart-liquidfill.chart-item
-		g-float-ball(:data="menu" @command="onCommand")
 
 </template>
 
 <script>
 	import echarts from 'echarts'
 
-	import {GChartPercent, GChartArrow, GChartLiquidfill, GFloatBall, GPopup, GPopover, GSelect} from 'packages/index'
+	import {GChartPercent, GChartArrow, GChartLiquidfill} from 'packages/index'
 
 	import LineArea from './demo/line-area'
 
 	export default {
 		name: "demo",
-		components: {GSelect, GChartArrow, GChartPercent, GChartLiquidfill, GFloatBall, GPopup, GPopover,LineArea},
+		components: {GSelect, GChartArrow, GChartPercent, GChartLiquidfill,LineArea},
 		data() {
 			return {
 				xAxisData: [],
@@ -69,30 +62,6 @@
 				areaStyle: {},
 				pieLegend: [],
 				pie: [],
-				menu: [
-					{
-					icon: '',
-					label: '返回',
-					cmd: 'A'
-					},{
-						icon: '',
-						label: '返回',
-						cmd: 'M'
-					},{
-						icon: '',
-						label: '返回',
-						cmd: 'M'
-					},{
-					icon: '',
-					label: '返回',
-					cmd: 'M'
-					},{
-						icon: '',
-						label: '返回',
-						cmd: 'M'
-					}
-				],
-				showPopup1: false
 			}
 		},
 		created() {
