@@ -1,6 +1,7 @@
 <script>
 	import GSerie from './base/g-serie'
-	import {mapWatchs} from './base/utils'
+	import {mapWatches} from './base/utils'
+
 	export default {
 		extends: GSerie,
 		name: "g-line",
@@ -17,6 +18,11 @@
 			if (!this.chartsOptions.series) this.chartsOptions.series = []
 			this.chartsOptions.series.push(this.options)
 		},
-		watch:mapWatchs('updateOptions', this.$props)
+		watch: {
+			...mapWatches('updateOptions', [
+				'data',
+				'name'
+			])
+		}
 	}
 </script>

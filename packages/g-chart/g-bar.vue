@@ -1,6 +1,6 @@
 <script>
 	import GSerie from './base/g-serie'
-	import {mapWatchs} from './base/utils'
+	import {mapWatches} from './base/utils'
 	export default {
 		mixins:[GSerie],
 		name: "g-bar",
@@ -14,7 +14,9 @@
 			}
 		},
 		watch:{
-			...mapWatchs('updateOptions', this.$props)
+			...mapWatches('updateOptions',[
+				'data', 'name', 'barMaxWidth', 'barWidth', 'itemStyle'
+			])
 		}
 	}
 </script>

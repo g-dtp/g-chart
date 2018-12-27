@@ -1,7 +1,7 @@
 <script>
 	import GBase from './base/g-base'
-	import {mapWatchs} from './base/utils'
-	export default {
+	import {mapWatches} from './base/utils'
+	 const Base = {
 		extends: GBase,
 		name: "g-title",
 		props: {
@@ -39,7 +39,18 @@
 		created(){
 			this.chartsOptions.title = {...this.options}
 		},
-		watch:mapWatchs('updateOptions', this)
+		watch:{
+			...mapWatches('updateOptions', [
+				'text',
+				'top',
+				'left',
+				'right',
+				'bottom',
+				'textStyle'
+			])
+		}
 
 	}
+	export default Base
+	console.log(/xxxxx/, Base.props)
 </script>

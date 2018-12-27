@@ -1,5 +1,4 @@
-export function mapWatchs(fName,props) {
-	console.log(/map/,props)
+export const mapWatches = (fName,props) => {
 	if(!props) return
 	let map = {}
 	let list
@@ -11,6 +10,5 @@ export function mapWatchs(fName,props) {
 	list.forEach(item => {
 		map[item] = fName
 	})
-
 	return map
 }

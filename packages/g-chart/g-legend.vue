@@ -1,5 +1,6 @@
 <script>
 	import GBase from './base/g-base'
+	import {mapWatches} from './base/utils'
 	export default {
 		extends: GBase,
 		name: "g-legend",
@@ -30,6 +31,17 @@
 			height: {
 				default: 'auto'
 			}
+		},
+		watch:{
+			...mapWatches('updateOptions',[
+				'left',
+				'top',
+				'right',
+				'bottom',
+				'orient',
+				'width',
+				'height'
+			])
 		},
 		data(){
 			return {
