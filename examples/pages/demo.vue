@@ -24,6 +24,10 @@
 			g-legend(:data="pieData.legend" orient="vertical" right="20")
 			g-title( left="center" top='middle' text="长一点的例\n子5")
 			g-pie(:data="pieData.data" :center="['25%', '50%']")
+		g-chart.chart-item(:key="7")
+			g-title( left="center" top='middle' text="长一")
+			g-legend(:data="['例子0','例子1']" orient="vertical" right="20")
+			g-pie(:data="[{name:'xxx',value:''}]" :center="['25%', '50%']")
 		g-chart-percent.chart-item
 		g-chart-arrow.chart-item
 		g-chart-liquidfill.chart-item
@@ -102,7 +106,7 @@
 				let legend = []
 				let name
 				for (let i = 0; i < 6; i++) {
-					name = `例子${Math.random()}`
+					name = `例子${i}`
 					legend.push(name)
 					list.push({
 						name: name,
