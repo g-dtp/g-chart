@@ -24,6 +24,7 @@
 		data() {
 			return {
 				chart: null,
+				timer: null,
 				options: {
 					yAxis: {show: false}
 				}
@@ -56,8 +57,12 @@
 				this.resizeChart()
 			},
 			async resizeChart() {
-				await this.$nextTick()
-				this.chart.resize()
+				if(this.timer) clearTimeout(this.timer)
+				this.timer = setTimeout(() => {
+					console.log(/chart resize/, this.options.title && this.options.title.text)
+					this.chart.resize()
+				},0)
+
 			}
 		},
 		async mounted() {

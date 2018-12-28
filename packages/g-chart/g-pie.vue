@@ -54,12 +54,12 @@
 		},
 		watch:{
 			...mapWatches('updateOptions',[
-				'data','center', 'startAngle','endAngle', 'radius', 'label', 'labelLine', 'itemStyle'
+				'data', 'center', 'startAngle','endAngle', 'radius', 'label', 'labelLine', 'itemStyle'
 			])
 		},
 		data() {
 			return {
-				options: {
+				serie: {
 					type: 'pie',
 					...this.$props,
 				}

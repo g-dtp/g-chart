@@ -34,6 +34,7 @@
 		},
 		watch:{
 			...mapWatches('updateOptions',[
+				'data',
 				'left',
 				'top',
 				'right',

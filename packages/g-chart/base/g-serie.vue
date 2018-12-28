@@ -12,21 +12,24 @@
 		methods:{
 			scaleValues(){
 				scaleProps.forEach(key => {
-					if (typeof (this.options[key]) == 'Number')
-						this.options[key] = this.options[key] * resize.scale
+					if (typeof (this.serie[key]) == 'Number')
+						this.serie[key] = this.serie[key] * resize.scale
 				})
 			},
 			updateOptions(){
+				let index = this.chartsOptions.series.findIndex((item) => {
+					return this.serie = item
+				})
 				let newOption = {
 					...this.serie,
 					...this.$props
 				}
 				this.serie = {...newOption}
+				this.chartsOptions.series[index] = this.serie
 				this.scaleValues()
 				this.$chart.render()
 			}
 		},
-
 		render() {}
 	}
 </script>

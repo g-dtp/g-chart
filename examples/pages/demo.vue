@@ -2,6 +2,7 @@
 	.demo
 		button(@click="onUpdate") update
 		button(@click="onToggle") toggle
+		button(@click="makeData") make
 		g-chart.chart-item(:key="2" v-if="show")
 			g-grid(:left="20" :right="0" :top="60")
 			g-legend(:data="legend" left="center")
@@ -20,9 +21,9 @@
 			g-line(:data="list1" :smooth="smooth" :name="'逃逸BUG数量'")
 			g-effectScatter(:data="[null, 100]")
 		g-chart.chart-item(:key="5")
-			g-legend(:data="pieLegend" orient="vertical" right="20")
+			g-legend(:data="pieData.legend" orient="vertical" right="20")
 			g-title( left="center" top='middle' text="长一点的例\n子5")
-			g-pie(:data="pie" :center="['25%', '50%']")
+			g-pie(:data="pieData.data" :center="['25%', '50%']")
 		g-chart-percent.chart-item
 		g-chart-arrow.chart-item
 		g-chart-liquidfill.chart-item
@@ -53,7 +54,7 @@
 				itemStyle: {},
 				areaStyle: {},
 				pieLegend: [],
-				pie: [],
+				pieData: {},
 				show:true,
 				text1:'demo',
 				textLeft: 0
@@ -73,19 +74,16 @@
 			this.itemStyle.color = this.makeColors('#9CCAF0', 'rgba(156,202,240,0.30)')
 			this.areaStyle.color = this.makeColors('rgba(15,93,144,0.90)', 'rgba(15,93,144,0.30)')
 
-			for (let i = 0; i < 6; i++) {
-				this.pieLegend.push(`例子${i + 1}`)
-				this.pie.push({
-					name: `例子${i + 1}`,
-					value: Math.random() * 50 + 10,
-				})
-			}
+
 		},
 		methods: {
 			onUpdate(){
 				this.bar1[0] = null
 				this.text1 = 'demoxx'
 				this.textLeft ++
+			},
+			makeData(){
+				this.pieData = this.makeSome()
 			},
 			onToggle(){
 				this.show= !this.show
@@ -98,6 +96,21 @@
 						{offset: 1, color: color2}
 					]
 				)
+			},
+			makeSome(){
+				let list = []
+				let legend = []
+				for (let i = 0; i < 6; i++) {
+					legend.push(`例子${i + 1}`)
+					list.push({
+						name: `例子${i + 1}`,
+						value: Math.random() * 50 + 10,
+					})
+				}
+				return {
+					data:list,
+					legend:legend
+				}
 			}
 		}
 	}
