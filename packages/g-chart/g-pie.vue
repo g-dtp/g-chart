@@ -1,8 +1,8 @@
 <script>
-	import GBase from './base/g-base'
-
+	import GSerie from './base/g-serie'
+	import {mapWatches} from './base/utils'
 	export default {
-		extends: GBase,
+		extends: GSerie,
 		name: "g-pie",
 		props: {
 			data: {
@@ -52,6 +52,11 @@
 				}
 			}
 		},
+		watch:{
+			...mapWatches('updateOptions',[
+				'data','center', 'startAngle','endAngle', 'radius', 'label', 'labelLine', 'itemStyle'
+			])
+		},
 		data() {
 			return {
 				options: {
@@ -59,10 +64,6 @@
 					...this.$props,
 				}
 			}
-		},
-		created() {
-			if (!this.chartsOptions.series) this.chartsOptions.series = []
-			this.chartsOptions.series.push(this.options)
-		},
+		}
 	}
 </script>

@@ -1,5 +1,6 @@
 <script>
 	import GBase from './base/g-base'
+	import {mapWatches} from './base/utils'
 	export default {
 		extends: GBase,
 		name: "g-tooltip",
@@ -22,6 +23,12 @@
 		},
 		created(){
 			this.chartsOptions.tooltip = {...this.options}
+		},
+		watch:{
+			...mapWatches('updateOptions', [
+				'trigger',
+				'axisPointer'
+			])
 		}
 	}
 </script>

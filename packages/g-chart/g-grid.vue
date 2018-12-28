@@ -1,6 +1,6 @@
 <script>
 	import GBase from './base/g-base'
-
+	import {mapWatches} from './base/utils'
 	export default {
 		extends: GBase,
 		name: "g-grid",
@@ -25,6 +25,14 @@
 				type: Number,
 				default: 40
 			}
+		},
+		watch:{
+			...mapWatches('updateOptions', [
+				'top',
+				'left',
+				'right',
+				'bottom'
+			])
 		},
 		data() {
 			return {
