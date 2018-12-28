@@ -26,6 +26,9 @@
 				default: 40
 			}
 		},
+		beforeCreate() {
+			this._type = 'grid'
+		},
 		watch:{
 			...mapWatches('updateOptions', [
 				'top',
@@ -40,9 +43,6 @@
 					...this.$props
 				}
 			}
-		},
-		created() {
-			this.chartsOptions.grid = {...this.options}
 		}
 	}
 </script>

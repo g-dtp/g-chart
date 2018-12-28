@@ -1,13 +1,14 @@
 <script>
 	import GBase from './base/g-base'
 	import {mapWatches} from './base/utils'
-	 const Base = {
+
+	const Base = {
 		extends: GBase,
 		name: "g-title",
 		props: {
 			text: {
 				type: String,
-				default: '图表标题'
+				default: ''
 			},
 			left: {
 				default: 'auto'
@@ -29,17 +30,17 @@
 				}
 			}
 		},
-		data(){
+		beforeCreate() {
+			this._type = 'title'
+		},
+		data() {
 			return {
 				options: {
 					...this.$props
 				}
 			}
 		},
-		created(){
-			this.chartsOptions.title = {...this.options}
-		},
-		watch:{
+		watch: {
 			...mapWatches('updateOptions', [
 				'text',
 				'top',

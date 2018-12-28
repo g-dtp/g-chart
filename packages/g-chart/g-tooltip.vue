@@ -21,8 +21,8 @@
 				options: {}
 			}
 		},
-		created(){
-			this.chartsOptions.tooltip = {...this.options}
+		beforeCreate() {
+			this._type = 'tooltip'
 		},
 		watch:{
 			...mapWatches('updateOptions', [

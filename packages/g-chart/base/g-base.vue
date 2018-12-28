@@ -7,7 +7,13 @@
 		mixins: [Emitter],
 		inject: ['$chart', 'chartsOptions'],
 		created() {
+			try {
+				if (this._type) throw "必须配置指定的echart option 字段"
+			} catch (error) {
+				console.error(error)
+			}
 			this.scaleValues()
+			this.chartsOptions[this._type] = {...this.options}
 		},
 		methods:{
 			scaleValues(){
@@ -23,7 +29,7 @@
 				}
 				this.options = {...newOption}
 				this.scaleValues()
-				this.chartsOptions.title = {...this.options}
+				this.chartsOptions[this._type] = {...this.options}
 				this.$chart.render()
 			}
 		},

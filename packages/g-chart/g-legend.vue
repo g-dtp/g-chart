@@ -51,8 +51,8 @@
 				}
 			}
 		},
-		created(){
-			this.chartsOptions.legend = {...this.options}
-		},
+		beforeCreate() {
+			this._type = 'legend'
+		}
 	}
 </script>

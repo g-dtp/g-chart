@@ -49,8 +49,8 @@
 				}
 			}
 		},
-		created(){
-			this.chartsOptions.yAxis = {...this.options}
+		beforeCreate() {
+			this._type = 'yAxis'
 		}
 	}
 </script>

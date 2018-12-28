@@ -47,9 +47,11 @@
 				}
 			}
 		},
+		beforeCreate() {
+			this._type = 'xAxis'
+		},
 		created() {
 			if(this.showMarkLine) this.markLine()
-			this.chartsOptions.xAxis = {...this.options}
 		},
 		methods: {
 			markLine() {}
