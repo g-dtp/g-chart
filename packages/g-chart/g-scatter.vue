@@ -1,8 +1,7 @@
 <script>
-	import GBase from './base/g-base'
-
+	import GSerie from './base/g-serie'
 	export default {
-		extends: GBase,
+		extends: GSerie,
 		name: "g-scatter",
 		props: {
 			coordinateSystem: {
@@ -21,10 +20,6 @@
 					type: 'scatter',
 				}
 			}
-		},
-		created() {
-			if (!this.chartsOptions.series) this.chartsOptions.series = []
-			this.chartsOptions.series.push(this.options)
 		}
 	}
 </script>

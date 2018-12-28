@@ -17,8 +17,8 @@
 				}
 			}
 		},
-		created(){
-			this.chartsOptions.graphic = this.options
+		beforeCreate() {
+			this._type = 'graphic'
 		}
 	}
 </script>

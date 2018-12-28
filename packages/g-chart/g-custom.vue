@@ -1,8 +1,8 @@
 <script>
-	import GBase from './base/g-base'
+	import GSerie from './base/g-serie'
 	import echarts from 'echarts'
 	export default {
-		extends: GBase,
+		extends: GSerie,
 		name: "g-custom",
 		props: {
 			data:{
@@ -27,10 +27,6 @@
 					...this.$props,
 				}
 			}
-		},
-		created(){
-			if(!this.chartsOptions.series) this.chartsOptions.series = []
-			this.chartsOptions.series.push(this.options)
-		},
+		}
 	}
 </script>
