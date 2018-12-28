@@ -13,7 +13,7 @@
 		},
 		data(){
 			return {
-				options:{
+				serie:{
 					type: 'custom',
 					renderItem:function (params, api) {
 						console.log(echarts.graphic)

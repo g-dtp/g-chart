@@ -33,7 +33,7 @@
 		},
 		data() {
 			return {
-				options: {
+				serie: {
 					type: 'effectScatter',
 					...this.$props,
 				}

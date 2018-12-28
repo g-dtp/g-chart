@@ -36,7 +36,7 @@
 		},
 		data() {
 			return {
-				options: {
+				serie: {
 					type: 'liquidFill',
 					...this.$props,
 					// 水球颜色

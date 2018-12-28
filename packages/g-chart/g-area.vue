@@ -1,8 +1,8 @@
 <script>
-	import GBase from './base/g-base'
+	import GSerie from './base/g-serie'
 
 	export default {
-		extends: GBase,
+		extends: GSerie,
 		name: "g-area",
 		props: {
 			data: {
@@ -26,15 +26,11 @@
 		},
 		data() {
 			return {
-				options: {
+				serie: {
 					type: 'line',
 					...this.$props
 				}
 			}
-		},
-		created() {
-			if (!this.chartsOptions.series) this.chartsOptions.series = []
-			this.chartsOptions.series.push(this.options)
 		}
 	}
 </script>

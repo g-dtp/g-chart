@@ -15,7 +15,7 @@
 		},
 		data() {
 			return {
-				options: {
+				serie: {
 					...this.$props,
 					type: 'scatter',
 				}

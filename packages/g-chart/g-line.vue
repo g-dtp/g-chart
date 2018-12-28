@@ -8,15 +8,11 @@
 		props: ['data', 'name', 'smooth', 'showSymbol'],
 		data() {
 			return {
-				options: {
+				serie: {
 					type: 'line',
 					...this.$props
 				}
 			}
-		},
-		created() {
-			if (!this.chartsOptions.series) this.chartsOptions.series = []
-			this.chartsOptions.series.push(this.options)
 		},
 		watch: {
 			...mapWatches('updateOptions', [

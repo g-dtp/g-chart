@@ -76,7 +76,7 @@
 		},
 		data(){
 			return {
-				options:{
+				serie:{
 					type: 'gauge',
 					...this.$props,
 				}
