@@ -100,10 +100,12 @@
 			makeSome(){
 				let list = []
 				let legend = []
+				let name
 				for (let i = 0; i < 6; i++) {
-					legend.push(`例子${i + 1}`)
+					name = `例子${Math.random()}`
+					legend.push(name)
 					list.push({
-						name: `例子${i + 1}`,
+						name: name,
 						value: Math.random() * 50 + 10,
 					})
 				}

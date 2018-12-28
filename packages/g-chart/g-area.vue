@@ -1,6 +1,6 @@
 <script>
 	import GSerie from './base/g-serie'
-
+	import {mapWatches} from './base/utils'
 	export default {
 		extends: GSerie,
 		name: "g-area",
@@ -31,6 +31,16 @@
 					...this.$props
 				}
 			}
-		}
+		},
+		watch: {
+			...mapWatches('updateOptions', [
+				'data',
+				'name',
+				'smooth',
+				'showSymbol',
+				'areaStyle',
+				'lineStyle'
+			])
+		},
 	}
 </script>

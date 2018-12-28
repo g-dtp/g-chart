@@ -1,6 +1,6 @@
 <script>
 	import GBase from './base/g-base'
-
+	import {mapWatches} from './base/utils'
 	export default {
 		extends: GBase,
 		name: "g-xAxis",
@@ -52,6 +52,17 @@
 		},
 		created() {
 			if(this.showMarkLine) this.markLine()
+		},
+		watch: {
+			...mapWatches('updateOptions', [
+				'data',
+				'axisLabel',
+				'axisTick',
+				'axisLine',
+				'type',
+				'boundaryGap',
+				'showMarkLine'
+			])
 		},
 		methods: {
 			markLine() {}
