@@ -59,7 +59,6 @@
 			async resizeChart() {
 				if(this.timer) clearTimeout(this.timer)
 				this.timer = setTimeout(() => {
-					console.log(/chart resize/, this.options.title && this.options.title.text)
 					this.chart.resize()
 				},0)
 
@@ -69,6 +68,9 @@
 			if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'default');
 			window.addEventListener('resize', this.resizeChart.bind(this))
 			this.render()
+		},
+		beforeDestroy(){
+			if(this.timer) clearTimeout(this.timer)
 		},
 		destroyed() {
 			window.removeEventListener('resize', this.resizeChart)
