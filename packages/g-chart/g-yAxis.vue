@@ -1,5 +1,6 @@
 <script>
 	import GBase from './base/g-base'
+	import {mapWatches} from './base/utils'
 	export default {
 		extends: GBase,
 		name: "g-yAxis",
@@ -49,9 +50,20 @@
 				}
 			}
 		},
-		created(){
-			this.chartsOptions.yAxis = {...this.options}
-		}
+		beforeCreate() {
+			this._type = 'yAxis'
+		},
+		watch: {
+			...mapWatches('updateOptions', [
+				'data',
+				'axisLabel',
+				'axisTick',
+				'axisLine',
+				'min',
+				'type',
+				'splitLine'
+			])
+		},
 	}
 </script>
 

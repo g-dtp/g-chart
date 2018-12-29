@@ -1,39 +1,66 @@
 <script>
-	import GBase from './base/g-base'
+	import GSerie from './base/g-serie'
 	export default {
-		extends: GBase,
+		extends: GSerie,
 		name: "g-liquidfill",
-		props: ['data', 'color', 'outline', 'radius', 'center'],
+		props: ['data', 'color', 'outline', 'radius', 'center', 'text'],
+		props:{
+			data:{
+				default:function () {
+					return []
+				}
+			},
+			color:{
+				default:function () {
+					return []
+				}
+			},
+			outline: {
+				default:function () {
+					return {
+						show: false,
+					}
+				}
+			},
+			center:{
+				default:function () {
+					return []
+				}
+			},
+			radius: {
+				default:'100%'
+			},
+			text: {
+				default:''
+			}
+		},
 		data() {
 			return {
-				options: {
+				serie: {
 					type: 'liquidFill',
 					...this.$props,
 					// 水球颜色
-					color: ['#49d088'],
+					color: ['rgba(13, 107, 208, 1)'],
 					// outline  外边
-					outline: {
-						show: false,
-					},
 					label: {
 						normal: {
+							formatter:(prarms)=>{
+								if(this.text) return this.text
+								return prarms.value *100 + '%'
+							},
 							color: '#EDA532',
 							insideColor: '#EDA532',
-							fontSize: 50
+							fontSize: 44
 						}
 					},
 					// 内图 背景色 边
 					backgroundStyle: {
 						color: 'rgba(4,24,74,0.8)',
-						// borderWidth: 5,
-						// borderColor: 'red',
+						borderWidth: 1,
+						borderColor: '#0F5D90',
 					}
 				}
 			}
-		},
-		created() {
-			if (!this.chartsOptions.series) this.chartsOptions.series = []
-			this.chartsOptions.series.push(this.options)
 		}
 	}
 </script>

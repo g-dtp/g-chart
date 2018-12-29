@@ -7,7 +7,6 @@
 	import Echart from 'echarts'
 	import Emitter from '../mixins/emitter'
 
-
 	export default {
 		name: "g-chart",
 		mixins: [Emitter],
@@ -25,6 +24,7 @@
 		data() {
 			return {
 				chart: null,
+				timer: null,
 				options: {
 					yAxis: {show: false}
 				}
@@ -32,14 +32,13 @@
 		},
 		provide() {
 			return {
-				chartsOptions: this.options
+				chartsOptions: this.options,
+				$chart: this
 			}
 		},
 		watch: {
-			async 'options'() {
-				await this.$nexttick()
+			'options'() {
 				this.render()
-				this.resize()
 			}
 		},
 		methods: {
@@ -49,45 +48,44 @@
 			onClick(e) {
 				this.preventDefault && e.preventDefault()
 			},
-			render() {
-				if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'default');
+			async render() {
 				this.chart.setOption(this.options, true)
-			},
-			destroy() {
+				this.resizeChart()
 			},
 			updateOptions() {
 				this.chart.setOption(this.options, true)
-				this.chart.resize()
+				this.resizeChart()
 			},
-			resize() {
-				if (this.chart) {
+			async resizeChart() {
+				if(this.timer) clearTimeout(this.timer)
+				this.timer = setTimeout(() => {
+					console.log(/chart resize/, this.options.title && this.options.title.text)
 					this.chart.resize()
-				}
+				},0)
+
 			}
 		},
 		async mounted() {
-			await this.$nextTick()
+			if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'default');
+			window.addEventListener('resize', this.resizeChart.bind(this))
 			this.render()
-			window.addEventListener('resize', this.resize)
-			this.broadcast('g-base', 'update-options', this.updateOptions);
 		},
-		beforeDestroy() {
-			window.removeEventListener('resize', this.resize)
-			this.destroy()
+		destroyed() {
+			window.removeEventListener('resize', this.resizeChart)
+			this.chart.clear()
+			this.chart.dispose()
 		}
 	}
 </script>
 
 <style lang="stylus" scoped>
 	.g-chart
-		min-width 100px
-		min-height 200px
-
-		.noselect
-			-webkit-touch-callout: none; /* iOS Safari */
-			-webkit-user-select: none; /* Safari */
-			-khtml-user-select: none; /* Konqueror HTML */
-			-moz-user-select: none; /* Firefox */
-			-ms-user-select: none; /* Internet Explorer/Edge */
-			user-select: none;
+		width 100%
+		height 100%
+		-webkit-touch-callout: none; /* iOS Safari */
+		-webkit-user-select: none; /* Safari */
+		-khtml-user-select: none; /* Konqueror HTML */
+		-moz-user-select: none; /* Firefox */
+		-ms-user-select: none; /* Internet Explorer/Edge */
+		user-select: none;
 </style>

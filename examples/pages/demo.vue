@@ -1,23 +1,12 @@
 <template lang='pug'>
 	.demo
-		line-area.chart-item
-		div.chart-item
-			g-popover(content="我是来自DEMO的Popover")
-				button(slot='reference') some
-			.g-select-row
-				g-select(@change="onChange")
-			span(@click="oneClick") click
-		g-chart.chart-item(:key="1" v-if="showPopup1")
-			g-grid(:left="20" :right="20" :top="60")
-			g-legend(:data="legend")
-			g-title(text="例子2")
-			g-xAxis(:data="xAxisData" :boundaryGap="false")
-			g-yAxis
-			g-area(:data="area" :smooth="true" :name="'测试3'" :areaStyle="areaStyle")
-		g-chart.chart-item(:key="2")
+		button(@click="onUpdate") update
+		button(@click="onToggle") toggle
+		button(@click="makeData") make
+		g-chart.chart-item(:key="2" v-if="show")
 			g-grid(:left="20" :right="0" :top="60")
-			g-legend(:data="legend")
-			g-title(text="例子3")
+			g-legend(:data="legend" left="center")
+			g-title(:text="text1" :left="textLeft")
 			g-xAxis(:data="xAxisData")
 			g-yAxis
 			g-bar(:data="bar0" :name="'测试1'" :barMaxWidth="30" :barWidth="'20%'" :itemStyle="itemStyle")
@@ -32,26 +21,29 @@
 			g-line(:data="list1" :smooth="smooth" :name="'逃逸BUG数量'")
 			g-effectScatter(:data="[null, 100]")
 		g-chart.chart-item(:key="5")
-			g-legend(:data="pieLegend" orient="vertical" right="20")
+			g-legend(:data="pieData.legend" orient="vertical" right="20")
 			g-title( left="center" top='middle' text="长一点的例\n子5")
-			g-pie(:data="pie" :center="['25%', '50%']")
+			g-pie(:data="pieData.data" :center="['25%', '50%']")
+		g-chart.chart-item(:key="7")
+			g-title( left="center" top='middle' text="长一")
+			g-legend(:data="['例子0','例子1']" orient="vertical" right="20")
+			g-pie(:data="[{name:'xxx',value:''}]" :center="['25%', '50%']")
 		g-chart-percent.chart-item
 		g-chart-arrow.chart-item
 		g-chart-liquidfill.chart-item
-		g-float-ball(:data="menu" @command="onCommand")
 
 </template>
 
 <script>
 	import echarts from 'echarts'
 
-	import {GChartPercent, GChartArrow, GChartLiquidfill, GFloatBall, GPopup, GPopover, GSelect} from 'packages/index'
+	import {GChartPercent, GChartArrow, GChartLiquidfill} from 'packages/index'
 
 	import LineArea from './demo/line-area'
 
 	export default {
 		name: "demo",
-		components: {GSelect, GChartArrow, GChartPercent, GChartLiquidfill, GFloatBall, GPopup, GPopover,LineArea},
+		components: {GChartArrow, GChartPercent, GChartLiquidfill,LineArea},
 		data() {
 			return {
 				xAxisData: [],
@@ -66,31 +58,10 @@
 				itemStyle: {},
 				areaStyle: {},
 				pieLegend: [],
-				pie: [],
-				menu: [
-					{
-					icon: '',
-					label: '返回',
-					cmd: 'A'
-					},{
-						icon: '',
-						label: '返回',
-						cmd: 'M'
-					},{
-						icon: '',
-						label: '返回',
-						cmd: 'M'
-					},{
-					icon: '',
-					label: '返回',
-					cmd: 'M'
-					},{
-						icon: '',
-						label: '返回',
-						cmd: 'M'
-					}
-				],
-				showPopup1: false
+				pieData: {},
+				show:true,
+				text1:'demo',
+				textLeft: 0
 			}
 		},
 		created() {
@@ -107,26 +78,19 @@
 			this.itemStyle.color = this.makeColors('#9CCAF0', 'rgba(156,202,240,0.30)')
 			this.areaStyle.color = this.makeColors('rgba(15,93,144,0.90)', 'rgba(15,93,144,0.30)')
 
-			for (let i = 0; i < 6; i++) {
-				this.pieLegend.push(`例子${i + 1}`)
-				this.pie.push({
-					name: `例子${i + 1}`,
-					value: Math.random() * 50 + 10,
-				})
-			}
+
 		},
 		methods: {
-			onChange (item) {
-				console.log(/xxxx/, item)
+			onUpdate(){
+				this.bar1[0] = null
+				this.text1 = 'demoxx'
+				this.textLeft ++
 			},
-			oneClick() {
-				this.showPopup1 = !this.showPopup1
+			makeData(){
+				this.pieData = this.makeSome()
 			},
-			onCommand(item) {
-				console.log(item)
-				if(item.cmd === 'A'){
-					this.showPopup1 = true
-				}
+			onToggle(){
+				this.show= !this.show
 			},
 			makeColors(color1, color2) {
 				return new echarts.graphic.LinearGradient(
@@ -136,6 +100,23 @@
 						{offset: 1, color: color2}
 					]
 				)
+			},
+			makeSome(){
+				let list = []
+				let legend = []
+				let name
+				for (let i = 0; i < 6; i++) {
+					name = `例子${i}`
+					legend.push(name)
+					list.push({
+						name: name,
+						value: Math.random() * 50 + 10,
+					})
+				}
+				return {
+					data:list,
+					legend:legend
+				}
 			}
 		}
 	}
@@ -148,4 +129,14 @@
 		.chart-item
 			background #000E2D
 			height 340px
+		.box-1
+			height 800px
+			display flex
+			flex-direction column
+			>>>.line-area
+			.chart-item-1
+				height 300px
+				flex none
+			.chart-item-2
+				flex auto
 </style>

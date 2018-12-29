@@ -1,12 +1,14 @@
 <script>
 	import GBase from './base/g-base'
-	export default {
+	import {mapWatches} from './base/utils'
+
+	const Base = {
 		extends: GBase,
 		name: "g-title",
 		props: {
 			text: {
 				type: String,
-				default: '图表标题'
+				default: ''
 			},
 			left: {
 				default: 'auto'
@@ -28,15 +30,28 @@
 				}
 			}
 		},
-		data(){
+		beforeCreate() {
+			this._type = 'title'
+		},
+		data() {
 			return {
 				options: {
 					...this.$props
 				}
 			}
 		},
-		created(){
-			this.chartsOptions.title = {...this.options}
+		watch: {
+			...mapWatches('updateOptions', [
+				'text',
+				'top',
+				'left',
+				'right',
+				'bottom',
+				'textStyle'
+			])
 		}
+
 	}
+	export default Base
+	console.log(/xxxxx/, Base.props)
 </script>

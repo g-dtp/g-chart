@@ -1,6 +1,6 @@
 <script>
 	import GBase from './base/g-base'
-
+	import {mapWatches} from './base/utils'
 	export default {
 		extends: GBase,
 		name: "g-grid",
@@ -26,15 +26,23 @@
 				default: 40
 			}
 		},
+		beforeCreate() {
+			this._type = 'grid'
+		},
+		watch:{
+			...mapWatches('updateOptions', [
+				'top',
+				'left',
+				'right',
+				'bottom'
+			])
+		},
 		data() {
 			return {
 				options: {
 					...this.$props
 				}
 			}
-		},
-		created() {
-			this.chartsOptions.grid = {...this.options}
 		}
 	}
 </script>

@@ -25,9 +25,8 @@
 				}
 			}
 		},
-		created(){
-			console.log(this.options)
-			this.chartsOptions.visualMap = {...this.options}
+		beforeCreate() {
+			this._type = 'visualMap'
 		}
 	}
 </script>

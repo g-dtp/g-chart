@@ -36,8 +36,8 @@
 				}
 			}
 		},
-		created() {
-			this.chartsOptions.singleAxis = {...this.options}
+		beforeCreate() {
+			this._type = 'singleAxis'
 		}
 	}
 </script>

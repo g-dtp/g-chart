@@ -1,6 +1,7 @@
 <template lang='pug'>
 	g-chart.g-chart-liquidfill
-		g-liquidfill(:data="[percent]" :radius="200" :center="['50%', '50%']")
+		g-title(:text="title" left="center" top="10%")
+		g-liquidfill(:data="[percent]" :center="['50%', '50%']" :text="text")
 </template>
 
 <script>
@@ -13,7 +14,13 @@
 		components: {GChart, GLiquidfill},
 		props: {
 			percent:{
-				default: 0.5
+				default: 0.4
+			},
+			title: {
+				default:'PPM'
+			},
+			text: {
+				default: '111'
 			}
 		},
 		data(){

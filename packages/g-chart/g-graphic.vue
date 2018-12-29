@@ -1,5 +1,6 @@
 <script>
 	import GBase from './base/g-base'
+	import {mapWatches} from './base/utils'
 	export default {
 		extends: GBase,
 		name: "g-graphic",
@@ -17,8 +18,13 @@
 				}
 			}
 		},
-		created(){
-			this.chartsOptions.graphic = this.options
-		}
+		beforeCreate() {
+			this._type = 'graphic'
+		},
+		watch:{
+			...mapWatches('updateOptions',[
+				'elements'
+			])
+		},
 	}
 </script>

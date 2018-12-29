@@ -25,7 +25,7 @@
 				default: .3
 			},
 			maxR: {
-				default: 70
+				default: 75
 			},
 			minR: {
 				default: 55
@@ -90,7 +90,3 @@
 
 	}
 </script>
-
-<style lang="stylus" scoped>
-
-</style>

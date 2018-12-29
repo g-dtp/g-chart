@@ -1,48 +1,37 @@
 <script>
 	import Emitter from '../../mixins/emitter'
 	import resize from '../../utils/resize'
-
+	const scaleProps = ['left', 'right', 'top', 'bottom', 'width', 'radius']
 	export default {
 		name: "g-base",
 		mixins: [Emitter],
-		props: {
-			resize: {
-				default: function () {
-					return resize
-				}
-			},
-			scaleProps: {
-				default:function () {
-					return ['left', 'right', 'top', 'bottom']
-				}
-			}
-		},
-		data() {
-			return {
-				options: {}
-			}
-		},
-		inject: ['chartsOptions'],
-		computed: {
-			updateOptions() {
-				return {...this.$props}
-			}
-		},
-		watch: {
-			'updateOptions'() {
-				this.scaleProps.forEach(key => {
-					if(typeof(this.options[key]) == 'Number')
-						this.options[key] = this.options[key] * this.resize.scale
-				})
-				// this.dispatch('g-chart', 'update-options')
-				this.$parent.render()
-			}
-		},
+		inject: ['$chart', 'chartsOptions'],
 		created() {
-			this.scaleProps.forEach(key => {
-				if(typeof(this.options[key]) == 'Number')
-					this.options[key] = this.options[key] * this.resize.scale
-			})
+			try {
+				if (!this._type) throw "必须配置指定的echart option 字段"
+			} catch (error) {
+				console.error(error)
+			}
+			this.scaleValues()
+			this.chartsOptions[this._type] = {...this.options}
+		},
+		methods:{
+			scaleValues(){
+				scaleProps.forEach(key => {
+					if (typeof (this.options[key]) == 'Number')
+						this.options[key] = this.options[key] * resize.scale
+				})
+			},
+			updateOptions(){
+				let newOption = {
+					...this.options,
+					...this.$props
+				}
+				this.options = {...newOption}
+				this.scaleValues()
+				this.chartsOptions[this._type] = {...this.options}
+				this.$chart.render()
+			}
 		},
 		render() {}
 	}

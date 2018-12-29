@@ -1,5 +1,6 @@
 <script>
 	import GBase from './base/g-base'
+	import {mapWatches} from './base/utils'
 	export default {
 		extends: GBase,
 		name: "g-legend",
@@ -23,7 +24,25 @@
 			},
 			orient: {
 				default: 'horizontal'
+			},
+			width: {
+				default: 'auto'
+			},
+			height: {
+				default: 'auto'
 			}
+		},
+		watch:{
+			...mapWatches('updateOptions',[
+				'data',
+				'left',
+				'top',
+				'right',
+				'bottom',
+				'orient',
+				'width',
+				'height'
+			])
 		},
 		data(){
 			return {
@@ -32,8 +51,8 @@
 				}
 			}
 		},
-		created(){
-			this.chartsOptions.legend = {...this.options}
-		},
+		beforeCreate() {
+			this._type = 'legend'
+		}
 	}
 </script>
