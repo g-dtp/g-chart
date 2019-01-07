@@ -56,10 +56,11 @@
 				this.chart.setOption(this.options, true)
 				this.resizeChart()
 			},
-			async resizeChart() {
-				if(this.timer) clearTimeout(this.timer)
-				this.timer = setTimeout(() => {
-					this.chart.resize()
+			resizeChart() {
+				let vm = this
+				if(vm.timer) clearTimeout(vm.timer)
+				vm.timer = setTimeout(() => {
+					if(vm.chart) vm.chart.resize()
 				},0)
 
 			}
