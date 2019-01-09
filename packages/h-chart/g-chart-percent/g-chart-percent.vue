@@ -29,6 +29,9 @@
 			},
 			minR: {
 				default: 55
+			},
+			text:{
+				default: ''
 			}
 		},
 		data() {
@@ -69,7 +72,7 @@
 								fill: this.color
 							}
 						}, {
-							type: 'text',
+							type: this.text,
 							silent: true,
 							left: 'center',
 							top: 'middle',
