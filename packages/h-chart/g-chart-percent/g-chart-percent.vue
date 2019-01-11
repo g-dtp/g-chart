@@ -13,7 +13,7 @@
 		components: {GChart, GGraphic},
 		props: {
 			backgroundColor: {
-				default: '#000E2D'
+				default: '#000000'
 			},
 			color: {
 				default: '#9CCAF0'
@@ -72,12 +72,12 @@
 								fill: this.color
 							}
 						}, {
-							type: this.text,
+							type: 'text',
 							silent: true,
 							left: 'center',
 							top: 'middle',
 							style: {
-								text: '660',
+								text: this.text,
 								fill: '#52B8DF',
 								stroke: 'rgba(156,202,240,0.30)',
 								font: `${32 * resize.scale}px "Microsoft YaHei", sans-serif`

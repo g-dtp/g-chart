@@ -9,6 +9,14 @@
 			if(!this.chartsOptions.series) this.chartsOptions.series = []
 			this.chartsOptions.series.push(this.serie)
 		},
+		beforeDestroy(){
+			let index = this.chartsOptions.series.findIndex((item) => {
+				return this.serie = item
+			})
+			if (index > -1) {
+				this.chartsOptions.series.splice(index, 1);
+			}
+		},
 		methods:{
 			scaleValues(){
 				scaleProps.forEach(key => {
