@@ -4,7 +4,7 @@
 	export default {
 		mixins:[GSerie],
 		name: "g-bar",
-		props: ['data', 'name', 'barMaxWidth', 'barWidth', 'itemStyle', 'label'],
+		props: ['data', 'name', 'barMaxWidth', 'barWidth', 'itemStyle', 'label', 'barCategoryGap', 'barGap'],
 		data(){
 			return {
 				serie:{
@@ -15,7 +15,7 @@
 		},
 		watch:{
 			...mapWatches('updateOptions',[
-				'data', 'name', 'barMaxWidth', 'barWidth', 'itemStyle', 'label'
+				'data', 'name', 'barMaxWidth', 'barWidth', 'itemStyle', 'label', 'barCategoryGap', 'barGap'
 			])
 		}
 	}
