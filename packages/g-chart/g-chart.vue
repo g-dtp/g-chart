@@ -47,7 +47,6 @@
 				this.preventDefault && e.preventDefault()
 			},
 			async render() {
-				debugger
 				this.chart.setOption(this.options, true)
 				this.resizeChart()
 			},
