@@ -5,7 +5,7 @@
 	export default {
 		extends: GSerie,
 		name: "g-line",
-		props: ['data', 'name', 'smooth', 'showSymbol'],
+		props: ['data', 'name', 'smooth', 'showSymbol', 'itemStyle', 'lineStyle'],
 		data() {
 			return {
 				serie: {

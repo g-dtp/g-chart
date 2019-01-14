@@ -9,9 +9,9 @@
 			g-title(:text="text1" :left="textLeft")
 			g-xAxis(:data="xAxisData")
 			g-yAxis(name="y-1")
-			g-yAxis(name="y-2" :show="false")
+			g-yAxis(name="y-2")
 			g-bar(:data="bar0" :name="'测试1'" :barMaxWidth="30" :barWidth="'20%'" :itemStyle="itemStyle" :yAxisIndex="0")
-			g-bar(:data="bar1" :name="'测试2'" :barMaxWidth="30" :barWidth="'20%'" :yAxisIndex="1")
+			g-line(:data="bar1" :name="'测试2'" :yAxisIndex="1" :itemStyle="_itemStyle" :lineStyle='_lineStyle' :showSymbol="true")
 		g-chart.chart-item(:key="3")
 			g-grid(:left="20" :right="0" :top="60")
 			g-legend(:data="legend")
@@ -44,7 +44,7 @@
 
 	export default {
 		name: "demo",
-		components: {GChartArrow, GChartPercent, GChartLiquidfill,LineArea},
+		components: {GChartArrow, GChartPercent, GChartLiquidfill, LineArea},
 		data() {
 			return {
 				xAxisData: [],
@@ -60,9 +60,16 @@
 				areaStyle: {},
 				pieLegend: [],
 				pieData: {},
-				show:true,
-				text1:'demo',
+				show: true,
+				text1: 'demo',
 				textLeft: 0
+			}
+		},
+		beforeCreate() {
+			this._itemStyle = {
+				color: '#52B8DF',
+				borderColor: 'rgba(0,0,0,0)',
+				borderWidth: 3
 			}
 		},
 		created() {
@@ -73,7 +80,7 @@
 				this.list2.push(Math.random() * 80 + 600)
 				this.list2.push(Math.random() * 100 + 600)
 				this.bar0.push(Math.random() * 250 + 20)
-				this.bar1.push(Math.random() * 220 + 20)
+				this.bar1.push((Math.random() * 220 + 20) / 100)
 				this.area.push(Math.random() * 50 + 100)
 			}
 			this.itemStyle.color = this.makeColors('#9CCAF0', 'rgba(156,202,240,0.30)')
@@ -82,16 +89,16 @@
 
 		},
 		methods: {
-			onUpdate(){
+			onUpdate() {
 				this.bar1[0] = null
 				this.text1 = 'demoxx'
-				this.textLeft ++
+				this.textLeft++
 			},
-			makeData(){
+			makeData() {
 				this.pieData = this.makeSome()
 			},
-			onToggle(){
-				this.show= !this.show
+			onToggle() {
+				this.show = !this.show
 			},
 			makeColors(color1, color2) {
 				return new echarts.graphic.LinearGradient(
@@ -102,7 +109,7 @@
 					]
 				)
 			},
-			makeSome(){
+			makeSome() {
 				let list = []
 				let legend = []
 				let name
@@ -115,8 +122,8 @@
 					})
 				}
 				return {
-					data:list,
-					legend:legend
+					data: list,
+					legend: legend
 				}
 			}
 		}
@@ -130,14 +137,17 @@
 		.chart-item
 			background #000E2D
 			height 340px
+
 		.box-1
 			height 800px
 			display flex
 			flex-direction column
-			>>>.line-area
+
+			>>> .line-area
 			.chart-item-1
 				height 300px
 				flex none
+
 			.chart-item-2
 				flex auto
 </style>
