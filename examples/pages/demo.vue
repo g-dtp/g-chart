@@ -8,9 +8,10 @@
 			g-legend(:data="legend" left="center")
 			g-title(:text="text1" :left="textLeft")
 			g-xAxis(:data="xAxisData")
-			g-yAxis
-			g-bar(:data="bar0" :name="'测试1'" :barMaxWidth="30" :barWidth="'20%'" :itemStyle="itemStyle")
-			g-bar(:data="bar1" :name="'测试2'" :barMaxWidth="30" :barWidth="'20%'")
+			g-yAxis(name="y-1")
+			g-yAxis(name="y-2" :show="false")
+			g-bar(:data="bar0" :name="'测试1'" :barMaxWidth="30" :barWidth="'20%'" :itemStyle="itemStyle" :yAxisIndex="0")
+			g-bar(:data="bar1" :name="'测试2'" :barMaxWidth="30" :barWidth="'20%'" :yAxisIndex="1")
 		g-chart.chart-item(:key="3")
 			g-grid(:left="20" :right="0" :top="60")
 			g-legend(:data="legend")

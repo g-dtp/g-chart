@@ -4,6 +4,7 @@
 	export default {
 		name: "base-serie",
 		inject: ['$chart', 'chartsOptions'],
+		props:['yAxisIndex'],
 		created(){
 			this.scaleValues()
 			if(!this.chartsOptions.series) this.chartsOptions.series = []

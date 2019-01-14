@@ -25,9 +25,7 @@
 			return {
 				chart: null,
 				timer: null,
-				options: {
-					yAxis: {show: false}
-				}
+				options: {}
 			}
 		},
 		provide() {
@@ -49,6 +47,7 @@
 				this.preventDefault && e.preventDefault()
 			},
 			async render() {
+				debugger
 				this.chart.setOption(this.options, true)
 				this.resizeChart()
 			},
