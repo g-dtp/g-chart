@@ -58,13 +58,26 @@
 								stroke: this.borderColor,
 								lineWidth: 2 * resize.scale
 							}
+						},{
+							type: 'sector',
+							silent: true,
+							rotation: Math.PI * .5,
+							shape: {
+								r: ( this.maxR - 2)  * resize.scale,
+								r0: (this.minR + 2)  * resize.scale,
+								startAngle: 0,
+								endAngle: 2 * Math.PI
+							},
+							style: {
+								fill: this.backgroundColor
+							}
 						}, {
 							type: 'sector',
 							silent: true,
 							rotation: Math.PI * .5,
 							shape: {
-								r: this.maxR * resize.scale,
-								r0: this.minR * resize.scale,
+								r: ( this.maxR - 2)  * resize.scale,
+								r0: (this.minR + 2) * resize.scale,
 								startAngle: 0,
 								endAngle: 2 * Math.PI * this.percent
 							},
