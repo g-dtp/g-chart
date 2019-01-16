@@ -19,13 +19,18 @@
 			backgroundColor: {
 				type: String,
 				default: 'rgba(0,0,0,0)'
+			},
+			color:{
+				default: ''
 			}
 		},
 		data() {
 			return {
 				chart: null,
 				timer: null,
-				options: {}
+				options: {
+					color: this.color
+				}
 			}
 		},
 		provide() {
@@ -60,7 +65,6 @@
 				vm.timer = setTimeout(() => {
 					if(vm.chart) vm.chart.resize()
 				},0)
-
 			}
 		},
 		async mounted() {

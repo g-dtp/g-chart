@@ -21,11 +21,11 @@
 			g-line(:data="list" :smooth="smooth" :name="'BUG数量'")
 			g-line(:data="list1" :smooth="smooth" :name="'逃逸BUG数量'")
 			g-effectScatter(:data="[null, 100]")
-		g-chart.chart-item(:key="5")
+		g-chart.chart-item(:key="5"  :color="_colors")
 			g-legend(:data="pieData.legend" orient="vertical" right="20")
 			g-title( left="center" top='middle' text="长一点的例\n子5")
 			g-pie(:data="pieData.data" :center="['25%', '50%']")
-		g-chart.chart-item(:key="7")
+		g-chart.chart-item(:key="7" :color="_colors")
 			g-title( left="center" top='middle' text="长一")
 			g-legend(:data="['例子0','例子1']" orient="vertical" right="20")
 			g-pie(:data="[{name:'xxx',value:''}]" :center="['25%', '50%']")
@@ -66,8 +66,10 @@
 			}
 		},
 		beforeCreate() {
+			this._colors= ['#EDA532','#449B7E','#5BD4D7','#51B6F5','#2E69CD','#CCE2FF','#93C8FF','#51B6F5','#2E69CD','#659BFF']
+			this._lineStyle = [{}]
 			this._itemStyle = {
-				color: '#52B8DF',
+				color: '#EDA532',
 				borderColor: 'rgba(0,0,0,0)',
 				borderWidth: 3
 			}
