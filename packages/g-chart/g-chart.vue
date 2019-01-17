@@ -65,6 +65,7 @@
 				vm.timer = setTimeout(() => {
 					if(vm.chart) vm.chart.resize()
 				},0)
+
 			}
 		},
 		mounted() {
@@ -74,12 +75,12 @@
 		},
 		beforeDestroy(){
 			if(this.timer) clearTimeout(this.timer)
+		},
+		destroyed() {
 			window.removeEventListener('resize', this.resizeChart.bind(this))
 			this.chart.clear()
 			this.chart.dispose()
-		},
-		destroyed() {
-
+			this.chart = null
 		}
 	}
 </script>
