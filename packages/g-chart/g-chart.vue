@@ -67,18 +67,19 @@
 				},0)
 			}
 		},
-		async mounted() {
+		mounted() {
 			if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'default');
 			window.addEventListener('resize', this.resizeChart.bind(this))
 			this.render()
 		},
 		beforeDestroy(){
 			if(this.timer) clearTimeout(this.timer)
-		},
-		destroyed() {
-			window.removeEventListener('resize', this.resizeChart)
+			window.removeEventListener('resize', this.resizeChart.bind(this))
 			this.chart.clear()
 			this.chart.dispose()
+		},
+		destroyed() {
+
 		}
 	}
 </script>
