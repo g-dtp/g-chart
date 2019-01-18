@@ -25,7 +25,10 @@
 			this.chartsOptions.series[this.serieIndex] = this.serie
 		},
 		beforeDestroy(){
-			this.chartsOptions.series.splice(this.serieIndex, 1);
+			this.chartsOptions.series[this.serieIndex] = ''
+		},
+		destroyed(){
+			this.chartsOptions.series[this.serieIndex] = ''
 		},
 		methods:{
 			scaleValues(){
