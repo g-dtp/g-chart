@@ -5,11 +5,6 @@
 		name: "g-yAxis",
 		inject: ['$chart', 'chartsOptions'],
 		props: {
-			data: {
-				default: function () {
-					return []
-				},
-			},
 			show:{
 				default: true
 			},
@@ -59,7 +54,6 @@
 		watch: {
 			...mapWatches('updateOptions', [
 				'name',
-				'data',
 				'axisLabel',
 				'axisTick',
 				'axisLine',

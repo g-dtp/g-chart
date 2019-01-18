@@ -5,33 +5,14 @@
 		button(@click="makeData") make
 		g-chart.chart-item(:key="2" v-if="show")
 			g-grid(:left="20" :right="0" :top="60")
-			g-legend(:data="legend" left="center")
+			g-legend(:data="legend" right="0")
 			g-title(:text="text1" :left="textLeft")
 			g-xAxis(:data="xAxisData")
-			g-yAxis(name="y-1")
-			g-yAxis(name="y-2")
-			g-bar(:data="bar0" :name="'测试1'" :barMaxWidth="30" :barWidth="'20%'" :itemStyle="itemStyle" :yAxisIndex="0")
-			g-line(:data="bar1" :name="'测试2'" :yAxisIndex="1" :itemStyle="_itemStyle" :lineStyle='_lineStyle' :showSymbol="true")
-		g-chart.chart-item(:key="3")
-			g-grid(:left="20" :right="0" :top="60")
-			g-legend(:data="legend")
-			g-title(text="例子4" )
-			g-xAxis(:data="xAxisData")
-			g-yAxis
-			g-line(:data="list" :smooth="smooth" :name="'BUG数量'")
-			g-line(:data="list1" :smooth="smooth" :name="'逃逸BUG数量'")
-			g-effectScatter(:data="[null, 100]")
-		g-chart.chart-item(:key="5"  :color="_colors")
-			g-legend(:data="pieData.legend" orient="vertical" right="20")
-			g-title( left="center" top='middle' text="长一点的例\n子5")
-			g-pie(:data="pieData.data" :center="['25%', '50%']")
-		g-chart.chart-item(:key="7" :color="_colors")
-			g-title( left="center" top='middle' text="长一")
-			g-legend(:data="['例子0','例子1']" orient="vertical" right="20")
-			g-pie(:data="[{name:'xxx',value:''}]" :center="['25%', '50%']")
-		g-chart-percent.chart-item
-		g-chart-arrow.chart-item
-		g-chart-liquidfill.chart-item
+			g-yAxis()
+			g-yAxis()
+			g-bar(:data="bar0" :name="'测试1'" :barMaxWidth="30" :barWidth="'20%'" :itemStyle="itemStyle" :yAxisIndex="0" :serieIndex="0")
+			g-line(:data="bar1" :name="'测试2'" :yAxisIndex="1" :itemStyle="_itemStyle" :lineStyle='_lineStyle' :showSymbol="true" :serieIndex="2")
+
 
 </template>
 
