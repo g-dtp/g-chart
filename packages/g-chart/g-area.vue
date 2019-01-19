@@ -22,7 +22,8 @@
 				default:function () {
 					return {}
 				}
-			}
+			},
+			label:{}
 		},
 		data() {
 			return {
@@ -39,7 +40,8 @@
 				'smooth',
 				'showSymbol',
 				'areaStyle',
-				'lineStyle'
+				'lineStyle',
+				'label'
 			])
 		},
 	}
