@@ -13,7 +13,7 @@
 		components: {GChart, GGraphic},
 		props: {
 			backgroundColor: {
-				default: '#000E2D'
+				default: '#000000'
 			},
 			color: {
 				default: '#9CCAF0'
@@ -29,6 +29,9 @@
 			},
 			minR: {
 				default: 55
+			},
+			text:{
+				default: ''
 			}
 		},
 		data() {
@@ -55,13 +58,26 @@
 								stroke: this.borderColor,
 								lineWidth: 2 * resize.scale
 							}
+						},{
+							type: 'sector',
+							silent: true,
+							rotation: Math.PI * .5,
+							shape: {
+								r: ( this.maxR - 2)  * resize.scale,
+								r0: (this.minR + 2)  * resize.scale,
+								startAngle: 0,
+								endAngle: 2 * Math.PI
+							},
+							style: {
+								fill: this.backgroundColor
+							}
 						}, {
 							type: 'sector',
 							silent: true,
 							rotation: Math.PI * .5,
 							shape: {
-								r: this.maxR * resize.scale,
-								r0: this.minR * resize.scale,
+								r: ( this.maxR - 2)  * resize.scale,
+								r0: (this.minR + 2) * resize.scale,
 								startAngle: 0,
 								endAngle: 2 * Math.PI * this.percent
 							},
@@ -74,7 +90,7 @@
 							left: 'center',
 							top: 'middle',
 							style: {
-								text: '660',
+								text: this.text,
 								fill: '#52B8DF',
 								stroke: 'rgba(156,202,240,0.30)',
 								font: `${32 * resize.scale}px "Microsoft YaHei", sans-serif`

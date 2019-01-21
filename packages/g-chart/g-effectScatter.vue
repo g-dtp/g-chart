@@ -29,6 +29,14 @@
 						brushType: 'stroke',
 					}
 				}
+			},
+			label:{},
+			itemStyle: {
+				default:function () {
+					return {
+						color: 'rgb(237, 165, 50)'
+					}
+				}
 			}
 		},
 		data() {

@@ -5,7 +5,7 @@
 	export default {
 		extends: GSerie,
 		name: "g-line",
-		props: ['data', 'name', 'smooth', 'showSymbol'],
+		props: ['data', 'name', 'smooth', 'showSymbol', 'itemStyle', 'lineStyle', 'label', 'hoverAnimation'],
 		data() {
 			return {
 				serie: {
@@ -17,7 +17,8 @@
 		watch: {
 			...mapWatches('updateOptions', [
 				'data',
-				'name'
+				'name',
+				'label'
 			])
 		}
 	}

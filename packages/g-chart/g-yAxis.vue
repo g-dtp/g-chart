@@ -1,14 +1,15 @@
 <script>
-	import GBase from './base/g-base'
 	import {mapWatches} from './base/utils'
+	const scaleProps = ['left', 'right', 'top', 'bottom', 'width', 'radius']
 	export default {
-		extends: GBase,
 		name: "g-yAxis",
+		inject: ['$chart', 'chartsOptions'],
 		props: {
-			data: {
-				default: function () {
-					return []
-				},
+			show:{
+				default: true
+			},
+			name:{
+				default:''
 			},
 			axisLabel: {
 				default: function () {
@@ -50,12 +51,9 @@
 				}
 			}
 		},
-		beforeCreate() {
-			this._type = 'yAxis'
-		},
 		watch: {
 			...mapWatches('updateOptions', [
-				'data',
+				'name',
 				'axisLabel',
 				'axisTick',
 				'axisLine',
@@ -64,6 +62,36 @@
 				'splitLine'
 			])
 		},
+		beforeCreate(){
+			this._type = 'yAxis'
+		},
+		created() {
+			this.scaleValues()
+			if(!this.chartsOptions[this._type]) this.chartsOptions[this._type] = []
+			this.chartsOptions[this._type].push({...this.options})
+		},
+		methods:{
+			scaleValues(){
+				scaleProps.forEach(key => {
+					if (typeof (this.options[key]) == 'Number')
+						this.options[key] = this.options[key] * resize.scale
+				})
+			},
+			updateOptions(){
+				let index =  this.chartsOptions[this._type].findIndex((item) => {
+					return this.options = item
+				})
+				let newOption = {
+					...this.options,
+					...this.$props
+				}
+				this.options = {...newOption}
+				this.scaleValues()
+				this.chartsOptions[this._type][index] = {...this.options}
+				this.$chart.render()
+			}
+		},
+		render() {}
 	}
 </script>
 

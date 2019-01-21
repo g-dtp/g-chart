@@ -36,6 +36,7 @@
 					return [10, 10]
 				}
 			},
+			axisPointer:{},
 			showMarkLine:{
 				default: -1
 			}
@@ -61,7 +62,8 @@
 				'axisLine',
 				'type',
 				'boundaryGap',
-				'showMarkLine'
+				'showMarkLine',
+				'axisPointer'
 			])
 		},
 		methods: {

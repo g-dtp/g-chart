@@ -19,6 +19,9 @@
 			backgroundColor: {
 				type: String,
 				default: 'rgba(0,0,0,0)'
+			},
+			color:{
+				default: ''
 			}
 		},
 		data() {
@@ -26,7 +29,7 @@
 				chart: null,
 				timer: null,
 				options: {
-					yAxis: {show: false}
+					color: this.color
 				}
 			}
 		},
@@ -56,26 +59,52 @@
 				this.chart.setOption(this.options, true)
 				this.resizeChart()
 			},
-			async resizeChart() {
-				if(this.timer) clearTimeout(this.timer)
-				this.timer = setTimeout(() => {
-					this.chart.resize()
+			resizeChart() {
+				let vm = this
+				if(vm.timer) clearTimeout(vm.timer)
+				vm.timer = setTimeout(() => {
+					if(vm.chart) vm.chart.resize()
 				},0)
 
+			},
+			onChartClick(series){
+				let seriesIndex = series.seriesIndex
+				let c = Echart.util.isObject(series.color) ? series.color.colorStops[0].color: series.color
+				let options = {
+					series: []
+				}
+				let {label} = this.chart.getOption().series[seriesIndex]
+				this.options.series.forEach((item, index) => {
+					if(seriesIndex == index) {
+						options.series.push({
+							label:{
+								show: label ? !label.show : true,
+								position:'top',
+								color: c
+							}
+						})
+					}else{
+						options.series.push({})
+					}
+				})
+				this.chart.setOption(options)
 			}
 		},
-		async mounted() {
+		mounted() {
 			if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'default');
 			window.addEventListener('resize', this.resizeChart.bind(this))
+			this.chart.on('click', this.onChartClick)
 			this.render()
 		},
 		beforeDestroy(){
 			if(this.timer) clearTimeout(this.timer)
 		},
 		destroyed() {
-			window.removeEventListener('resize', this.resizeChart)
+			window.removeEventListener('resize', this.resizeChart.bind(this))
+			this.chart.off('click', this.onChartClick)
 			this.chart.clear()
 			this.chart.dispose()
+			this.chart = null
 		}
 	}
 </script>

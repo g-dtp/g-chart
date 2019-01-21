@@ -53,5 +53,4 @@
 
 	}
 	export default Base
-	console.log(/xxxxx/, Base.props)
 </script>
