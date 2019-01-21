@@ -67,47 +67,41 @@
 				},0)
 
 			},
-			onChartDown(series){
+			onChartClick(series){
 				let seriesIndex = series.seriesIndex
 				let c = Echart.util.isObject(series.color) ? series.color.colorStops[0].color: series.color
-				this.options.series.forEach((item,index) => {
-					if(index === seriesIndex){
-						item.label = {
-							show: true,
-							position:'top',
-							color: c
-						}
+				let options = {
+					series: []
+				}
+				let {label} = this.chart.getOption().series[seriesIndex]
+				this.options.series.forEach((item, index) => {
+					if(seriesIndex == index) {
+						options.series.push({
+							label:{
+								show: label ? !label.show : true,
+								position:'top',
+								color: c
+							}
+						})
 					}else{
-						item.label = {
-							show: false,
-						}
+						options.series.push({})
 					}
 				})
-				this.chart.setOption(this.options, true)
-			},
-			onChartUp(series){
-				// this.options.series.forEach((item,index) => {
-				// 	item.label.show = false
-				// })
-				// this.chart.setOption(this.options, true)
-			},
+				this.chart.setOption(options)
+			}
 		},
 		mounted() {
 			if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'default');
 			window.addEventListener('resize', this.resizeChart.bind(this))
-			this.chart.on('mousedown', this.onChartDown)
-			this.chart.on('mouseup', this.onChartUp)
+			this.chart.on('click', this.onChartClick)
 			this.render()
 		},
-
 		beforeDestroy(){
 			if(this.timer) clearTimeout(this.timer)
-
 		},
 		destroyed() {
 			window.removeEventListener('resize', this.resizeChart.bind(this))
-			this.chart.off('mousedown', this.onChartDown)
-			this.chart.off('mouseup', this.onChartUp)
+			this.chart.off('click', this.onChartClick)
 			this.chart.clear()
 			this.chart.dispose()
 			this.chart = null
