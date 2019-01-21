@@ -69,18 +69,27 @@
 			},
 			onChartDown(series){
 				let seriesIndex = series.seriesIndex
-				this.options.series[seriesIndex].label = {
-					show: true,
-					position:'top'
-				}
+				let c = Echart.util.isObject(series.color) ? series.color.colorStops[0].color: series.color
+				this.options.series.forEach((item,index) => {
+					if(index === seriesIndex){
+						item.label = {
+							show: true,
+							position:'top',
+							color: c
+						}
+					}else{
+						item.label = {
+							show: false,
+						}
+					}
+				})
 				this.chart.setOption(this.options, true)
 			},
 			onChartUp(series){
-				let seriesIndex = series.seriesIndex
-				this.options.series[seriesIndex].label = {
-					show: false
-				}
-				this.chart.setOption(this.options, true)
+				// this.options.series.forEach((item,index) => {
+				// 	item.label.show = false
+				// })
+				// this.chart.setOption(this.options, true)
 			},
 		},
 		mounted() {

@@ -11,8 +11,9 @@
 			g-yAxis()
 			g-yAxis()
 			g-bar(:data="bar0" :name="'测试1'" :barMaxWidth="30" :barWidth="'20%'" :itemStyle="itemStyle" :yAxisIndex="0" :serieIndex="0")
+			g-bar(:data="bar0" :name="'测试1'" :barMaxWidth="30" :barWidth="'20%'" :yAxisIndex="0" :serieIndex="1")
 			g-line(:data="bar1" :name="'测试2'" :yAxisIndex="1" :itemStyle="_itemStyle" :lineStyle='_lineStyle' :showSymbol="true" :serieIndex="2")
-			g-effectScatter(:data="[null, 600]" :serieIndex="1")
+			g-effectScatter(:data="[null, 600]" :serieIndex="3")
 
 </template>
 
