@@ -52,11 +52,11 @@
 				this.preventDefault && e.preventDefault()
 			},
 			async render() {
-				this.chart.setOption(this.options, true)
+				this.chart.setOption(this.options)
 				this.resizeChart()
 			},
 			updateOptions() {
-				this.chart.setOption(this.options, true)
+				this.chart.setOption(this.options)
 				this.resizeChart()
 			},
 			resizeChart() {
@@ -66,18 +66,39 @@
 					if(vm.chart) vm.chart.resize()
 				},0)
 
-			}
+			},
+			onChartDown(series){
+				let seriesIndex = series.seriesIndex
+				this.options.series[seriesIndex].label = {
+					show: true,
+					position:'top'
+				}
+				this.chart.setOption(this.options)
+			},
+			onChartUp(series){
+				let seriesIndex = series.seriesIndex
+				this.options.series[seriesIndex].label = {
+					show: false
+				}
+				this.chart.setOption(this.options)
+			},
 		},
 		mounted() {
 			if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'default');
 			window.addEventListener('resize', this.resizeChart.bind(this))
+			this.chart.on('mousedown', this.onChartDown)
+			this.chart.on('mouseup', this.onChartUp)
 			this.render()
 		},
+
 		beforeDestroy(){
 			if(this.timer) clearTimeout(this.timer)
+
 		},
 		destroyed() {
 			window.removeEventListener('resize', this.resizeChart.bind(this))
+			this.chart.off('mousedown', this.onChartDown)
+			this.chart.off('mouseup', this.onChartUp)
 			this.chart.clear()
 			this.chart.dispose()
 			this.chart = null

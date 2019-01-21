@@ -5,7 +5,6 @@
 	export default {
 		name: "base-serie",
 		inject: ['$chart', 'chartsOptions'],
-		props:['yAxisIndex','serieIndex'],
 		props:{
 			yAxisIndex:{
 				default:0

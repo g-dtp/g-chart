@@ -12,7 +12,7 @@
 			g-yAxis()
 			g-bar(:data="bar0" :name="'测试1'" :barMaxWidth="30" :barWidth="'20%'" :itemStyle="itemStyle" :yAxisIndex="0" :serieIndex="0")
 			g-line(:data="bar1" :name="'测试2'" :yAxisIndex="1" :itemStyle="_itemStyle" :lineStyle='_lineStyle' :showSymbol="true" :serieIndex="2")
-
+			g-effectScatter(:data="[null, 600]" :serieIndex="1")
 
 </template>
 
@@ -62,8 +62,8 @@
 				this.list1.push(Math.random() * 100 + 400)
 				this.list2.push(Math.random() * 80 + 600)
 				this.list2.push(Math.random() * 100 + 600)
-				this.bar0.push(Math.random() * 250 + 20)
-				this.bar1.push((Math.random() * 220 + 20) / 100)
+				this.bar0.push(Math.ceil(Math.random() * 250 + 20))
+				this.bar1.push(Math.floor((Math.random() * 220 + 20) / 100))
 				this.area.push(Math.random() * 50 + 100)
 			}
 			this.itemStyle.color = this.makeColors('#9CCAF0', 'rgba(156,202,240,0.30)')
