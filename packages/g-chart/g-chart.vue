@@ -52,11 +52,11 @@
 				this.preventDefault && e.preventDefault()
 			},
 			async render() {
-				this.chart.setOption(this.options)
+				this.chart.setOption(this.options, true)
 				this.resizeChart()
 			},
 			updateOptions() {
-				this.chart.setOption(this.options)
+				this.chart.setOption(this.options, true)
 				this.resizeChart()
 			},
 			resizeChart() {
@@ -73,14 +73,14 @@
 					show: true,
 					position:'top'
 				}
-				this.chart.setOption(this.options)
+				this.chart.setOption(this.options, true)
 			},
 			onChartUp(series){
 				let seriesIndex = series.seriesIndex
 				this.options.series[seriesIndex].label = {
 					show: false
 				}
-				this.chart.setOption(this.options)
+				this.chart.setOption(this.options, true)
 			},
 		},
 		mounted() {
