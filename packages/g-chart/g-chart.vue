@@ -68,7 +68,9 @@
 
 			},
 			onChartClick(series){
+				if(series.seriesType != 'bar') return
 				let seriesIndex = series.seriesIndex
+
 				let c = Echart.util.isObject(series.color) ? series.color.colorStops[0].color: series.color
 				let options = {
 					series: []
@@ -79,7 +81,6 @@
 						options.series.push({
 							label:{
 								show: label ? !label.show : true,
-								position:'top',
 								color: c
 							}
 						})
