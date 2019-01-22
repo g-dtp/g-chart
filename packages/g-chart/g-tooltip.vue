@@ -11,10 +11,12 @@
 			axisPointer: {
 				default: function () {
 					return {
-						type: 'shadow'
+						type: 'line'
 					}
 				}
 			},
+			formatter:{
+			}
 		},
 		data() {
 			return {
