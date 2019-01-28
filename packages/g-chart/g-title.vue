@@ -2,7 +2,7 @@
 	import GBase from './base/g-base'
 	import {mapWatches} from './base/utils'
 
-	const Base = {
+	export default {
 		extends: GBase,
 		name: "g-title",
 		props: {
@@ -52,5 +52,4 @@
 		}
 
 	}
-	export default Base
 </script>
