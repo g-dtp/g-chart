@@ -1,6 +1,6 @@
 {
   "name": "g-chart",
-  "version": "2.2.31",
+  "version": "2.3.31",
   "description": "base on vue and echarts",
   "keywords": [
     "g-chart",
@@ -20,6 +20,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "echarts": "^4.2.0-rc.2",
     "echarts-liquidfill": "^2.0.3",
     "popper.js": "^1.14.6",

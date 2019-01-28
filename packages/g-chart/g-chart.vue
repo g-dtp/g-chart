@@ -68,6 +68,7 @@
 
 			},
 			onChartClick(series){
+				if(true) return
 				if(series.seriesType != 'bar') return
 				let seriesIndex = series.seriesIndex
 
