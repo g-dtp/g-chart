@@ -19,7 +19,8 @@
 		methods: {
 			scaleValues () {
 				scaleProps.forEach(key => {
-					if (typeof (this.options[key]) === 'number') {
+					/* eslint-disable */
+					if (typeof (this.options[key]) === 'Number') {
 						this.options[key] = this.options[key] * resize.scale
 					}
 				})
