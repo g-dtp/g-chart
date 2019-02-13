@@ -1,28 +1,30 @@
 <script>
 	import Emitter from '../../mixins/emitter'
 	import resize from '../../utils/resize'
+
 	const scaleProps = ['left', 'right', 'top', 'bottom', 'width', 'radius']
 	export default {
-		name: "g-base",
+		name: 'g-base',
 		mixins: [Emitter],
 		inject: ['$chart', 'chartsOptions'],
-		created() {
+		created () {
 			try {
-				if (!this._type) throw "必须配置指定的echart option 字段"
+				if (!this._type) throw new Error('必须配置指定的echart option 字段')
 			} catch (error) {
 				console.error(error)
 			}
 			this.scaleValues()
 			this.chartsOptions[this._type] = {...this.options}
 		},
-		methods:{
-			scaleValues(){
+		methods: {
+			scaleValues () {
 				scaleProps.forEach(key => {
-					if (typeof (this.options[key]) == 'Number')
+					if (typeof (this.options[key]) === 'number') {
 						this.options[key] = this.options[key] * resize.scale
+					}
 				})
 			},
-			updateOptions(){
+			updateOptions () {
 				let newOption = {
 					...this.options,
 					...this.$props
@@ -33,7 +35,8 @@
 				this.$chart.render()
 			}
 		},
-		render() {}
+		/* eslint-disable */
+		render () {}
 	}
 </script>
 

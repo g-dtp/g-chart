@@ -1,12 +1,13 @@
 <script>
 	import GBase from './base/g-base'
 	import {mapWatches} from './base/utils'
+
 	export default {
 		extends: GBase,
-		name: "g-legend",
-		props:{
-			data:{
-				default:function () {
+		name: 'g-legend',
+		props: {
+			data: {
+				default: function () {
 					return []
 				}
 			},
@@ -32,8 +33,8 @@
 				default: 'auto'
 			}
 		},
-		watch:{
-			...mapWatches('updateOptions',[
+		watch: {
+			...mapWatches('updateOptions', [
 				'data',
 				'left',
 				'top',
@@ -44,14 +45,14 @@
 				'height'
 			])
 		},
-		data(){
+		data () {
 			return {
-				options:{
-					...this.$props,
+				options: {
+					...this.$props
 				}
 			}
 		},
-		beforeCreate() {
+		beforeCreate () {
 			this._type = 'legend'
 		}
 	}

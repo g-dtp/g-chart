@@ -1,40 +1,40 @@
 <script>
 	import GSerie from './base/g-serie'
+
 	export default {
 		extends: GSerie,
-		name: "g-liquidfill",
-		props: ['data', 'color', 'outline', 'radius', 'center', 'text'],
-		props:{
-			data:{
-				default:function () {
+		name: 'g-liquidfill',
+		props: {
+			data: {
+				default: function () {
 					return []
 				}
 			},
-			color:{
-				default:function () {
+			color: {
+				default: function () {
 					return []
 				}
 			},
 			outline: {
-				default:function () {
+				default: function () {
 					return {
-						show: false,
+						show: false
 					}
 				}
 			},
-			center:{
-				default:function () {
+			center: {
+				default: function () {
 					return []
 				}
 			},
 			radius: {
-				default:'100%'
+				default: '100%'
 			},
 			text: {
-				default:''
+				default: ''
 			}
 		},
-		data() {
+		data () {
 			return {
 				serie: {
 					type: 'liquidFill',
@@ -44,9 +44,9 @@
 					// outline  外边
 					label: {
 						normal: {
-							formatter:(prarms)=>{
-								if(this.text) return this.text
-								return prarms.value *100 + '%'
+							formatter: (prarms) => {
+								if (this.text) return this.text
+								return prarms.value * 100 + '%'
 							},
 							color: '#EDA532',
 							insideColor: '#EDA532',
@@ -57,7 +57,7 @@
 					backgroundStyle: {
 						color: 'rgba(4,24,74,0.8)',
 						borderWidth: 1,
-						borderColor: '#0F5D90',
+						borderColor: '#0F5D90'
 					}
 				}
 			}

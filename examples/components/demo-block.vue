@@ -8,21 +8,19 @@
 </template>
 
 <script>
-	import Vue from 'vue'
-
 	export default {
-		name: "demo-block",
-		data() {
+		name: 'demo-block',
+		data () {
 			return {
 				isExpand: false
-			};
+			}
 		},
 		methods: {
-			toggle() {
-				this.isExpand = !this.isExpand;
+			toggle () {
+				this.isExpand = !this.isExpand
 			}
 		}
-	};
+	}
 </script>
 
 <style lang='stylus' scoped>

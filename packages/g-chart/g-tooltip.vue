@@ -1,9 +1,10 @@
 <script>
 	import GBase from './base/g-base'
 	import {mapWatches} from './base/utils'
+
 	export default {
 		extends: GBase,
-		name: "g-tooltip",
+		name: 'g-tooltip',
 		props: {
 			trigger: {
 				default: 'axis'
@@ -11,20 +12,21 @@
 			axisPointer: {
 				default: function () {
 					return {
-						type: 'shadow'
+						type: 'line'
 					}
 				}
 			},
+			formatter: {}
 		},
-		data() {
+		data () {
 			return {
 				options: {}
 			}
 		},
-		beforeCreate() {
+		beforeCreate () {
 			this._type = 'tooltip'
 		},
-		watch:{
+		watch: {
 			...mapWatches('updateOptions', [
 				'trigger',
 				'axisPointer'

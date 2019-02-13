@@ -1,8 +1,9 @@
 <script>
 	import GSerie from './base/g-serie'
+
 	export default {
 		extends: GSerie,
-		name: "g-scatter",
+		name: 'g-scatter',
 		props: {
 			coordinateSystem: {
 				default: 'singleAxis'
@@ -13,11 +14,11 @@
 				}
 			}
 		},
-		data() {
+		data () {
 			return {
 				serie: {
 					...this.$props,
-					type: 'scatter',
+					type: 'scatter'
 				}
 			}
 		}

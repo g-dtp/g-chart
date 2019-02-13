@@ -1,9 +1,10 @@
 <script>
 	import GBase from './base/g-base'
 	import {mapWatches} from './base/utils'
+
 	export default {
 		extends: GBase,
-		name: "g-grid",
+		name: 'g-grid',
 		props: {
 			containLabel: {
 				type: Boolean,
@@ -26,10 +27,10 @@
 				default: 40
 			}
 		},
-		beforeCreate() {
+		beforeCreate () {
 			this._type = 'grid'
 		},
-		watch:{
+		watch: {
 			...mapWatches('updateOptions', [
 				'top',
 				'left',
@@ -37,7 +38,7 @@
 				'bottom'
 			])
 		},
-		data() {
+		data () {
 			return {
 				options: {
 					...this.$props

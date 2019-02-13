@@ -1,8 +1,9 @@
 <script>
 	import GBase from './base/g-base'
+
 	export default {
 		extends: GBase,
-		name: "g-singleAxis",
+		name: 'g-singleAxis',
 		props: {
 			data: {
 				default: function () {
@@ -28,7 +29,7 @@
 				default: 50
 			}
 		},
-		data() {
+		data () {
 			return {
 				options: {
 					...this.$props,
@@ -36,7 +37,7 @@
 				}
 			}
 		},
-		beforeCreate() {
+		beforeCreate () {
 			this._type = 'singleAxis'
 		}
 	}

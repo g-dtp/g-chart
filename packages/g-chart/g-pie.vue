@@ -1,17 +1,18 @@
 <script>
 	import GSerie from './base/g-serie'
 	import {mapWatches} from './base/utils'
+
 	export default {
 		extends: GSerie,
-		name: "g-pie",
+		name: 'g-pie',
 		props: {
 			data: {
 				default: function () {
 					return []
 				}
 			},
-			center:{
-				default:function () {
+			center: {
+				default: function () {
 					return ['50%', '50%']
 				}
 			},
@@ -52,8 +53,8 @@
 				}
 			}
 		},
-		watch:{
-			...mapWatches('updateOptions',[
+		watch: {
+			...mapWatches('updateOptions', [
 				'data',
 				'center',
 				'startAngle',
@@ -64,11 +65,11 @@
 				'itemStyle'
 			])
 		},
-		data() {
+		data () {
 			return {
 				serie: {
 					type: 'pie',
-					...this.$props,
+					...this.$props
 				}
 			}
 		}

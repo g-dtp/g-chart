@@ -1,11 +1,12 @@
 <script>
 	import GSerie from './base/g-serie'
+
 	export default {
 		extends: GSerie,
-		name: "g-gauge",
+		name: 'g-gauge',
 		props: {
-			radius:{
-				default:'100%'
+			radius: {
+				default: '100%'
 			},
 			min: {
 				default: 0
@@ -19,14 +20,14 @@
 			endAngle: {
 				default: -269.9999
 			},
-			splitNumber:{
+			splitNumber: {
 				default: 12,
 			},
-			animation :{
+			animation: {
 				default: 0
 			},
 			pointer: {
-				default:function () {
+				default: function () {
 					return {
 						show: true,
 						length: '50%',
@@ -35,7 +36,7 @@
 				}
 			},
 			itemStyle: {
-				default:function(){
+				default: function () {
 					return {
 						normal: {
 							color: '#EDA532',
@@ -43,10 +44,10 @@
 					}
 				}
 			},
-			axisLine:{
-				default:function () {
+			axisLine: {
+				default: function () {
 					return {
-						show:false,
+						show: false,
 						lineStyle: {
 							width: 0
 						}
@@ -54,29 +55,29 @@
 				}
 			},
 			splitLine: {
-				default:false
+				default: false
 			},
 			axisTick: {
-				default:false
+				default: false
 			},
 			axisLabel: {
-				default:false
+				default: false
 			},
 			title: {
-				default:false
+				default: false
 			},
 			detail: {
-				default:false
+				default: false
 			},
-			data:{
-				default:function () {
+			data: {
+				default: function () {
 					return [0.45]
 				}
 			}
 		},
-		data(){
+		data () {
 			return {
-				serie:{
+				serie: {
 					type: 'gauge',
 					...this.$props,
 				}

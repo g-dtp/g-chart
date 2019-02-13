@@ -4,9 +4,9 @@
 
 	export default {
 		extends: GSerie,
-		name: "g-line",
+		name: 'g-line',
 		props: ['data', 'name', 'smooth', 'showSymbol', 'itemStyle', 'lineStyle', 'label', 'hoverAnimation'],
-		data() {
+		data () {
 			return {
 				serie: {
 					type: 'line',

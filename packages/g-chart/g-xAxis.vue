@@ -1,14 +1,15 @@
 <script>
 	import GBase from './base/g-base'
 	import {mapWatches} from './base/utils'
+
 	export default {
 		extends: GBase,
-		name: "g-xAxis",
+		name: 'g-xAxis',
 		props: {
 			data: {
 				default: function () {
 					return []
-				},
+				}
 			},
 			axisLabel: {
 				default: function () {
@@ -36,23 +37,23 @@
 					return [10, 10]
 				}
 			},
-			axisPointer:{},
-			showMarkLine:{
+			axisPointer: {},
+			showMarkLine: {
 				default: -1
 			}
 		},
-		data() {
+		data () {
 			return {
 				options: {
-					...this.$props,
+					...this.$props
 				}
 			}
 		},
-		beforeCreate() {
+		beforeCreate () {
 			this._type = 'xAxis'
 		},
-		created() {
-			if(this.showMarkLine) this.markLine()
+		created () {
+			if (this.showMarkLine) this.markLine()
 		},
 		watch: {
 			...mapWatches('updateOptions', [
@@ -67,11 +68,12 @@
 			])
 		},
 		methods: {
-			markLine() {}
+			markLine () {
+			}
 		}
 	}
 </script>
 
-<style lang="stylus" scoped>
+<style lang='stylus' scoped>
 
 </style>

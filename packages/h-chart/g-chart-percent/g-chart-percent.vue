@@ -1,6 +1,6 @@
 <template lang='pug'>
 	g-chart
-		g-graphic(:elements="group")
+		g-graphic(:elements='group')
 </template>
 
 <script>
@@ -9,7 +9,7 @@
 	import resize from '../../utils/resize'
 
 	export default {
-		name: "g-chart-percent",
+		name: 'g-chart-percent',
 		components: {GChart, GGraphic},
 		props: {
 			backgroundColor: {
@@ -18,11 +18,11 @@
 			color: {
 				default: '#9CCAF0'
 			},
-			borderColor:{
+			borderColor: {
 				default: '#04418A'
 			},
 			percent: {
-				default: .4
+				default: 0.4
 			},
 			maxR: {
 				default: 70
@@ -30,11 +30,11 @@
 			minR: {
 				default: 55
 			},
-			text:{
+			text: {
 				default: ''
 			}
 		},
-		data() {
+		data () {
 			return {
 				group: [{
 					type: 'group',
@@ -51,20 +51,20 @@
 							top: 'middle',
 							shape: {
 								r: (this.maxR + 4) * resize.scale,
-								r0: (this.minR - 4) * resize.scale,
+								r0: (this.minR - 4) * resize.scale
 							},
 							style: {
 								fill: null,
 								stroke: this.borderColor,
 								lineWidth: 2 * resize.scale
 							}
-						},{
+						}, {
 							type: 'sector',
 							silent: true,
-							rotation: Math.PI * .5,
+							rotation: Math.PI * 0.5,
 							shape: {
-								r: ( this.maxR - 2)  * resize.scale,
-								r0: (this.minR + 2)  * resize.scale,
+								r: (this.maxR - 2) * resize.scale,
+								r0: (this.minR + 2) * resize.scale,
 								startAngle: 0,
 								endAngle: 2 * Math.PI
 							},
@@ -74,9 +74,9 @@
 						}, {
 							type: 'sector',
 							silent: true,
-							rotation: Math.PI * .5,
+							rotation: Math.PI * 0.5,
 							shape: {
-								r: ( this.maxR - 2)  * resize.scale,
+								r: (this.maxR - 2) * resize.scale,
 								r0: (this.minR + 2) * resize.scale,
 								startAngle: 0,
 								endAngle: 2 * Math.PI * this.percent
@@ -93,7 +93,7 @@
 								text: this.text,
 								fill: '#52B8DF',
 								stroke: 'rgba(156,202,240,0.30)',
-								font: `${32 * resize.scale}px "Microsoft YaHei", sans-serif`
+								font: `${32 * resize.scale}px 'Microsoft YaHei', sans-serif`
 							}
 						}
 					]
@@ -103,6 +103,6 @@
 	}
 </script>
 
-<style lang="stylus" scoped>
+<style lang='stylus' scoped>
 
 </style>

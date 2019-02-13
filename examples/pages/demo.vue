@@ -25,9 +25,9 @@
 	import LineArea from './demo/line-area'
 
 	export default {
-		name: "demo",
+		name: 'demo',
 		components: {GChartArrow, GChartPercent, GChartLiquidfill, LineArea},
-		data() {
+		data () {
 			return {
 				xAxisData: [],
 				list: [],
@@ -47,8 +47,8 @@
 				textLeft: 0
 			}
 		},
-		beforeCreate() {
-			this._colors= ['#EDA532','#449B7E','#5BD4D7','#51B6F5','#2E69CD','#CCE2FF','#93C8FF','#51B6F5','#2E69CD','#659BFF']
+		beforeCreate () {
+			this._colors = ['#EDA532', '#449B7E', '#5BD4D7', '#51B6F5', '#2E69CD', '#CCE2FF', '#93C8FF', '#51B6F5', '#2E69CD', '#659BFF']
 			this._lineStyle = [{}]
 			this._itemStyle = {
 				color: '#EDA532',
@@ -56,7 +56,7 @@
 				borderWidth: 3
 			}
 		},
-		created() {
+		created () {
 			for (let i = 0; i < 12; i++) {
 				this.xAxisData.push((i + 1) + '月')
 				this.list.push(Math.random() * 50 + 300)
@@ -69,22 +69,20 @@
 			}
 			this.itemStyle.color = this.makeColors('#9CCAF0', 'rgba(156,202,240,0.30)')
 			this.areaStyle.color = this.makeColors('rgba(15,93,144,0.90)', 'rgba(15,93,144,0.30)')
-
-
 		},
 		methods: {
-			onUpdate() {
+			onUpdate () {
 				this.bar1[0] = null
 				this.text1 = 'demoxx'
 				this.textLeft++
 			},
-			makeData() {
+			makeData () {
 				this.pieData = this.makeSome()
 			},
-			onToggle() {
+			onToggle () {
 				this.show = !this.show
 			},
-			makeColors(color1, color2) {
+			makeColors (color1, color2) {
 				return new echarts.graphic.LinearGradient(
 					0, 0, 0, 1,
 					[
@@ -93,7 +91,7 @@
 					]
 				)
 			},
-			makeSome() {
+			makeSome () {
 				let list = []
 				let legend = []
 				let name
@@ -102,7 +100,7 @@
 					legend.push(name)
 					list.push({
 						name: name,
-						value: Math.random() * 50 + 10,
+						value: Math.random() * 50 + 10
 					})
 				}
 				return {

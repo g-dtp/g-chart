@@ -8,7 +8,7 @@ export default {
 		theme = theme || {}
 		echarts.registerTheme(name, theme)
 	},
-	getLinearGradient: function(color1, color2) {
-		return new echarts.graphic.LinearGradient(0, 0, 0, 1,[{offset: 0, color: color1}, {offset: 1, color: color2}])
+	getLinearGradient: function (color1, color2) {
+		return new echarts.graphic.LinearGradient(0, 0, 0, 1, [{offset: 0, color: color1}, {offset: 1, color: color2}])
 	}
 }

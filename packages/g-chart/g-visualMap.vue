@@ -1,11 +1,11 @@
 <script>
 	import GBase from './base/g-base'
 	export default {
-		name: "g-visualMap",
+		name: 'g-visualMap',
 		extends: GBase,
-		props:{
+		props: {
 			min: {
-				default:0
+				default: 0
 			},
 			max: {
 				default: 10
@@ -17,15 +17,15 @@
 				default: false
 			}
 		},
-		data(){
+		data () {
 			return {
-				options:{
+				options: {
 					...this.$props,
-					calculable: true,
+					calculable: true
 				}
 			}
 		},
-		beforeCreate() {
+		beforeCreate () {
 			this._type = 'visualMap'
 		}
 	}

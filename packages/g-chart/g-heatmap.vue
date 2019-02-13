@@ -1,8 +1,9 @@
 <script>
 	import GSerie from './base/g-serie'
+
 	export default {
 		extends: GSerie,
-		name: "g-heatmap",
+		name: 'g-heatmap',
 		props: {
 			data: {
 				default: function () {
@@ -10,7 +11,7 @@
 				}
 			}
 		},
-		data() {
+		data () {
 			return {
 				options: {
 					type: 'heatmap',
