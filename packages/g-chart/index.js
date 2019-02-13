@@ -23,7 +23,7 @@ import GEffectScatter from './g-effectScatter'
 
 import GVisualMap from './g-visualMap'
 echarts.registerTheme('default', theme)
-export default {
+export {
 	GChart,
 	GTitle,
 	GGrid,
