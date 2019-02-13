@@ -7,6 +7,8 @@
 <script>
 
 	import GChart from '../../g-chart/g-chart'
+	/* eslint-disable */
+	import Liquidfill from 'echarts-liquidfill'
 	import GLiquidfill from '../../g-chart/g-liquidfill'
 
 	export default {

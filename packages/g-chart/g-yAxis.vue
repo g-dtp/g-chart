@@ -93,6 +93,8 @@
 				this.chartsOptions[this._type][index] = {...this.options}
 				this.$chart.render()
 			}
-		}
+		},
+		/* eslint-disable */
+		render () {}
 	}
 </script>

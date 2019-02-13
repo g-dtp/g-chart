@@ -67,6 +67,8 @@
 				'axisPointer'
 			])
 		},
+		/* eslint-disable */
+		render () {},
 		methods: {
 			markLine () {
 			}
