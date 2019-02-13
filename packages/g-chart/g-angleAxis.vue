@@ -1,5 +1,5 @@
 <script>
 	export default {
-		name: "g-angleAxis"
+		name: 'g-angleAxis'
 	}
 </script>

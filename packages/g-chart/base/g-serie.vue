@@ -1,42 +1,43 @@
 <script>
 	import resize from '../../utils/resize'
+
 	const scaleProps = []
-	import {mapWatches} from './utils'
 	export default {
-		name: "base-serie",
+		name: 'base-serie',
 		inject: ['$chart', 'chartsOptions'],
-		props:{
-			yAxisIndex:{
-				default:0
+		props: {
+			yAxisIndex: {
+				default: 0
 			},
-			serieIndex:{
-				default:0
-			},
+			serieIndex: {
+				default: 0
+			}
 		},
-		watch:{
+		watch: {
 			// ...mapWatches('updateOptions',[
 			// 	'serieIndex','yAxisIndex'
 			// ])
 		},
-		created(){
+		created () {
 			this.scaleValues()
-			if(!this.chartsOptions.series) this.chartsOptions.series = []
+			if (!this.chartsOptions.series) this.chartsOptions.series = []
 			this.chartsOptions.series[this.serieIndex] = this.serie
 		},
-		beforeDestroy(){
+		beforeDestroy () {
 			this.chartsOptions.series[this.serieIndex] = ''
 		},
-		destroyed(){
+		destroyed () {
 			this.chartsOptions.series[this.serieIndex] = ''
 		},
-		methods:{
-			scaleValues(){
+		methods: {
+			scaleValues () {
 				scaleProps.forEach(key => {
-					if (typeof (this.serie[key]) == 'Number')
+					if (typeof (this.serie[key]) === 'number') {
 						this.serie[key] = this.serie[key] * resize.scale
+					}
 				})
 			},
-			updateOptions(){
+			updateOptions () {
 				let newOption = {
 					...this.serie,
 					...this.$props
@@ -47,7 +48,7 @@
 				this.$chart.render()
 			}
 		},
-		render() {}
+		/* eslint-disable */
+		render () {}
 	}
 </script>
-

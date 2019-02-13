@@ -3,7 +3,7 @@
 
 	export default {
 		extends: GSerie,
-		name: "g-effectScatter",
+		name: 'g-effectScatter',
 		props: {
 			coordinateSystem: {
 				default: 'cartesian2d'
@@ -14,36 +14,36 @@
 				}
 			},
 			symbol: {
-				default:function () {
+				default: function () {
 					return 'diamond'
 				}
 			},
-			symbolSize:{
+			symbolSize: {
 				default: 3
 			},
 			rippleEffect: {
-				default:function () {
+				default: function () {
 					return {
 						period: 4,
 						scale: 10,
-						brushType: 'stroke',
+						brushType: 'stroke'
 					}
 				}
 			},
-			label:{},
+			label: {},
 			itemStyle: {
-				default:function () {
+				default: function () {
 					return {
 						color: 'rgb(237, 165, 50)'
 					}
 				}
 			}
 		},
-		data() {
+		data () {
 			return {
 				serie: {
 					type: 'effectScatter',
-					...this.$props,
+					...this.$props
 				}
 			}
 		}

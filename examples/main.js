@@ -6,8 +6,6 @@ import App from './App'
 import router from './router'
 import demoBlock from './components/demo-block.vue'
 import GChart from '../packages/index'
-import {Resize, ChartHelper} from '../packages/index'
-
 Vue.component('demo-block', demoBlock)
 Vue.use(GChart)
 Vue.config.productionTip = false

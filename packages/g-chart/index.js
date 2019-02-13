@@ -1,6 +1,5 @@
 import echarts from 'echarts'
 import theme from './theme.js'
-echarts.registerTheme('default', theme)
 import GChart from './g-chart'
 
 import GTitle from './g-title'
@@ -23,7 +22,7 @@ import GScatter from './g-scatter'
 import GEffectScatter from './g-effectScatter'
 
 import GVisualMap from './g-visualMap'
-
+echarts.registerTheme('default', theme)
 export default {
 	GChart,
 	GTitle,

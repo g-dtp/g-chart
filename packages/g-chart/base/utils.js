@@ -1,10 +1,11 @@
-export const mapWatches = (fName,props) => {
-	if(!props) return
+export const mapWatches = (fName, props) => {
+	if (!props) return
 	let map = {}
 	let list
-	if(typeof props.constructor === Object){
+	/* eslint-disable */
+	if (typeof props.constructor === Object) {
 		list = Object.keys(props)
-	}else{
+	} else {
 		list = [...props]
 	}
 	list.forEach(item => {

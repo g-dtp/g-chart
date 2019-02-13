@@ -1,21 +1,22 @@
 <script>
 	import GSerie from './base/g-serie'
 	import echarts from 'echarts'
+
 	export default {
 		extends: GSerie,
-		name: "g-custom",
+		name: 'g-custom',
 		props: {
-			data:{
-				default:function () {
+			data: {
+				default: function () {
 					return []
 				}
 			}
 		},
-		data(){
+		data () {
 			return {
-				serie:{
+				serie: {
 					type: 'custom',
-					renderItem:function (params, api) {
+					renderItem: function (params, api) {
 						console.log(echarts.graphic)
 					},
 					itemStyle: {

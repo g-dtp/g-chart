@@ -1,20 +1,21 @@
 <script>
 	import GSerie from './base/g-serie'
 	import {mapWatches} from './base/utils'
+
 	export default {
-		mixins:[GSerie],
-		name: "g-bar",
-		props: ['data', 'name', 'barMaxWidth', 'barWidth', 'itemStyle', 'label', 'barCategoryGap', 'barGap','stack'],
-		data(){
+		mixins: [GSerie],
+		name: 'g-bar',
+		props: ['data', 'name', 'barMaxWidth', 'barWidth', 'itemStyle', 'label', 'barCategoryGap', 'barGap', 'stack'],
+		data () {
 			return {
-				serie:{
+				serie: {
 					type: 'bar',
-					...this.$props,
+					...this.$props
 				}
 			}
 		},
-		watch:{
-			...mapWatches('updateOptions',[
+		watch: {
+			...mapWatches('updateOptions', [
 				'data', 'name', 'barMaxWidth', 'barWidth', 'itemStyle', 'label', 'barCategoryGap', 'barGap', 'stack'
 			])
 		}

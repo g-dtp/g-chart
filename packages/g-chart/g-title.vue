@@ -4,7 +4,7 @@
 
 	export default {
 		extends: GBase,
-		name: "g-title",
+		name: 'g-title',
 		props: {
 			text: {
 				type: String,
@@ -25,15 +25,15 @@
 			textStyle: {
 				default: function () {
 					return {
-						align: 'center',
+						align: 'center'
 					}
 				}
 			}
 		},
-		beforeCreate() {
+		beforeCreate () {
 			this._type = 'title'
 		},
-		data() {
+		data () {
 			return {
 				options: {
 					...this.$props

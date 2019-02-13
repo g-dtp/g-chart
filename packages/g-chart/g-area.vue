@@ -1,9 +1,10 @@
 <script>
 	import GSerie from './base/g-serie'
 	import {mapWatches} from './base/utils'
+
 	export default {
 		extends: GSerie,
-		name: "g-area",
+		name: 'g-area',
 		props: {
 			data: {
 				default: function () {
@@ -13,19 +14,19 @@
 			name: {},
 			smooth: {},
 			showSymbol: {},
-			areaStyle:{
-				default:function () {
+			areaStyle: {
+				default: function () {
 					return {}
 				}
 			},
-			lineStyle:{
-				default:function () {
+			lineStyle: {
+				default: function () {
 					return {}
 				}
 			},
-			label:{}
+			label: {}
 		},
-		data() {
+		data () {
 			return {
 				serie: {
 					type: 'line',
@@ -43,6 +44,6 @@
 				'lineStyle',
 				'label'
 			])
-		},
+		}
 	}
 </script>

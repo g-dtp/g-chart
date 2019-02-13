@@ -1,5 +1,5 @@
 <template lang='pug'>
-	.g-chart(@touchstart="onTouchstart" @click="onClick" ref="chart")
+	.g-chart(@touchstart='onTouchstart' @click='onClick' ref='chart')
 		slot
 </template>
 
@@ -8,7 +8,7 @@
 	import Emitter from '../mixins/emitter'
 
 	export default {
-		name: "g-chart",
+		name: 'g-chart',
 		mixins: [Emitter],
 		props: {
 			size: {
@@ -20,11 +20,11 @@
 				type: String,
 				default: 'rgba(0,0,0,0)'
 			},
-			color:{
+			color: {
 				default: ''
 			}
 		},
-		data() {
+		data () {
 			return {
 				chart: null,
 				timer: null,
@@ -33,75 +33,73 @@
 				}
 			}
 		},
-		provide() {
+		provide () {
 			return {
 				chartsOptions: this.options,
 				$chart: this
 			}
 		},
 		watch: {
-			'options'() {
+			'options' () {
 				this.render()
 			}
 		},
 		methods: {
-			onTouchstart(e) {
+			onTouchstart (e) {
 				this.preventDefault && e.preventDefault()
 			},
-			onClick(e) {
+			onClick (e) {
 				this.preventDefault && e.preventDefault()
 			},
-			async render() {
+			async render () {
 				this.chart.setOption(this.options, true)
 				this.resizeChart()
 			},
-			updateOptions() {
+			updateOptions () {
 				this.chart.setOption(this.options, true)
 				this.resizeChart()
 			},
-			resizeChart() {
+			resizeChart () {
 				let vm = this
-				if(vm.timer) clearTimeout(vm.timer)
+				if (vm.timer) clearTimeout(vm.timer)
 				vm.timer = setTimeout(() => {
-					if(vm.chart) vm.chart.resize()
-				},0)
-
+					if (vm.chart) vm.chart.resize()
+				}, 0)
 			},
-			onChartClick(series){
-				if(true) return
-				if(series.seriesType != 'bar') return
+			onChartClick (series) {
+				if (series.seriesType) return
 				let seriesIndex = series.seriesIndex
 
-				let c = Echart.util.isObject(series.color) ? series.color.colorStops[0].color: series.color
+				let c = Echart.util.isObject(series.color) ? series.color.colorStops[0].color : series.color
 				let options = {
 					series: []
 				}
 				let {label} = this.chart.getOption().series[seriesIndex]
 				this.options.series.forEach((item, index) => {
-					if(seriesIndex == index) {
+					if (seriesIndex === index) {
 						options.series.push({
-							label:{
+							label: {
 								show: label ? !label.show : true,
 								color: c
 							}
 						})
-					}else{
+					} else {
 						options.series.push({})
 					}
 				})
 				this.chart.setOption(options)
 			}
 		},
-		mounted() {
-			if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'default');
+		mounted () {
+			if (!this.chart) this.chart = Echart.init(this.$refs.chart, 'default')
 			window.addEventListener('resize', this.resizeChart.bind(this))
 			this.chart.on('click', this.onChartClick)
 			this.render()
 		},
-		beforeDestroy(){
-			if(this.timer) clearTimeout(this.timer)
+		beforeDestroy () {
+			if (this.timer) clearTimeout(this.timer)
 		},
-		destroyed() {
+		destroyed () {
 			window.removeEventListener('resize', this.resizeChart.bind(this))
 			this.chart.off('click', this.onChartClick)
 			this.chart.clear()
@@ -111,7 +109,7 @@
 	}
 </script>
 
-<style lang="stylus" scoped>
+<style lang='stylus' scoped>
 	.g-chart
 		width 100%
 		height 100%
