@@ -2,7 +2,7 @@
 	import Emitter from '../../mixins/emitter'
 	import resize from '../../utils/resize'
 
-	const scaleProps = ['left', 'right', 'top', 'bottom', 'width', 'radius']
+	const scaleProps = ['left', 'right', 'top', 'bottom', 'width', 'radius', 'height']
 	export default {
 		name: 'g-base',
 		mixins: [Emitter],
@@ -19,7 +19,9 @@
 		methods: {
 			scaleValues () {
 				scaleProps.forEach(key => {
-					if (typeof (this.options[key]) === 'number') {
+					/* eslint-disable */
+					let value = typeof this.options[key]
+					if (value.toUpperCase() === 'NUMBER') {
 						this.options[key] = this.options[key] * resize.scale
 					}
 				})

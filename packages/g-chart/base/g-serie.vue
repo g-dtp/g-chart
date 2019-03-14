@@ -32,8 +32,10 @@
 		methods: {
 			scaleValues () {
 				scaleProps.forEach(key => {
-					if (typeof (this.serie[key]) === 'number') {
-						this.serie[key] = this.serie[key] * resize.scale
+					/* eslint-disable */
+					let value = typeof this.options[key]
+					if (value.toUpperCase() === 'NUMBER') {
+						this.options[key] = this.options[key] * resize.scale
 					}
 				})
 			},

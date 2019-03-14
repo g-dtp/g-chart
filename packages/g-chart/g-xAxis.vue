@@ -15,7 +15,6 @@
 				default: function () {
 					return {
 						interval: 0,
-						fontSize: 12
 					}
 				}
 			},
@@ -67,6 +66,8 @@
 				'axisPointer'
 			])
 		},
+		/* eslint-disable */
+		render () {},
 		methods: {
 			markLine () {
 			}
