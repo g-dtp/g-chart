@@ -22,7 +22,7 @@
 					/* eslint-disable */
 					let value = typeof this.options[key]
 					if (value.toUpperCase() === 'NUMBER') {
-						this.options[key] = value * resize.scale
+						this.options[key] = this.options[key] * resize.scale
 					}
 				})
 			},
