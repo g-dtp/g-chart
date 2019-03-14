@@ -15,7 +15,6 @@
 				default: function () {
 					return {
 						interval: 0,
-						fontSize: 12
 					}
 				}
 			},
