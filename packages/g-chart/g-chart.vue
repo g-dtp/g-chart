@@ -65,6 +65,9 @@
 				vm.timer = setTimeout(() => {
 					if (vm.chart) vm.chart.resize()
 				}, 0)
+				window.addEventListener("resize", () => { 
+				    vm.chart.resize()
+				})
 			},
 			onChartClick (series) {
 				if (series.seriesType) return
