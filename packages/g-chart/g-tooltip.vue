@@ -15,8 +15,7 @@
 						type: 'line'
 					}
 				}
-			},
-			formatter: {}
+			}
 		},
 		data () {
 			return {

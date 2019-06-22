@@ -31,7 +31,13 @@
 			},
 			height: {
 				default: 'auto'
-			}
+			},
+			formatter: {
+				default: function () {
+					return []
+				}
+			},
+			textStyle: {}
 		},
 		watch: {
 			...mapWatches('updateOptions', [
@@ -42,7 +48,9 @@
 				'bottom',
 				'orient',
 				'width',
-				'height'
+				'height',
+				'formatter',
+				'textStyle'
 			])
 		},
 		data () {

@@ -20,6 +20,9 @@
 					}
 				}
 			},
+			max: {
+				default: null
+			},
 			min: {
 				default: 0
 			},
@@ -60,6 +63,7 @@
 				'axisTick',
 				'axisLine',
 				'min',
+				'max',
 				'type',
 				'splitLine'
 			])
