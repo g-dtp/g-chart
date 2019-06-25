@@ -24,7 +24,10 @@
 					return {}
 				}
 			},
-			label: {}
+			label: {},
+			yAxisIndex: {
+				default: 0
+			}
 		},
 		data () {
 			return {
@@ -42,7 +45,8 @@
 				'showSymbol',
 				'areaStyle',
 				'lineStyle',
-				'label'
+				'label',
+				'yAxisIndex'
 			])
 		}
 	}

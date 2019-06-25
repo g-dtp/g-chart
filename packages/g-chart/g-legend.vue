@@ -49,7 +49,6 @@
 				'orient',
 				'width',
 				'height',
-				'formatter',
 				'textStyle'
 			])
 		},
