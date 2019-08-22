@@ -1,6 +1,6 @@
 {
 	"name": "g-chart",
-	"version": "2.6.8",
+	"version": "2.6.10",
 	"description": "base on vue and echarts",
 	"keywords": [
 		"g-chart",
@@ -64,6 +64,7 @@
 		"postcss-url": "^7.2.1",
 		"pug": "^2.0.3",
 		"pug-loader": "^2.4.0",
+		"px2rem-loader": "^0.1.9",
 		"rimraf": "^2.6.0",
 		"semver": "^5.3.0",
 		"shelljs": "^0.7.6",
